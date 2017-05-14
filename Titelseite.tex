@@ -1,0 +1,83 @@
+\documentclass[english,a4paper,10pt,twoside]{book}
+
+% Language
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Math
+
+\usepackage{mathtools, amssymb, exscale, mathrsfs}
+\usepackage{nicefrac}
+\usepackage{units}
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% Layout
+
+\usepackage[onehalfspacing]{setspace}
+\usepackage{titling}
+\usepackage{lmodern}
+\usepackage[]{hyperref} % hidelinks to hide links :D
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{xcolor}
+\usepackage[sort&compress]{cleveref}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{rotating}
+
+% Tikz
+
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+\setlength{\parindent}{0cm}
+\pagestyle{plain}
+\author{Fabian Glatzel}
+\title{Calculation of tight binding parameters with density functional theory to describe transport phenomena}
+\date{\today}
+\hypersetup{
+  pdftitle=\thetitle von \theauthor,
+  pdfauthor=\theauthor,
+  colorlinks=false}
+
+\begin{document}
+\begin{titlepage}
+ \centering 
+ \Huge\thetitle\\ 
+ 
+ \vspace*{1cm}
+ 
+ \Large Bachelor Thesis\\
+ \vspace*{5cm}
+ 
+ \includegraphics[width=10cm]{Images/logo_freiburg}
+ 
+ \vspace*{5cm}
+ \theauthor
+ \normalsize 
+\end{titlepage}
+\thispagestyle{empty}
+
+\tableofcontents
+\pagenumbering{Roman}
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+\input{Chapters/Introduction}
+
+\listoffigures
+\listoftables
+\bibliography{Chapters/literature}
+\bibliographystyle{unsrtdin}
+\label{here}
+\end{document}
+
+
+

@@ -1,0 +1,139 @@
+\section{Theoretical Background}
+\subsection{Lattice}
+A solid has typically a periodicity in the placing of its atoms. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, that behave like very viscous fluids and will not be treated here (see \cite{ashcroft, gerthsen}).\\
+Bravais lattice\\
+Points $\vec{R}$ with:
+\begin{align}
+	\vec{R} &= \sum_{i = 0}^{N_D} n_i \vec{a}_i
+\end{align}
+with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\
+
+\emph{primitive (unit) cell}\\
+Fills complete space without any overlap under all transitions $\vec{R}$\\
+
+\emph{(conventional) unit cell}\\
+Fills complete space without any overlap under a subset of transitions of $\vec{R}$. Sometimes preferred due to a different symmetry.\\
+
+\emph{Wigner-Seitz primitive cell}\\
+Primitive cell containing all space closer to a certain lattice point than to all others.\\
+
+
+\emph{Reciprocal lattice}\\
+Set of wave vectors $\vec{K}$, so that the plane wave has the periodicity of a given Bravais lattice:
+\begin{align}
+	\exp\left(i\vec{K}\cdot\vec{r}\right) &= \exp\left[i\vec{K}\cdot\left(\vec{r} + \vec{R}\right)\right] &\Leftrightarrow& &\vec{K}\cdot\vec{R} &= \mathbb{Z}\cdot 2\pi	
+\end{align}
+Therefore the wave vectors $\vec{K}$ form also a Bravais lattice called the \emph{reciprocal lattice}. The primitive vectors $\vec{b}_i$ of a three dimensional reciprocal lattice can be derived as follows:
+\begin{align}
+	\vec{b}_i = 2\pi \frac{\vec{a}_{i+1}\times\vec{a}_{i+2}}{\vec{a}_1 \cdot \left(\vec{a}_2 \times \vec{a}_3\right)}
+\end{align}
+where the indices have to be understood modulo 3.\\
+
+\emph{First Brillouine Zone}\\
+Wigner-Seitz cell of reciprocal lattice.\\
+
+\subsection{Bloch Theorem}
+According to Bloch's theorem a wave functions $\Psi(\vec{r})$ of a periodic potential, $V\big(\vec{r} + \vec{R}\big)= V\big(\vec{r}\big)$ for all $\vec{R}$ of a Bravais lattice, can be written in the form:
+
+\begin{align}
+	\Psi(\vec{r}) &= \exp\left(i\vec{k}\cdot\vec{r}\right) \cdot u\left(\vec{r}\right)
+\end{align}
+where $\vec{k}$ is an arbitrary wave vector and $u\left(\vec{r}\right)$ denotes a $\vec{R}$-periodic function.\\
+Under the assumption, that the boundary condition at the surface should not change the physical properties of the bulk, one assumes the periodic \emph{Born-von Karman boundary condition}\footnote{Alternatively one can choose the boundary condition  for a vanishing wave function on the surface $\Psi\left(\vec{S}\right) = 0$. But the periodic boundary condition has the advantage, that it corresponds with propagating waves, which suits transport phenomena very well, whereas a vanishing boundary condition corresponds with standing waves.}:
+\begin{align}
+	\Psi\left(\vec{r} + N_i \vec{a}_i\right) &= \Psi\left(\vec{r}\right)
+\end{align}
+where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the bulk. Hereby one obtains additional conditions for the wave vector $\vec{k}$, namely:
+\begin{align}
+	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
+\end{align}
+One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.
+
+\subsection{Polyacetylene Hamiltonian}
+paper...
+\begin{align}
+	\mathcal{H} &= \underbrace{-2\sum_{n} t_{n+1,n}\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right)}_{\text{electrone hopping}} +
+	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma \text{ bonding energy}} + 
+	\underbrace{\frac{1}{2} \sum_n M \dot{u}^2_n}_{\text{kinetic energy}}
+\end{align}
+Born-Oppenheimer and $u_n = (-1)^nu$, $\alpha = \nicefrac{\partial t}{\partial u}$, $\delta = 2\alpha u$:
+\begin{align}
+	\mathcal{H} &= -2\sum_n \left[t_0 + (-1)^n\delta\right]\cdot\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right) + 2N\kappa u^2\\
+	&= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
+	\left(t_0-\delta\right)\left(\textcolor{red}{c_{2n+2}^\dagger c_{2n+1} + c_{2n+1}^\dagger c_{2n+2}} \right)\right]+2N\kappa u^2\\
+	&\stackrel{?}{=} -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
+	\left(t_0-\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right)\right]+2N\kappa u^2
+\end{align}
+Calculate creation and annihilation operator in k-space (symmetric normation factors):
+\begin{align}
+	c_{2n} &= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n\right)a\right]\cdot c_{k}^{(e)}\\
+	c_{2n+1} &= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n+1\right)a\right]\cdot c_{k}^{(o)}\\
+	c_k^{(e)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n\right)a\right]\cdot c_{2n}\\
+	c_k^{(o)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n+1\right)a\right]\cdot c_{2n+1}
+\end{align}
+
+Remember: operators $c_{2n(+1)}$ operate on double unit cell length $\rightarrow$ halve Brillouin zone $\left(-\frac{\pi}{2a}, \frac{\pi}{2a}\right]$\\
+boundary condition: $\exp\left[2ik\left(n+N_d\right)a\right] = 1 \rightarrow N_d$ allowed kpts in Brillouin zone\\
+Check for $c_{2n}$:
+\begin{align}
+	c_{2n_0}(c_k^{(e)}(c_{2n_i})) &= c_{2n} \\
+	&= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n_0\right)a\right]\cdot \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n\right)a\right]\cdot c_{2n}\\
+	&= \frac{1}{N_d}\sum_{k, n} \exp\left[ika\left(2n_0-2n\right)\right]\cdot c_{2n}\\
+	&= \frac{1}{N_d}\sum_n N_d \delta_{2n_0,2n} c_{2n}\\
+	&= c_{2n_0}
+\end{align}
+
+Warm up calculation:
+\begin{align*}
+	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_k^{(e)}c_{k'}^{\dagger(o)}}{N_d} \\
+	&=\sum_{n, k, k'} \exp\left[ia(k-k')(2n)\right] \cdot \exp\left(-ik'a\right) \cdot  \frac{c_k^{(e)}c_{k'}^{\dagger(o)}}{N_d} \\
+	&=\sum_{k, k'} \delta_{k, k'} \cdot \exp\left(-ik'a\right)\cdot c_k^{(e)}c_{k'}^{\dagger(o)}\\
+	&=\sum_{k'} \exp\left(-ik'a\right) \cdot c_{k'}^{(e)}c_{k'}^{\dagger(o)}
+\end{align*}
+Analogously:
+\begin{align*}
+	\sum_n^{N_d} c_{2n}^\dagger c_{2n+1} &=\sum_{k'} \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
+	\sum_n^{N_d} c_{2n+2}^\dagger c_{2n+1} &= \sum_n^{N_d} c_{2n}^\dagger c_{2n-1}\\
+	&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
+	\sum_n^{N_d} c_{2n+1}^\dagger c_{2n+2} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{(e)}c_{k'}^{\dagger(o)}
+\end{align*}
+
+Thus one obtains:
+\begin{align}
+	\mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
+	\left(t_0-\delta\right)\left(c_{2n+2}^\dagger c_{2n+1} + c_{2n+1}^\dagger c_{2n+2}\right)\right]+2N\kappa u^2\\
+	&= -2\sum_{k'} \left[\left(t_0+\delta\right)\left(\exp\left(-ik'a\right) \cdot c_{k'}^{(e)}c_{k'}^{\dagger(o)} + \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\right)+ \right.\nonumber\\
+	&\hspace*{1.6cm}\left.\left(t_0-\delta\right)\left(\exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}+\exp\left(ik'a\right)\cdot  c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right)\right]+2N\kappa u^2\\
+	&= -2\sum_{k'} \left\{\left[2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
+	&\hspace*{1.7cm}\left. \left[2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right\}+2N\kappa u^2\\
+	&\neq-2\sum_{k'} \left\{\left[\textcolor{red}{-}2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
+	&\hspace*{1.7cm}\left. \left[\textcolor{red}{-}2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right\}+2N\kappa u^2
+\end{align}
+
+\newpage
+
+\section{Other Preparations}
+\begin{figure}
+\centering
+\begin{tikzpicture}[show background rectangle, scale = 1]
+\foreach \x in {0,...,7}{
+	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
+}
+\foreach \x in {0, 4}
+	\foreach \y in {0, 1}
+		\foreach \z in {-1, 1}
+		\node at (\x + \y - \z + 1, \z) {\huge +};
+
+\foreach \x in {0, 4}
+	\foreach \y in {0, 1}
+		\foreach \z in {-1, 1}
+			\node at (\x + \y - \z + 1, -\z) {\huge -};
+
+\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+
+\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+\end{tikzpicture}
+
+\end{figure}
