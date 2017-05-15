@@ -85,29 +85,73 @@ Check for $c_{2n}$:
 
 Warm up calculation:
 \begin{align*}
-	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_k^{(e)}c_{k'}^{\dagger(o)}}{N_d} \\
-	&=\sum_{n, k, k'} \exp\left[ia(k-k')(2n)\right] \cdot \exp\left(-ik'a\right) \cdot  \frac{c_k^{(e)}c_{k'}^{\dagger(o)}}{N_d} \\
-	&=\sum_{k, k'} \delta_{k, k'} \cdot \exp\left(-ik'a\right)\cdot c_k^{(e)}c_{k'}^{\dagger(o)}\\
-	&=\sum_{k'} \exp\left(-ik'a\right) \cdot c_{k'}^{(e)}c_{k'}^{\dagger(o)}
+	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
+	&=\sum_{n, k, k'} \exp\left[ia(k-k')(2n)\right] \cdot \exp\left(-ik'a\right) \cdot  \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
+	&=\sum_{k, k'} \delta_{k, k'} \cdot \exp\left(-ik'a\right)\cdot c_{k'}^{\dagger(o)}c_k^{(e)}\\
+	&=\sum_{k'} \exp\left(-ik'a\right) \cdot c_{k'}^{\dagger(o)}c_{k'}^{(e)}
 \end{align*}
 Analogously:
 \begin{align*}
 	\sum_n^{N_d} c_{2n}^\dagger c_{2n+1} &=\sum_{k'} \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
 	\sum_n^{N_d} c_{2n+2}^\dagger c_{2n+1} &= \sum_n^{N_d} c_{2n}^\dagger c_{2n-1}\\
 	&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
-	\sum_n^{N_d} c_{2n+1}^\dagger c_{2n+2} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{(e)}c_{k'}^{\dagger(o)}
+	\sum_n^{N_d} c_{2n+1}^\dagger c_{2n+2} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}
 \end{align*}
 
 Thus one obtains:
 \begin{align}
 	\mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
 	\left(t_0-\delta\right)\left(c_{2n+2}^\dagger c_{2n+1} + c_{2n+1}^\dagger c_{2n+2}\right)\right]+2N\kappa u^2\\
-	&= -2\sum_{k'} \left[\left(t_0+\delta\right)\left(\exp\left(-ik'a\right) \cdot c_{k'}^{(e)}c_{k'}^{\dagger(o)} + \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\right)+ \right.\nonumber\\
-	&\hspace*{1.6cm}\left.\left(t_0-\delta\right)\left(\exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}+\exp\left(ik'a\right)\cdot  c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right)\right]+2N\kappa u^2\\
+	&= -2\sum_{k'} \left[\left(t_0+\delta\right)\left(\exp\left(-ik'a\right) \cdot c_{k'}^{\dagger(o)}c_{k'}^{(e)} + \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\right)+ \right.\nonumber\\
+	&\hspace*{1.6cm}\left.\left(t_0-\delta\right)\left(\exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}+\exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right)\right]+2N\kappa u^2\\
 	&= -2\sum_{k'} \left\{\left[2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
-	&\hspace*{1.7cm}\left. \left[2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right\}+2N\kappa u^2\\
+	&\hspace*{1.7cm}\left. \left[2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right\}+2N\kappa u^2\\
 	&\neq-2\sum_{k'} \left\{\left[\textcolor{red}{-}2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
-	&\hspace*{1.7cm}\left. \left[\textcolor{red}{-}2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{(e)}c_{k'}^{\dagger(o)}\right\}+2N\kappa u^2
+	&\hspace*{1.7cm}\left. \left[\textcolor{red}{-}2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right\}+2N\kappa u^2
+\end{align}
+
+Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the following form of the hopping term can be derived:
+\begin{align}
+	\mathcal{H}_{\text{hopp}} &=
+	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+\end{align}
+with the eigenvalues $E_k = \pm \sqrt{\epsilon_k^2+\Delta_k^2}$ and the eigenfunctions
+\begin{align}
+	\Psi_k^{(c)} &= \frac{1}{\sqrt{2}}\left(c_k^{(e)}+\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\\
+	\Psi_k^{(v)} &= \frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)
+\end{align}
+corresponding to the valance $(v)$ and conduction $(c)$ band.\\
+Check:
+\begin{align}
+	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &=  \left[\frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\right]\cdot\nonumber \\
+	&\hspace*{.5cm}\left[
+	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+	\right]\cdot\nonumber\\
+	&\hspace*{.5cm}\left[\frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right]\\
+	&=  \frac{1}{2}\left[-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
+	&= - |E_k|\\
+	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
+\end{align}
+Hence it is shown explicitly, that the energies of the valence band are decreased by $-|E_k|$ and the energies of the conduction band are increased by $|E_k|$. Using this the ground state energy can be derived as follows (completely occupied valence, empty conduction band):
+\begin{align}
+	E_0(u) &=-2\sum_k |E_k| + 2N\kappa u^2\\
+	&= -2\sum_k \sqrt{\epsilon_k^2+\Delta_k^2} + 2N\kappa u^2\\
+	&= -2\sum_k \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
+\end{align}
+In the limit of $N \rightarrow \infty$ the sum becomes an integral:
+\begin{align}
+	E_0(u) &= \frac{-N}{\pi}\int\limits_{\nicefrac{-\pi}{2a}}^{\nicefrac{\pi}{2a}}\hspace*{-0.2cm}\text{d}k\ \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
+	&=\frac{-4Nt_0}{\pi}\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\  \sqrt{1-\left(1-\frac{\delta}{t_0}\right)\sin^2(\theta)} + 2N\kappa u^2
+\end{align}
+To calculate energy in manually charged state (cdft), use the states:
+\begin{align}
+		\Psi_k^{(v)} &= \sqrt{\frac{1}{2}-q}c_k^{(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
+\end{align}
+
+One obtains the energies:
+
+\begin{align}
+	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &= \sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
 \end{align}
 
 \newpage
@@ -135,5 +179,5 @@ Thus one obtains:
 \draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
 \draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
 \end{tikzpicture}
-End
+
 \end{figure}
