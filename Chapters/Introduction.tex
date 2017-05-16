@@ -151,7 +151,15 @@ To calculate energy in manually charged state (cdft), use the states:
 One obtains the energies:
 
 \begin{align}
-	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &= \sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
+	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &= \left[\sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\cdot\nonumber\\
+	&\hspace*{0.5cm}\left[
+	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+	\right]\cdot\nonumber\\
+	&\hspace*{0.5cm}\left[\sqrt{\frac{1}{2}-q}c_k^{(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\\
+	&=-\sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}\left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}\sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\nonumber\\
+	&\hspace*{0.4cm}-\sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)}\sqrt{\frac{1}{2}-q}c_k^{(e)}\\
+	&=-\sqrt{\frac{1}{2}+q}\sqrt{\frac{1}{2}-q}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
+	&= - \sqrt{\frac{1}{4}-q^2} |E_k|
 \end{align}
 
 \newpage
@@ -159,25 +167,23 @@ One obtains the energies:
 \section{Other Preparations}
 \begin{figure}
 \centering
-\begin{tikzpicture}[show background rectangle, scale = 1]
-\foreach \x in {0,...,7}{
-	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
-}
-\foreach \x in {0, 4}
-	\foreach \y in {0, 1}
-		\foreach \z in {-1, 1}
-		\node at (\x + \y - \z + 1, \z) {\huge +};
 
-\foreach \x in {0, 4}
-	\foreach \y in {0, 1}
-		\foreach \z in {-1, 1}
-			\node at (\x + \y - \z + 1, -\z) {\huge -};
-
-\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
-\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
-
-\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
-\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
-\end{tikzpicture}
-
+%\begin{tikzpicture}[show background rectangle, scale = 1]
+%\foreach \x in {0,...,7}{
+%	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
+%}
+%\foreach \x in {0, 4}
+%	\foreach \y in {0, 1}
+%		\foreach \z in {-1, 1}
+%		\node at (\x + \y - \z + 1, \z) {\huge +};
+%\foreach \x in {0, 4}{
+%	\foreach \y in {0, 1}{
+%		\foreach \z in {-1, 1}{
+%			\node at (\x + \y - \z + 1, -\z) {\huge -};
+%}}}
+%\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+%\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+%\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+%\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+%\end{tikzpicture}
 \end{figure}
