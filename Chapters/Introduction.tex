@@ -120,8 +120,18 @@ with the eigenvalues $E_k = \pm \sqrt{\epsilon_k^2+\Delta_k^2}$ and the eigenfun
 	\Psi_k^{(c)} &= \frac{1}{\sqrt{2}}\left(c_k^{(e)}+\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\\
 	\Psi_k^{(v)} &= \frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)
 \end{align}
-corresponding to the valance $(v)$ and conduction $(c)$ band.\\
-Check:
+corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfunctions have to be understood as operating on the completely occupied state, $|(e),(o)\rangle = |1,1\rangle$. Due to this one can check the orthogonality:
+\begin{align}
+\left\langle\Psi_k^{(v)}\Big|\Psi_k^{(v)}\right\rangle &= \frac{1}{2}
+\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)
+\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\\
+&= 2 \left[c_k^{\dagger(e)}c_k^{(e)}+\frac{\left(\epsilon_k-i\Delta_k\right)\left(\epsilon_k+i\Delta_k\right)}{\left|E_k\right|^2}c_k^{\dagger(o)}c_k^{(o)}\right.\nonumber\\
+&\hspace*{1cm}\left.-\frac{\epsilon_k-i\Delta_k}{|E_k|}c_k^{\dagger(o)}c_k^{(e)}-\frac{\epsilon_k+i\Delta_k}{|E_k|}c_k^{\dagger(e)}c_k^{(o)}\right]\\
+&= \frac{1}{2}\left[c_k^{\dagger(e)}c_k^{(e)}+c_k^{\dagger(o)}c_k^{(o)}\right]\\
+&= 1
+\end{align}
+Here the number operator $n$ has the inconvenient definition $n = c^\dagger c$. \\
+Check also the correspondence to the correct eigenvalues:
 \begin{align}
 	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &=  \left[\frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\right]\cdot\nonumber \\
 	&\hspace*{.5cm}\left[
