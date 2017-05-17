@@ -50,13 +50,32 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.
 
 \subsection{Polyacetylene Hamiltonian}
-paper...
+Hamiltonian for trans-polyacetylene:
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[show background rectangle]
+		\pgfmathsetmacro{\j}{0.5};
+		\draw (0,0) -- (6,0);
+		\foreach \i in {0,2,...,6}{
+			\draw[fill = black] ({\i + \j * (-1)^(\i/2)},0) circle (0.1);
+			\draw[] (\i,-0.1) -- (\i, 0.1);
+		}
+		\draw[<->] (2 - \j, -1) -- (6 - \j, -1) node[midway, fill = white] {2a};
+		\draw[<->] (0 + \j, -0.5) -- (4 + \j, -0.5) node[midway, fill = white] {2a};
+		\draw[<->] (2 - \j, 0.5) -- (2, 0.5) node[midway, above] {$u$};
+		\draw[<->] (4, 0.5) -- (4 + \j, 0.5) node[midway, above] {$u$};
+		\draw[dotted] (-0.3,0) -- (6.3, 0);
+	\end{tikzpicture}
+	\caption{Schema: perfectly dimerized molecule}
+	\label{image_schema_dimer}
+\end{figure}
 \begin{align}
 	\mathcal{H} &= \underbrace{-2\sum_{n} t_{n+1,n}\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right)}_{\text{electrone hopping}} +
 	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma \text{ bonding energy}} + 
 	\underbrace{\frac{1}{2} \sum_n M \dot{u}^2_n}_{\text{kinetic energy}}
 \end{align}
-Born-Oppenheimer and $u_n = (-1)^nu$, $\alpha = \nicefrac{\partial t}{\partial u}$, $\delta = 2\alpha u$:
+Born-Oppenheimer and $u_n = (-1)^nu$, $\alpha = \nicefrac{\partial t}{\partial u}$, $\delta = 2\alpha u$ (see \cref{image_schema_dimer}):
 \begin{align}
 	\mathcal{H} &= -2\sum_n \left[t_0 + (-1)^n\delta\right]\cdot\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right) + 2N\kappa u^2\\
 	&= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
@@ -71,7 +90,6 @@ Calculate creation and annihilation operator in k-space (symmetric normation fac
 	c_k^{(e)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n\right)a\right]\cdot c_{2n}\\
 	c_k^{(o)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n+1\right)a\right]\cdot c_{2n+1}
 \end{align}
-
 Remember: operators $c_{2n(+1)}$ operate on double unit cell length $\rightarrow$ halve Brillouin zone $\left(-\frac{\pi}{2a}, \frac{\pi}{2a}\right]$\\
 boundary condition: $\exp\left[2ik\left(n+N_d\right)a\right] = 1 \rightarrow N_d$ allowed kpts in Brillouin zone\\
 Check for $c_{2n}$:
@@ -82,7 +100,6 @@ Check for $c_{2n}$:
 	&= \frac{1}{N_d}\sum_n N_d \delta_{2n_0,2n} c_{2n}\\
 	&= c_{2n_0}
 \end{align}
-
 Warm up calculation:
 \begin{align*}
 	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
@@ -97,7 +114,6 @@ Analogously:
 	&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
 	\sum_n^{N_d} c_{2n+1}^\dagger c_{2n+2} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}
 \end{align*}
-
 Thus one obtains:
 \begin{align}
 	\mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
@@ -109,7 +125,6 @@ Thus one obtains:
 	&\neq-2\sum_{k'} \left\{\left[\textcolor{red}{-}2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
 	&\hspace*{1.7cm}\left. \left[\textcolor{red}{-}2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right\}+2N\kappa u^2
 \end{align}
-
 Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the following form of the hopping term can be derived:
 \begin{align}
 	\mathcal{H}_{\text{hopp}} &=
@@ -157,18 +172,16 @@ For small $\nicefrac{\delta}{t_0}$ the integral can be approximated as follows:
 \begin{align}
 	I\left(\frac{\delta}{t_0}\right) &\approx 1 + \frac{1}{2} \left[\ln\left(\left|\frac{4t_0}{\delta}\right|\right)-\frac{1}{2}\right]\frac{\delta^2}{t_0^2} 
 \end{align}
-
 To calculate the energies in manually charged states (cdft), use the states:
 \begin{align}
 		\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
 \end{align}
 To test for the correct properties one calculates $\left|\left\langle c^{(*)}|\Psi_k^{(v)}(q)\right\rangle\right|^2$, for example:
 \begin{align}
-	Q1 =\left|\left\langle c^{(e)}|\Psi_k^{(v)}(q)\right\rangle\right|^2 &= \left|c^{\dagger(e)} \left(\sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right|^2\\
+	\left|\left\langle c^{(e)}|\Psi_k^{(v)}(q)\right\rangle\right|^2 &= \left|c^{\dagger(e)} \left(\sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right|^2\\
 	&= \frac{1-q}{2}
 \end{align}
-Because of the to different spin orientations of the electron an additional factor 2 has to be taken into account to get the correct charge displacement. Thus the charge (WRONG) at the even/odd positions is given by $1 \pm q$. The energies for this states are given by:
-
+Because of the two different spin orientations of the electron an additional factor 2 has to be taken into account to get the correct number of valence electrons at the even/odd positions. The number of valence electrons is given by $1 \pm q$. The energies for this states are given by:
 \begin{align}
 	\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\cdot\nonumber\\
 	&\hspace*{0.5cm}\left[
@@ -181,11 +194,29 @@ Because of the to different spin orientations of the electron an additional fact
 	&= -\sqrt{1-q^2} |E_k|
 \end{align}
 Therefore the expected ground state energy  as function of the transfered charge for a negligible small  phonon coupling constant $\delta$ has the form:
-
 \begin{align}
 	E_0(q, u) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2} + 2N\kappa u^2
 \end{align}  
-
+Fit this function with simulation results for small q, see \cref{image_cdft_many_kpts}. Optimized fit coefficient:
+\begin{align}
+	t_0 &= \unit[9,4]{eV}\qquad\text{from fit}\\
+	t_0 &= \unit[2.5]{eV}\qquad\text{Glen paper}
+\end{align}
+\begin{figure}
+\centering
+\includegraphics[width = \textwidth]{Images/CDFT/cdft_energy_many_kpts.pdf}
+\caption[Unit cell energy as function of the manually shiftet charge for many k-points]{Unit cell energy as function of the manually shiftet charge for many k-points}
+\label{image_cdft_many_kpts}
+\end{figure}
+Probably this assumption is wrong:
+\begin{align}
+	\Psi_k^{(v)}(q) &= \sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
+\end{align}
+and should rather be formulated in a more general way:
+\begin{align}
+	\Psi_k^{(v)}(q) &= \sqrt{\frac{1-q_k}{2}}c_k^{(e)}- \sqrt{\frac{1+q_k}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\\
+\Rightarrow\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}(q)\right\rangle &= -\sqrt{1-q^2_k} |E_k|
+\end{align}
 \newpage
 
 \section{Other Preparations}
