@@ -160,27 +160,30 @@ For small $\nicefrac{\delta}{t_0}$ the integral can be approximated as follows:
 
 To calculate the energies in manually charged states (cdft), use the states:
 \begin{align}
-		\Psi_k^{(v)} &= \sqrt{\frac{1}{2}-q}c_k^{(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
+		\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
 \end{align}
-
-One obtains the energies:
+To test for the correct properties one calculates $\left|\left\langle c^{(*)}|\Psi_k^{(v)}(q)\right\rangle\right|^2$, for example:
+\begin{align}
+	Q1 =\left|\left\langle c^{(e)}|\Psi_k^{(v)}(q)\right\rangle\right|^2 &= \left|c^{\dagger(e)} \left(\sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right|^2\\
+	&= \frac{1-q}{2}
+\end{align}
+Because of the to different spin orientations of the electron an additional factor 2 has to be taken into account to get the correct charge displacement. Thus the charge (WRONG) at the even/odd positions is given by $1 \pm q$. The energies for this states are given by:
 
 \begin{align}
-	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &= \left[\sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\cdot\nonumber\\
+	\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\cdot\nonumber\\
 	&\hspace*{0.5cm}\left[
 	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
 	\right]\cdot\nonumber\\
-	&\hspace*{0.5cm}\left[\sqrt{\frac{1}{2}-q}c_k^{(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\\
-	&=-\sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}\left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}\sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\nonumber\\
-	&\hspace*{0.4cm}-\sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)}\sqrt{\frac{1}{2}-q}c_k^{(e)}\\
-	&=-\sqrt{\frac{1}{2}+q}\sqrt{\frac{1}{2}-q}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
-	&= -\sqrt{1-(2q)^2} |E_k|
+	&\hspace*{0.5cm}\left[\sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\\
+	&=-\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}\left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}\sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\nonumber\\
+	&\hspace*{0.4cm}-\sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)}\sqrt{\frac{1-q}{2}}c_k^{(e)}\\
+	&=-\sqrt{\frac{1+q}{2}}\sqrt{\frac{1-q}{2}}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
+	&= -\sqrt{1-q^2} |E_k|
 \end{align}
-Due to the two possible spin orientations, one has to choose $q = \nicefrac{Q}{2}$ to charge the different sides with $\pm Q$.
 Therefore the expected ground state energy  as function of the transfered charge for a negligible small  phonon coupling constant $\delta$ has the form:
 
 \begin{align}
-	E_0(q, u) &= -\frac{4Nt_0}{\pi} \sqrt{1-Q^2} + 2N\kappa u^2
+	E_0(q, u) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2} + 2N\kappa u^2
 \end{align}  
 
 \newpage
