@@ -151,9 +151,14 @@ Hence it is shown explicitly, that the energies of the valence band are decrease
 In the limit of $N \rightarrow \infty$ the sum becomes an integral:
 \begin{align}
 	E_0(u) &= \frac{-N}{\pi}\int\limits_{\nicefrac{-\pi}{2a}}^{\nicefrac{\pi}{2a}}\hspace*{-0.2cm}\text{d}k\ \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
-	&=\frac{-4Nt_0}{\pi}\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\  \sqrt{1-\left(1-\frac{\delta}{t_0}\right)\sin^2(\theta)} + 2N\kappa u^2
+	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta}{t_0}\right)\sin^2(\theta)}}_{=:I(\nicefrac{\delta}{t_0})} + 2N\kappa u^2
 \end{align}
-To calculate energy in manually charged state (cdft), use the states:
+For small $\nicefrac{\delta}{t_0}$ the integral can be approximated as follows:
+\begin{align}
+	I\left(\frac{\delta}{t_0}\right) &\approx 1 + \frac{1}{2} \left[\ln\left(\left|\frac{4t_0}{\delta}\right|\right)-\frac{1}{2}\right]\frac{\delta^2}{t_0^2} 
+\end{align}
+
+To calculate the energies in manually charged states (cdft), use the states:
 \begin{align}
 		\Psi_k^{(v)} &= \sqrt{\frac{1}{2}-q}c_k^{(e)}- \sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}
 \end{align}
@@ -169,8 +174,14 @@ One obtains the energies:
 	&=-\sqrt{\frac{1}{2}-q}c_k^{\dagger(e)}\left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}\sqrt{\frac{1}{2}+q}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\nonumber\\
 	&\hspace*{0.4cm}-\sqrt{\frac{1}{2}+q}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)}\sqrt{\frac{1}{2}-q}c_k^{(e)}\\
 	&=-\sqrt{\frac{1}{2}+q}\sqrt{\frac{1}{2}-q}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
-	&= - \sqrt{\frac{1}{4}-q^2} |E_k|
+	&= -\sqrt{1-(2q)^2} |E_k|
 \end{align}
+Due to the two possible spin orientations, one has to choose $q = \nicefrac{Q}{2}$ to charge the different sides with $\pm Q$.
+Therefore the expected ground state energy  as function of the transfered charge for a negligible small  phonon coupling constant $\delta$ has the form:
+
+\begin{align}
+	E_0(q, u) &= -\frac{4Nt_0}{\pi} \sqrt{1-Q^2} + 2N\kappa u^2
+\end{align}  
 
 \newpage
 
@@ -178,22 +189,22 @@ One obtains the energies:
 \begin{figure}
 \centering
 
-%\begin{tikzpicture}[show background rectangle, scale = 1]
-%\foreach \x in {0,...,7}{
-%	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
-%}
-%\foreach \x in {0, 4}
-%	\foreach \y in {0, 1}
-%		\foreach \z in {-1, 1}
-%		\node at (\x + \y - \z + 1, \z) {\huge +};
-%\foreach \x in {0, 4}{
-%	\foreach \y in {0, 1}{
-%		\foreach \z in {-1, 1}{
-%			\node at (\x + \y - \z + 1, -\z) {\huge -};
-%}}}
-%\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
-%\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
-%\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
-%\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
-%\end{tikzpicture}
+\begin{tikzpicture}[show background rectangle, scale = 1]
+\foreach \x in {0,...,7}{
+	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
+}
+\foreach \x in {0, 4}
+	\foreach \y in {0, 1}
+		\foreach \z in {-1, 1}
+		\node at (\x + \y - \z + 1, \z) {\huge +};
+\foreach \x in {0, 4}{
+	\foreach \y in {0, 1}{
+		\foreach \z in {-1, 1}{
+			\node at (\x + \y - \z + 1, -\z) {\huge -};
+}}}
+\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+\end{tikzpicture}
 \end{figure}
