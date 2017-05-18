@@ -39,7 +39,7 @@ According to Bloch's theorem a wave functions $\Psi(\vec{r})$ of a periodic pote
 	\Psi(\vec{r}) &= \exp\left(i\vec{k}\cdot\vec{r}\right) \cdot u\left(\vec{r}\right)
 \end{align}
 where $\vec{k}$ is an arbitrary wave vector and $u\left(\vec{r}\right)$ denotes a $\vec{R}$-periodic function.\\
-Under the assumption, that the boundary condition at the surface should not change the physical properties of the bulk, one assumes the periodic \emph{Born-von Karman boundary condition}\footnote{Alternatively one can choose the boundary condition  for a vanishing wave function on the surface $\Psi\left(\vec{S}\right) = 0$. But the periodic boundary condition has the advantage, that it corresponds with propagating waves, which suits transport phenomena very well, whereas a vanishing boundary condition corresponds with standing waves.}:
+Under the assumption, that the boundary condition at the surface should not change the physical properties of the bulk, one assumes the periodic \emph{Born-von Karman boundary condition}\footnote{Alternatively one can choose the boundary condition  for a vanishing wave function on the surface $\Psi\left(\vec{S}\right) = 0$. But the periodic boundary condition has the advantage, that it corresponds with propagating waves, which suite transport phenomena very well, whereas a vanishing boundary condition corresponds with standing waves.}:
 \begin{align}
 	\Psi\left(\vec{r} + N_i \vec{a}_i\right) &= \Psi\left(\vec{r}\right)
 \end{align}
@@ -47,14 +47,15 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 \begin{align}
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
-One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.
+One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.\\
 
+\newpage
 \subsection{Polyacetylene Hamiltonian}
 Hamiltonian for trans-polyacetylene:
 
 \begin{figure}
 	\centering
-	\begin{tikzpicture}[show background rectangle]
+	\begin{tikzpicture}[show background rectangle, scale = 1]
 		\pgfmathsetmacro{\j}{0.5};
 		\draw (0,0) -- (6,0);
 		\foreach \i in {0,2,...,6}{
@@ -101,18 +102,18 @@ Check for $c_{2n}$:
 	&= c_{2n_0}
 \end{align}
 Warm up calculation:
-\begin{align*}
+\begin{align}
 	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
 	&=\sum_{n, k, k'} \exp\left[ia(k-k')(2n)\right] \cdot \exp\left(-ik'a\right) \cdot  \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
 	&=\sum_{k, k'} \delta_{k, k'} \cdot \exp\left(-ik'a\right)\cdot c_{k'}^{\dagger(o)}c_k^{(e)}\\
 	&=\sum_{k'} \exp\left(-ik'a\right) \cdot c_{k'}^{\dagger(o)}c_{k'}^{(e)}
-\end{align*}
+\end{align}
 Analogously:
-\begin{align*}
+\begin{align}
 	\sum_n^{N_d} c_{2n}^\dagger c_{2n+1} &=\sum_{k'} \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
 	\sum_n^{N_d} c_{2n}^\dagger c_{2n-1}&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
 	\sum_n^{N_d} c_{2n-1}^\dagger c_{2n} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}
-\end{align*}
+\end{align}
 Thus one obtains:
 \begin{align}
 	\mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
@@ -126,8 +127,8 @@ Thus one obtains:
 \end{align}
 Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the following form of the hopping term can be derived:
 \begin{align}
-	\mathcal{H}_{\text{hopp}} &=
-	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+	\mathcal{H}_{\text{hopp},k} &=
+	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
 \end{align}
 with the eigenvalues $E_k = \pm \sqrt{\epsilon_k^2+\Delta_k^2}$ and the eigenfunctions
 \begin{align}
@@ -146,14 +147,14 @@ corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfu
 \end{align}
 Check also the correspondence to the correct eigenvalues:
 \begin{align}
-	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}\right\rangle &=  \left[\frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right]\cdot\nonumber \\
+	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}\right\rangle &=  \left[\frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right]\cdot\nonumber \\
 	&\hspace*{.5cm}\left[
-	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
 	\right]\cdot\nonumber\\
 	&\hspace*{.5cm}\left[\frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\right]\\
 	&=  \frac{1}{2}\left[-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
 	&= - |E_k|\\
-	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
+	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
 \end{align}
 Hence it is shown explicitly, that the energies of the valence band are decreased by $-|E_k|$ and the energies of the conduction band are increased by $|E_k|$. Using this the ground state energy can be derived as follows (completely occupied valence, empty conduction band):
 \begin{align}
@@ -181,13 +182,13 @@ To test for the correct properties one calculates $\left|\left\langle c^{(*)}_k|
 \end{align}
 Because of the two different spin orientations of the electron an additional factor 2 has to be taken into account to get the correct number of valence electrons at the even/odd positions. Therefore the number of valence electrons is given by $1 \pm q$. The energies for this states are given by:
 \begin{align}
-	\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\cdot\nonumber\\
+	\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\cdot\nonumber\\
 	&\hspace*{0.5cm}\left[
-	\left[\epsilon_k + i\Delta_k\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k'}^{\dagger(o)}c_{k'}^{(e)}
+	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
 	\right]\cdot\nonumber\\
 	&\hspace*{0.5cm}\left[\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\\
-	&=-\sqrt{\frac{1-q}{2}}c_k^{(e)}\left[\epsilon_k+i\Delta_k \right]	c_{k'}^{\dagger(e)}c_{k'}^{(o)}\sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\nonumber\\
-	&\hspace*{0.4cm}-\sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\left[\epsilon_k - i\Delta_k\right]c_{k'}^{\dagger(o)}c_{k'}^{(e)}\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}\\
+	&=-\sqrt{\frac{1-q}{2}}c_k^{(e)}\left[\epsilon_k+i\Delta_k \right]	c_{k}^{\dagger(e)}c_{k}^{(o)}\sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\nonumber\\
+	&\hspace*{0.4cm}-\sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\left[\epsilon_k - i\Delta_k\right]c_{k}^{\dagger(o)}c_{k}^{(e)}\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}\\
 	&=-\sqrt{\frac{1+q}{2}}\sqrt{\frac{1-q}{2}}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
 	&= -\sqrt{1-q^2} |E_k|
 \end{align}
@@ -213,7 +214,7 @@ Probably this assumption is wrong:
 and should rather be formulated in a more general way:
 \begin{alignat}{3}
 	&&\Psi_k^{(v)}(q_k) &= \sqrt{\frac{1-q_k}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q_k}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\\
-\Rightarrow&\qquad&\left\langle\Psi_k^{(v)}(q_k)\Big|\mathcal{H}_{\text{hopp}}\Big|\Psi_k^{(v)}(q_k)\right\rangle &= -\sqrt{1-q^2_k} |E_k|
+\Rightarrow&\qquad&\left\langle\Psi_k^{(v)}(q_k)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q_k)\right\rangle &= -\sqrt{1-q^2_k} |E_k|
 \end{alignat}
 \newpage
 

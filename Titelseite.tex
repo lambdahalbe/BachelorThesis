@@ -1,4 +1,4 @@
-\documentclass[english,a4paper,10pt,twoside]{book}
+\documentclass[english,a4paper,10pt,twoside, headsepline]{scrbook}
 
 % Language
 
@@ -36,11 +36,14 @@
 \usepackage[]{hyperref} % hidelinks to hide links :D
 \usepackage[a4paper]{geometry}
 \usepackage{graphicx}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
 \usepackage{xcolor}
 \usepackage[sort&compress]{cleveref}
 \usepackage{paralist}
 \usepackage{listings}
 \usepackage{rotating}
+
 
 % Tikz
 
@@ -49,7 +52,7 @@
 \usetikzlibrary{calc}
 
 \setlength{\parindent}{0cm}
-\pagestyle{plain}
+\pagestyle{headings}
 \author{Fabian Glatzel}
 \title{Calculation of tight binding parameters with density functional theory to describe transport phenomena}
 \date{\today}
@@ -74,7 +77,6 @@
  \theauthor
  \normalsize 
 \end{titlepage}
-\thispagestyle{empty}
 
 \tableofcontents
 \pagenumbering{Roman}
