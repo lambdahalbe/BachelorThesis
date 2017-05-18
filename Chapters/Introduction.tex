@@ -49,7 +49,14 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 \end{align}
 One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.\\
 
-\newpage
+\subsection{Finite difference method}
+
+The finite difference method is used to solve the Schrödinger equation numerically, whereat the wave function will be evaluated only on discrete positions. For this purpose the Schrödinger equation has to be transformed into a finite difference equation.\\
+
+\begin{align}
+	\mathcal{H}\Psi &= \left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)\right]\Psi = E\Psi
+\end{align}
+
 \subsection{Polyacetylene Hamiltonian}
 Hamiltonian for trans-polyacetylene:
 
