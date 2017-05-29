@@ -225,6 +225,30 @@ and should rather be formulated in a more general way:
 \end{alignat}
 \newpage
 
+Due to the external potential the Hamiltonian can be written in the following form:
+\begin{align}
+	\mathcal{H} &= \begin{pmatrix*}[c]
+	-V & \epsilon_k + i \Delta_k \\
+	\epsilon_k - i \Delta_k & V
+	\end{pmatrix*}
+\end{align}
+With the eigenvalues $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the eigenstates\footnote{the valence state corresponds with the lower signs}:
+\begin{align}
+	\vv{\Psi}_k(V) &= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{\nicefrac{-1}{2}}  \begin{pmatrix*}[c]
+	-V\pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}\\
+	\epsilon_k - i \Delta_k
+	\end{pmatrix*}
+\end{align}
+For $V=0$ this matches the previous result. With this states one can easily calculate the number of valence electrons at the even/odd positions, for example:
+\begin{align}
+	q_k &= \vv{\Psi}_k^{*\top}\cdot\begin{pmatrix*}[c]
+	1 & 0\\
+	0 & 0
+	\end{pmatrix*}\cdot \vv{\Psi}_k\\
+	&= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{-1} \cdot \left(-V\pm |E_k|\right)^2\\
+	&= \frac{\left(-V \pm |E_k|\right)^2}{2\left(E_k^2\mp V|E_k|\right)}
+\end{align}
+
 \section{Other Preparations}
 \begin{figure}
 \centering
