@@ -10,6 +10,7 @@ A simple system of equidistant hydrogen atoms is used to test the predictions of
 	\label{image_hydrogen_bandstructure}
 \end{figure}
 
+
 In the next step the band structures for the periodically charged hydrogen atoms will be calculated (see \cref{image_hydrogen_charged_bands}). As expected from the symmetry the band structures do not depend on the direction (sign) of the charge displacement. It can also be seen, that the influence of charging is bigger for $k$-points closer to the edge of the Brillouin zone and the bands become shifted to lower energies. Both is in good agreement with the predictions of the Hamiltonian.
 
 \begin{figure}
@@ -19,20 +20,24 @@ In the next step the band structures for the periodically charged hydrogen atoms
 	\label{image_hydrogen_charged_bands}
 \end{figure}
 
+
+
+
 In \cref{image_hydrogen_charge_potential} the height of the Gaussian potentials causing the charge displacement as a function of the transferred charge is shown. Again the symmetry is as expected and in the region of $-0.2 \le q \le 0.2$ the dependency is approximately linear.
 
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_charge_potential}
+	\includegraphics[width = 10cm]{Images/Hydrogen/hydrogen_charge_potential}
 	\caption{$V(q)$}
 	\label{image_hydrogen_charge_potential}
 \end{figure}
 
-For the energy of the 
+From the model Hamiltonian the state energy at the edge of the Brillouin zone ($k\cdot a = \nicefrac{\pi}{2}$) is expected to have the form $E_\text{edge}(U) = -\sqrt{V^2}$. As can be seen in \cref{image_hydrogen_energy_potential} this matches the results of the simulation very well. From a fit to this data the ratio between the theoretical potential and the potential from CDFT can be obtained: $U_\text{theo} \approx 13.563 \cdot U_\text{CDFT}$.
 
-\begin{figure}
+\begin{figure}[]
 	\centering
 	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_border_energy}
 	\caption{$E(q)$}
-	\label{image_hydrogen_charge_potential}
+	\label{image_hydrogen_energy_potential}
 \end{figure}
+
