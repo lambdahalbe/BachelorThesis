@@ -1,7 +1,7 @@
 \chapter{Results}
 \section{Hydrogen Chain}
 
-A simple system of equidistant hydrogen atoms is used to test the predictions of the earlier motivated Hamiltonian. First of all the HOMO band shows the expected $-\cos(ka)$ behaviour (see \cref{image_hydrogen_bandstructure}). Through fitting to the HOMO band the hopping parameter $t_0 = \unit[4.49]{eV}$ can be obtained.
+A simple system of equidistant hydrogen atoms is used to test the predictions of the earlier motivated Hamiltonian. First of all the HOMO band shows the expected $-\cos(ka)$ behaviour (see \cref{image_hydrogen_bandstructure}). Through fitting to the HOMO band the hopping parameter $t_0 = \unit[4.78]{eV}$ can be obtained.
 
 \begin{figure}
 	\centering
@@ -32,12 +32,26 @@ In \cref{image_hydrogen_charge_potential} the height of the Gaussian potentials 
 	\label{image_hydrogen_charge_potential}
 \end{figure}
 
-From the model Hamiltonian the state energy at the edge of the Brillouin zone ($k\cdot a = \nicefrac{\pi}{2}$) is expected to have the form $E_\text{edge}(U) = -\sqrt{V^2}$. As can be seen in \cref{image_hydrogen_energy_potential} this matches the results of the simulation very well. From a fit to this data the ratio between the theoretical potential and the potential from CDFT can be obtained: $U_\text{theo} \approx 13.563 \cdot U_\text{CDFT}$.
+From the model Hamiltonian the state energy at the edge of the Brillouin zone ($k\cdot a = \nicefrac{\pi}{2}$) is expected to have the form $E_\text{edge} = -\sqrt{V^2} = -\sqrt{c^2\cdot U_\text{CDFT}^2}$. As can be seen in \cref{image_hydrogen_border_energy_potential} this matches the results of the simulation very well. From a fit to this data the ratio between the theoretical potential and the voltage from CDFT can be obtained: $V \approx \unit[13.265]{e} \cdot U_\text{CDFT}$.
 
-\begin{figure}[]
+\begin{figure}
 	\centering
 	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_border_energy}
-	\caption{$E(q)$}
-	\label{image_hydrogen_energy_potential}
+	\caption{$E(U)$}
+	\label{image_hydrogen_border_energy_potential}
 \end{figure}
 
+Analogously this ratio can be calculated by fitting the energy at the gamma point to \linebreak $E_\text{gamma} = -\sqrt{c^2 \cdot U_\text{CDFT}^2 + 4 \cdot t_0^2}$ (see \cref{image_hydrogen_mid_energy_potential}). Here the proportionality constant becomes $V \approx \unit[11.289]{e} \cdot U_\text{CDFT}$, which corresponds to a relative difference of approximately 20\%. To take a closer look at this effect the proportionality constant is calculated by fitting for many different $k$-points (see \cref{image_hydrogen_proportionality_constant}). 
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_mid_energy}
+	\caption{$E(U)$}
+	\label{image_hydrogen_mid_energy_potential}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_c_k_dependency}
+	\caption{$c(k)$}
+	\label{image_hydrogen_proportionality_constant}
+\end{figure}
