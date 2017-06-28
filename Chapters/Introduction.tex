@@ -1,12 +1,44 @@
 \section{Theoretical Background}
 \subsection{Lattice}
 A solid has typically a periodicity in the placing of its atoms. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, that behave like very viscous fluids and will not be treated here (see \cite{ashcroft, gerthsen}).\\
-Bravais lattice\\
-Points $\vec{R}$ with:
+In the simplest case the atom positions can be described by a \emph{Bravais lattice}. This is a perfectly periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
 \begin{align}
 	\vec{R} &= \sum_{i = 0}^{N_D} n_i \vec{a}_i
 \end{align}
 with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.33\textwidth}
+	\begin{tikzpicture}[show background rectangle]
+		\foreach \i in {0, 1,...,4}{
+			\foreach \j in {0, 1,...,2}{
+				\draw[fill = black] ({\i + 0.2 * \j, \j}) circle (0.05);}}
+		\draw[-{Latex[scale = 1.2]}] (1.2 ,1) -- (2.2,1) node[midway, below] {$\vec{a}_1$};
+		\draw[-{Latex[scale = 1.2]}] (1.2 ,1) -- (1.4,2) node[midway, left] {$\vec{a}_2$};
+	\end{tikzpicture}
+	\caption{Two dimensional Bravais lattice with primitive vectors $\vec{a}_1$ and $\vec{a}_2$}
+	\label{image_2D_Bravais}
+	\end{subfigure}\hspace*{2cm}
+	\begin{subfigure}{0.33\textwidth}
+	\vspace*{.5cm}
+	\begin{tikzpicture}[show background rectangle]
+	\foreach \i in {0, 1, 2}{
+		\foreach \j in {-1, 1}{
+			\draw[fill = black] ({2 * \i + 0.4 * \j, 0}) circle (0.05);}}
+	\foreach \i in {0.5, 1.5}{
+		\draw[dotted] (2 * \i, 1) -- +(0, -1.05);}
+	\draw[-{Latex[scale = 1.2]}] (1 ,1) -- (3, 1) node[midway, above] {$\vec{a}_1$};
+	\draw[-{Latex[scale = 1.2]}] (1 ,0) -- (0.4, 0) node[midway, above] {$\vec{b}_1$};
+	\draw[-{Latex[scale = 1.2]}] (1 ,0) -- (1.6, 0) node[midway, above] {$\vec{b}_2$};
+	\draw (1, -.1) -- (1, .1);
+	\end{tikzpicture}
+	\caption{One dimensional Bravais lattice with a basis \{$\vec{b}_1, \vec{b}_2$\}}
+	\label{image_2D_Bravais}
+\end{subfigure}
+\end{figure}
+
+
 
 \emph{primitive (unit) cell}\\
 Fills complete space without any overlap under all transitions $\vec{R}$\\
@@ -49,13 +81,17 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 \end{align}
 One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.\\
 
+\subsection{Density Functional Theory}
+
+
+
 \subsection{Finite difference method}
 
 The finite difference method is used to solve the Schrödinger equation numerically, whereat the wave function will be evaluated only on discrete positions. For this purpose the Schrödinger equation has to be transformed into a finite difference equation.\\
 
-\begin{align}
-	\mathcal{H}\Psi &= \left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x)\right]\Psi = E\Psi
-\end{align}
+\subsection{Tight Binding Method}
+
+\subsection{Peierls Distortion and SSH-Hamiltonian}
 
 \subsection{Polyacetylene Hamiltonian}
 Hamiltonian for trans-polyacetylene:

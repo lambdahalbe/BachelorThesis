@@ -1,15 +1,22 @@
 \chapter{Results}
 \section{Hydrogen Chain}
 
-A simple system of equidistant hydrogen atoms is used to test the predictions of the earlier motivated Hamiltonian. First of all the HOMO band shows the expected $-\cos(ka)$ behaviour (see \cref{image_hydrogen_bandstructure}). Through fitting to the HOMO band the hopping parameter $t_0 = \unit[4.78]{eV}$ can be obtained.
+A simple system of equidistant hydrogen atoms is used to test the predictions of the earlier motivated Hamiltonian. For this purpose the set-up and convergence of the unit cell will be tested. Afterwards the results from the application of CDFT to the band structure will be shown and compared to the predictions of our model Hamiltonian.
 
-\begin{figure}
+\subsection{Unit Cell Set-Up}
+Even if there's no distortion, a unit cell with two hydrogen atoms is needed, because later the application of the external potential and the consequential charge displacement will break the symmetry. All calculations for hydrogen will be performed using spin polarization, since this lowers the ground state energy and later this will be essential for the convergence of the wave functions in the presence of the external potentials. Therefore it's necessary for the optimizer to break the symmetry by setting the initial magnetic moments of the atoms to $\pm\nicefrac{1}{2}$. 
+
+
+\subsection{Results}
+
+First of all the HOMO band shows the expected $E(k)\propto -\cos(ka)$ behaviour (see \cref{image_hydrogen_bandstructure}). Through fitting to the HOMO band the hopping parameter $t_0 = \unit[4.78]{eV}$ can be obtained.
+
+\begin{figure}[!bth]
 	\centering
-	\includegraphics[width = 12cm]{Images/Hydrogen/hydrogen_bandstructure}
+	\includegraphics[width = 10cm]{Images/Hydrogen/hydrogen_bandstructure}
 	\caption{$E(k)$}
 	\label{image_hydrogen_bandstructure}
 \end{figure}
-
 
 In the next step the band structures for the periodically charged hydrogen atoms will be calculated (see \cref{image_hydrogen_charged_bands}). As expected from the symmetry the band structures do not depend on the direction (sign) of the charge displacement. It can also be seen, that the influence of charging is bigger for $k$-points closer to the edge of the Brillouin zone and the bands become shifted to lower energies. Both is in good agreement with the predictions of the Hamiltonian.
 

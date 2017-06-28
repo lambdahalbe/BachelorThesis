@@ -37,8 +37,8 @@
 \usepackage[]{hyperref} % hidelinks to hide links :D
 \usepackage[a4paper]{geometry}
 \usepackage{graphicx}
-%\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
-%\usepackage{subcaption}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
 \usepackage{xcolor}
 \usepackage[sort&compress]{cleveref}
 \usepackage{paralist}
@@ -50,7 +50,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc, arrows, decorations.markings, math, arrows.meta}
 
 \setlength{\parindent}{0cm}
 \pagestyle{headings}
@@ -91,7 +91,7 @@
 \listoftables
 \bibliography{Chapters/literature}
 \bibliographystyle{unsrtdin}
-\label{here}
+\input{Chapters/Appendix}
 \end{document}
 
 
