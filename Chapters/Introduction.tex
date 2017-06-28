@@ -5,7 +5,13 @@ In the simplest case the atom positions can be described by a \emph{Bravais latt
 \begin{align}
 	\vec{R} &= \sum_{i = 0}^{N_D} n_i \vec{a}_i
 \end{align}
-with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\
+with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\ Often the atom positions do not fulfil this condition but unit cells containing multiple atoms do. Thus additional information about the position of the atoms within the unit cell is needed to characterise the structure. This is called a lattice with a \emph{ basis}. An one dimensional example can be seen in \cref{image_Bravais_Basis} showing a chain with alternating distances. Here a minimal unit cell (called \emph{primitive cell} or \emph{primitive unit cell}) contains two points and therefore a basis with two basis vectors $\vec{b}_1$ and $\vec{b}_2$. The primitive cell itself fulfils the condition of a Bravais lattice with primitive vector $\vec{a}_1$. If there were no alternation in the chain and all points were equally spaced, the points would form a Bravais lattice themselves with a primitive vector of half the length of $\vec{a}_1$. This will be of importance later in \cref{???} \textbf{Chapter SSH and Peierls}.\\
+It should be mentioned that a primitive call can always be constructed by simply taking all space closer to a certain lattice point then to all others. This kind of primitive cells are called \emph{Wigner-Seitz primitive cells}.\\
+The set of wave vectors $\vec{K}$, that have the periodicity of a given Bravais lattice $\vec{R}$, explicitly:
+\begin{align}
+\exp\left(i\vec{K}\cdot\vec{r}\right) &= \exp\left[i\vec{K}\cdot\left(\vec{r} + \vec{R}\right)\right] &\Leftrightarrow& &\vec{K}\cdot\vec{R} &= \mathbb{Z}\cdot 2\pi	
+\end{align}
+do also form a Bravais lattice in the reciprocal space, the so called \emph{reciprocal lattice}. The Wigner-Seitz primitive cell of the reciprocal lattice, namely the \emph{First Brillouine Zone}, will be relevant for the next section.
 
 \begin{figure}
 	\centering
@@ -21,7 +27,7 @@ with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ an
 	\label{image_2D_Bravais}
 	\end{subfigure}\hspace*{2cm}
 	\begin{subfigure}{0.33\textwidth}
-	\vspace*{.5cm}
+	\vspace*{0.1cm}
 	\begin{tikzpicture}[show background rectangle]
 	\foreach \i in {0, 1, 2}{
 		\foreach \j in {-1, 1}{
@@ -34,38 +40,13 @@ with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ an
 	\draw (1, -.1) -- (1, .1);
 	\end{tikzpicture}
 	\caption{One dimensional Bravais lattice with a basis \{$\vec{b}_1, \vec{b}_2$\}}
-	\label{image_2D_Bravais}
+	\label{image_Bravais_Basis}
 \end{subfigure}
+\caption{Schemes of \emph{Bravais lattices}}
 \end{figure}
 
-
-
-\emph{primitive (unit) cell}\\
-Fills complete space without any overlap under all transitions $\vec{R}$\\
-
-\emph{(conventional) unit cell}\\
-Fills complete space without any overlap under a subset of transitions of $\vec{R}$. Sometimes preferred due to a different symmetry.\\
-
-\emph{Wigner-Seitz primitive cell}\\
-Primitive cell containing all space closer to a certain lattice point than to all others.\\
-
-
-\emph{Reciprocal lattice}\\
-Set of wave vectors $\vec{K}$, so that the plane wave has the periodicity of a given Bravais lattice:
-\begin{align}
-	\exp\left(i\vec{K}\cdot\vec{r}\right) &= \exp\left[i\vec{K}\cdot\left(\vec{r} + \vec{R}\right)\right] &\Leftrightarrow& &\vec{K}\cdot\vec{R} &= \mathbb{Z}\cdot 2\pi	
-\end{align}
-Therefore the wave vectors $\vec{K}$ form also a Bravais lattice called the \emph{reciprocal lattice}. The primitive vectors $\vec{b}_i$ of a three dimensional reciprocal lattice can be derived as follows:
-\begin{align}
-	\vec{b}_i = 2\pi \frac{\vec{a}_{i+1}\times\vec{a}_{i+2}}{\vec{a}_1 \cdot \left(\vec{a}_2 \times \vec{a}_3\right)}
-\end{align}
-where the indices have to be understood modulo 3.\\
-
-\emph{First Brillouine Zone}\\
-Wigner-Seitz cell of reciprocal lattice.\\
-
 \subsection{Bloch Theorem}
-According to Bloch's theorem a wave functions $\Psi(\vec{r})$ of a periodic potential, $V\big(\vec{r} + \vec{R}\big)= V\big(\vec{r}\big)$ for all $\vec{R}$ of a Bravais lattice, can be written in the form:
+According to Bloch's theorem a wave function $\Psi(\vec{r})$ of a periodic potential, $V\big(\vec{r} + \vec{R}\big)= V\big(\vec{r}\big)$ for all $\vec{R}$ of a Bravais lattice, can be written in the form:
 
 \begin{align}
 	\Psi(\vec{r}) &= \exp\left(i\vec{k}\cdot\vec{r}\right) \cdot u\left(\vec{r}\right)
@@ -75,11 +56,17 @@ Under the assumption, that the boundary condition at the surface should not chan
 \begin{align}
 	\Psi\left(\vec{r} + N_i \vec{a}_i\right) &= \Psi\left(\vec{r}\right)
 \end{align}
-where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the bulk. Hereby one obtains additional conditions for the wave vector $\vec{k}$, namely:
+where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the bulk. Hereby one obtains an additional condition for the wave vectors $\vec{k}$, namely:
 \begin{align}
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
-One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk.\\
+It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. From this can be concluded, that one has to take only the states within the first Brillouine zone into account for a complete description. One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. For the one dimensional case this means, that the number of states within the first Brillouine zone is the number of primitive cells in the chain.\\
+Since there are multiple solutions to Schrödinger's equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, what corresponds to a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the Schrödinger equation changes continuous with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}.
+
+\subsection{Tight Binding Method}
+In the previous section the eigenstates have been calculated by using the translational symmetries of a Bravais lattice, which results in completely delocalized states. A complete different approach is the following:\\
+If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from that state. Decreases the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore 'slightly'\footnote{under the assumption of a relative weak perturbation} change their states. Thus simple perturbation theory can be applied. Since the with of the electron wave functions increases very fast with increasing principal quantum numbers (see \cite{landau}), only the valence electrons wave functions are assumed to vary. 
+
 
 \subsection{Density Functional Theory}
 
@@ -88,8 +75,6 @@ One considers that the number of states in the first Brillouine zone equals the 
 \subsection{Finite difference method}
 
 The finite difference method is used to solve the Schrödinger equation numerically, whereat the wave function will be evaluated only on discrete positions. For this purpose the Schrödinger equation has to be transformed into a finite difference equation.\\
-
-\subsection{Tight Binding Method}
 
 \subsection{Peierls Distortion and SSH-Hamiltonian}
 
