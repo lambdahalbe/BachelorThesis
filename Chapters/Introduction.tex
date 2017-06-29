@@ -61,12 +61,48 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
 It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. From this can be concluded, that one has to take only the states within the first Brillouine zone into account for a complete description. One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. For the one dimensional case this means, that the number of states within the first Brillouine zone is the number of primitive cells in the chain.\\
-Since there are multiple solutions to Schrödinger's equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, what corresponds to a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the Schrödinger equation changes continuous with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}.
+Since there are multiple solutions to Schrödinger's equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, what corresponds to a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the Schrödinger equation changes continuous with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
 
-\subsection{Tight Binding Method}
+\subsection{Tight-Binding Method}
 In the previous section the eigenstates have been calculated by using the translational symmetries of a Bravais lattice, which results in completely delocalized states. A complete different approach is the following:\\
-If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from that state. Decreases the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore 'slightly'\footnote{under the assumption of a relative weak perturbation} change their states. Thus simple perturbation theory can be applied. Since the with of the electron wave functions increases very fast with increasing principal quantum numbers (see \cite{landau}), only the valence electrons wave functions are assumed to vary. 
-
+If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from that states. Decreases the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore change their states. The tight-binding method handles the case in which the interaction doesn't completely change the wave functions but the effects are to big to neglect. Since the with of the electron wave functions increases very fast with increasing principal quantum numbers (see \cite{landau}) and the tight-binding method is a single electron model, one may only vary the HOMO states.\\
+Mathematically one starts with the basic single atom Hamiltonian $\mathcal{H}_{\text{at}}$ and it's single particle eigenfunctions $\varphi_n$ satisfying the Schrödinger equation of an isolated atom:
+\begin{align}
+	\mathcal{H}_{\text{at}} \varphi_n &= E_n \varphi_n
+\end{align}
+In the next step a second term is added to the Hamiltonian, that applies the corrections needed to describe the lattice correctly. In an one dimensional chain with atom positions $\vec{R}_i$ the modified Hamiltonian contains a term describing the interaction $U$ of adjacent valence electrons with the matrix elements $M_{i, i\pm1}$:
+\begin{align}
+	M_{i, i\pm1} &= \int\dd\vec{r}\ \varphi_n^*\left(\vec{r} - \vec{R}_i\right)\ U\ \varphi_n\left(\vec{r}-\vec{R}_{i\pm1}\right) 
+\end{align}
+In can be shown that this term is negative if the wave functions have the same sign where they meet and therefore form a binding state (see \cite{rohrer}). Hence the positive so called \emph{hopping parameter} $t_{i, i\pm 1} = - M_{i, i\pm 1}$ is introduced. In terms of second quantization this interaction Hamiltonian can be written as\footnote{neglecting spin degree of freedom}:
+\begin{align}
+	- \sum_i t_{i, i+1} \left(c_i^\dagger\  c_{i+1} + c_{i+1}^\dagger\  c_i\right)
+\end{align}
+with the creation and annihilation operators $c^\dagger_i, c_i$ for an electron located at the $i$-th atom. Thus the term $c_i^\dagger c_{i\pm1}$ can be interpreted as shifting an electron from the ($i\pm1$)-th atom to the $i$-th atom which explains the name hopping parameter for $t$.\\
+The combination of the single atom Hamiltonian $\mathcal{H}_\text{at}$ and the next-neighbor-hopping term in the basis of the single atom wave functions $\varphi_n$ for the $i$ atoms can than be written as:
+\begin{align}
+	\mathcal{H} &= \sum_i E_n n_i - \sum_i t_{i, i+1} \left(c_i^\dagger\  c_{i+1} + c_{i+1}^\dagger\  c_i\right)
+\end{align}
+with the number operator $n_i = c^\dagger_i c_i$, that simply returns the number of electrons in the state $\varphi_n$ of the $i$-th atom. In matrix notation this Hamiltonian would look like:
+\begin{align}
+	\mathcal{H} &= \begin{pmatrix*}
+	\ddots&&&\\
+	&E_n&-t_{i-1, i}&0\\
+	&-t_{i, i-1}&E_n&-t_{i, i+1}\\
+	&0&-t_{i+1, i}&E_n&\\
+	&&&&\ddots
+	\end{pmatrix*}
+\end{align}
+In the simple case of equally spaced atoms with distance $a$ all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. To calculate the eigenstates and eigenenergies of this Hamiltonian the notation $\left|j\right\rangle := \varphi_n(\vec{r} - \vec{R}_j)$ will be handy. Thus any superposition can be written as:
+\begin{align}
+	\left|\Psi\right\rangle = \sum_j \mu_j\left|j\right\rangle
+\end{align}
+Through application of the Hamiltonian this conditions can be obtained:
+\begin{align}
+	\mathcal{H}\left|\Psi\right\rangle &= E \left|\Psi\right\rangle\\
+	E \mu_j &= -t\mu_{j-1} + E_n \mu_j -t \mu_{j+1}
+\end{align}
+This equations can be solved by the ansatz $\mu_j\propto\exp\left(ikj\right)$ NOTATIION!!!!!!!!!
 
 \subsection{Density Functional Theory}
 
