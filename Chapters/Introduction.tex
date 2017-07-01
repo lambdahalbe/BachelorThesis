@@ -1,17 +1,45 @@
 \section{Theoretical Background}
+
+\subsection{Density Functional Theory}
+The informations of this section are mainly based on \cite{KOSKINEN2009237,1402-4896-2004-T109-001}.\\
+\emph{Density functional theory} (DFT) is an efficient computational \emph{ab initio} self consistency method to calculate quantum mechanical ground states and it's properties. Since an analytical solution to Schrödinger's equation can only be found in the simplest cases but quantum mechanical effects gain more and more relevance in many fields including nanoelectronics and modern materials sciences, DFT comes in very handy.\\
+A simple look at the many body Schrödinger equation with the electron positions $\vec{r}_i$ and the core positions $\vec{R}_j$
+\begin{align}
+	\mathcal{H} \Psi\left(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_N,\vec{R}_1,\dots,\vec{R}_M\right) &= E \Psi\left(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_N,\vec{R}_1,\dots,\vec{R}_M\right)
+\end{align}
+shows one of the big problems, since this expression is $3(N+M)$-dimensional.
+At first the \textsc{Born-Oppenheimer} approximation is applied, stating that the timescale of changing dynamics is for the light electrons much shorter then for the heavy cores and therefore the cores can be assumed fixed at their positions to calculate the electrons ground state, what still leaves a $3N$-dimensional problem.\\
+This is where the \textsc{Hohenberg-Kohn} theorem comes in, which states that the complete electron ground state density
+\begin{align}
+n_0\left(\vec{r}\right) = N\int\dd\vec{r}_2\dots\int\dd\vec{r}_N\left|\Psi\left(\vec{r}, \vec{r}_2, \dots,\vec{r}_N,\right)\right|^2
+\end{align}
+determines the external potential (for example the \textsc{Coulomb} potentials of the cores) and thus the electron ground state wave function $\Psi_0$. Mathematically this means that the wave function is a unique functional of the electron density with $\Psi_0\left(\vec{r}\right) = \Psi\left[n_0\left(\vec{r}\right)\right]$ and consequently every observable can be obtained as a functional of the electron density (this is where the name 'Density Functional Theory' arises).\\
+This includes the energy observable $E[n\left(\vec{r}\right)]$, which becomes minimal for the correct ground state $n_0\left(\vec{r}\right)$. Thus the dimension reduces to $3$, but leaves a new problem since even if it's known that this functionals exists it contains terms of unknown form due to electron-electron interaction.\\
+To resolve this problem a system with the same electron density out of non directly interacting electrons is assumed. In other words a system of wave functions $\varPhi_i$ (the so called \textsc{Kohn-Sham} orbitals) is assumed with:
+\begin{align}
+n\left(\vec{r}\right) &= \sum_i \left|\varPhi_i\right|^2
+\end{align}
+This wave functions are eigenfunctions to single particle Hamiltonians of an electron in an effective potential depending on the electron density $n(\vec{r})$. This equations can be solved by iteration and checking for self consistency. From these states the total energy can now be calculated taking an additional term, called the \emph{exchange-correlation energy} (XC energy), into account, which includes terms of many-particle interactions that can be approximated.\\
+Through numerical optimization (minimization) of the ground state energy in respect to the core positions it is also possible to find the relaxed core positions.\\
+Furthermore it should be mentioned that DFT (often??) uses pseudo potentials and pseudo wave functions, what's also known as \emph{frozen core approximation}. Here the electrons close to the core will only be treated in the way, that they shield a part of the core potential and thus a modified core potential is obtained.\\
+To get the band structures the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem were calculated (see \cref{section_bloch}).(???)\\
+For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) together with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used.
+Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Thus the calculations are done on a real space grid in the manner of a finite distance method.
+
 \subsection{Lattice}
-A solid has typically a periodicity in the placing of its atoms. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, that behave like very viscous fluids and will not be treated here (see \cite{ashcroft, gerthsen}).\\
-In the simplest case the atom positions can be described by a \emph{Bravais lattice}. This is a perfectly periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
+In the following four sections the informations are basically from \cite{ashcroft} if not otherwise noted.\\
+A solid has typically a periodicity in the placing of its atoms. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, that behave like very viscous fluids and will not be treated here (see \cite{gerthsen}).\\
+In the simplest case the atom positions can be described by a \emph{\textsc{Bravais} lattice}. This is a perfectly periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
 \begin{align}
 	\vec{R} &= \sum_{i = 0}^{N_D} n_i \vec{a}_i
 \end{align}
-with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\ Often the atom positions do not fulfil this condition but unit cells containing multiple atoms do. Thus additional information about the position of the atoms within the unit cell is needed to characterise the structure. This is called a lattice with a \emph{ basis}. An one dimensional example can be seen in \cref{image_Bravais_Basis} showing a chain with alternating distances. Here a minimal unit cell (called \emph{primitive cell} or \emph{primitive unit cell}) contains two points and therefore a basis with two basis vectors $\vec{b}_1$ and $\vec{b}_2$. The primitive cell itself fulfils the condition of a Bravais lattice with primitive vector $\vec{a}_1$. If there were no alternation in the chain and all points were equally spaced, the points would form a Bravais lattice themselves with a primitive vector of half the length of $\vec{a}_1$. This will be of importance later in \cref{???} \textbf{Chapter SSH and Peierls}.\\
-It should be mentioned that a primitive call can always be constructed by simply taking all space closer to a certain lattice point then to all others. This kind of primitive cells are called \emph{Wigner-Seitz primitive cells}.\\
-The set of wave vectors $\vec{K}$, that have the periodicity of a given Bravais lattice $\vec{R}$, explicitly:
+with linearly independent primitive vectors $\vec{a}_i$, $n_i \in \mathbb{Z}$ and the dimension $N_D$.\\ Often the atom positions do not fulfil this condition but unit cells containing multiple atoms do. Thus additional information about the position of the atoms within the unit cell is needed to characterise the structure. This is called a lattice with a \emph{ basis}. An one dimensional example can be seen in \cref{image_Bravais_Basis} showing a chain with alternating distances. Here a minimal unit cell (called \emph{primitive cell} or \emph{primitive unit cell}) contains two points and therefore a basis with two basis vectors $\vec{b}_1$ and $\vec{b}_2$. The primitive cell itself fulfils the condition of a Bravais lattice with primitive vector $\vec{a}_1$. If there were no alternation in the chain and all points were equally spaced, the points would form a Bravais lattice themselves with a primitive vector of half the length of $\vec{a}_1$. This will be of importance later in \cref{chapter_Peierls_SSH}.\\
+It should be mentioned that a primitive call can always be constructed by simply taking all space closer to a certain lattice point then to all others. This kind of primitive cells are called \emph{\textsc{Wigner-Seitz} primitive cells}.\\
+The set of wave vectors $\vec{K}$, that have the periodicity of a given \textsc{Bravais} lattice $\vec{R}$, explicitly:
 \begin{align}
-\exp\left(i\vec{K}\cdot\vec{r}\right) &= \exp\left[i\vec{K}\cdot\left(\vec{r} + \vec{R}\right)\right] &\Leftrightarrow& &\vec{K}\cdot\vec{R} &= \mathbb{Z}\cdot 2\pi	
+\exp\left(\ii\vec{K}\cdot\vec{r}\right) &= \exp\left[\ii\vec{K}\cdot\left(\vec{r} + \vec{R}\right)\right] &\Leftrightarrow& &\vec{K}\cdot\vec{R} &= \mathbb{Z}\cdot 2\pi	
 \end{align}
-do also form a Bravais lattice in the reciprocal space, the so called \emph{reciprocal lattice}. The Wigner-Seitz primitive cell of the reciprocal lattice, namely the \emph{First Brillouine Zone}, will be relevant for the next section.
+do also form a \textsc{Bravais} lattice in the reciprocal space, the so called \emph{reciprocal lattice}. The \textsc{Wigner-Seitz} primitive cell of the reciprocal lattice, namely the \emph{First \textsc{Brillouine} Zone}, will be relevant for the next section.
 
 \begin{figure}
 	\centering
@@ -23,7 +51,7 @@ do also form a Bravais lattice in the reciprocal space, the so called \emph{reci
 		\draw[-{Latex[scale = 1.2]}] (1.2 ,1) -- (2.2,1) node[midway, below] {$\vec{a}_1$};
 		\draw[-{Latex[scale = 1.2]}] (1.2 ,1) -- (1.4,2) node[midway, left] {$\vec{a}_2$};
 	\end{tikzpicture}
-	\caption{Two dimensional Bravais lattice with primitive vectors $\vec{a}_1$ and $\vec{a}_2$}
+	\caption{Two dimensional \textsc{Bravais} lattice with primitive vectors $\vec{a}_1$ and $\vec{a}_2$}
 	\label{image_2D_Bravais}
 	\end{subfigure}\hspace*{2cm}
 	\begin{subfigure}{0.33\textwidth}
@@ -39,20 +67,21 @@ do also form a Bravais lattice in the reciprocal space, the so called \emph{reci
 	\draw[-{Latex[scale = 1.2]}] (1 ,0) -- (1.6, 0) node[midway, above] {$\vec{b}_2$};
 	\draw (1, -.1) -- (1, .1);
 	\end{tikzpicture}
-	\caption{One dimensional Bravais lattice with a basis \{$\vec{b}_1, \vec{b}_2$\}}
+	\caption{One dimensional \textsc{Bravais} lattice with a basis \{$\vec{b}_1, \vec{b}_2$\}}
 	\label{image_Bravais_Basis}
 \end{subfigure}
-\caption{Schemes of \emph{Bravais lattices}}
+\caption{Schemes of \emph{\textsc{Bravais} lattices}}
 \end{figure}
 
 \subsection{Bloch Theorem}
-According to Bloch's theorem a wave function $\Psi(\vec{r})$ of a periodic potential, $V\big(\vec{r} + \vec{R}\big)= V\big(\vec{r}\big)$ for all $\vec{R}$ of a Bravais lattice, can be written in the form:
+\label{section_bloch}
+According to \textsc{Bloch's} theorem a wave function $\Psi(\vec{r})$ of a periodic potential, $V\big(\vec{r} + \vec{R}\big)= V\big(\vec{r}\big)$ for all $\vec{R}$ of a \textsc{Bravais} lattice, can be written in the form:
 
 \begin{align}
-	\Psi(\vec{r}) &= \exp\left(i\vec{k}\cdot\vec{r}\right) \cdot u\left(\vec{r}\right)
+	\Psi(\vec{r}) &= \exp\left(\ii\vec{k}\cdot\vec{r}\right) \cdot u\left(\vec{r}\right)
 \end{align}
 where $\vec{k}$ is an arbitrary wave vector and $u\left(\vec{r}\right)$ denotes a $\vec{R}$-periodic function.\\
-Under the assumption, that the boundary condition at the surface should not change the physical properties of the bulk, one assumes the periodic \emph{Born-von Karman boundary condition}\footnote{Alternatively one can choose the boundary condition  for a vanishing wave function on the surface $\Psi\left(\vec{S}\right) = 0$. But the periodic boundary condition has the advantage, that it corresponds with propagating waves, which suite transport phenomena very well, whereas a vanishing boundary condition corresponds with standing waves.}:
+Under the assumption, that the boundary condition at the surface should not change the physical properties of the bulk, one assumes the periodic \emph{\textsc{Born-von Karman} boundary condition}\footnote{Alternatively one can choose the boundary condition  for a vanishing wave function on the surface $\Psi\left(\vec{S}\right) = 0$. But the periodic boundary condition has the advantage, that it corresponds with propagating waves, which suite transport phenomena very well, whereas a vanishing boundary condition corresponds with standing waves.}:
 \begin{align}
 	\Psi\left(\vec{r} + N_i \vec{a}_i\right) &= \Psi\left(\vec{r}\right)
 \end{align}
@@ -60,12 +89,12 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 \begin{align}
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
-It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. From this can be concluded, that one has to take only the states within the first Brillouine zone into account for a complete description. One considers that the number of states in the first Brillouine zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. For the one dimensional case this means, that the number of states within the first Brillouine zone is the number of primitive cells in the chain.\\
-Since there are multiple solutions to Schrödinger's equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, what corresponds to a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the Schrödinger equation changes continuous with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
+It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. From this can be concluded, that one has to take only the states within the first \textsc{Brillouine} zone into account for a complete description. One considers that the number of states in the first \textsc{Brillouine} zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. For the one dimensional case this means, that the number of states within the first \textsc{Brillouine} zone is the number of primitive cells in the chain.\\
+Since there are multiple solutions to \textsc{Schrödinger's} equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, what corresponds to a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the \textsc{Schrödinger} equation changes continuous with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
 
 \subsection{Tight-Binding Method}
-In the previous section the eigenstates have been calculated by using the translational symmetries of a Bravais lattice, which results in completely delocalized states. A complete different approach is the following:\\
-If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from that states. Decreases the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore change their states. The tight-binding method handles the case in which the interaction doesn't completely change the wave functions but the effects are to big to neglect. Since the with of the electron wave functions increases very fast with increasing principal quantum numbers (see \cite{landau}) and the tight-binding method is a single electron model, one may only vary the HOMO states.\\
+In the previous section the eigenstates have been calculated by using the translational symmetries of a \textsc{Bravais} lattice, which results in completely delocalized states. A complete different approach is the following:\\
+If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from that states. Decreases the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore change their states. The tight-binding method handles the case in which the interaction doesn't completely change the wave functions but the effects are to big to neglect. Since the with of the electron wave functions increases very fast with increasing principal quantum numbers (see \cite{landau}) and the tight-binding method is a single electron model, one may begin varying the state of the valence electrons.\\
 Mathematically one starts with the basic single atom Hamiltonian $\mathcal{H}_{\text{at}}$ and it's single particle eigenfunctions $\varphi_n$ satisfying the Schrödinger equation of an isolated atom:
 \begin{align}
 	\mathcal{H}_{\text{at}} \varphi_n &= E_n \varphi_n
@@ -93,32 +122,44 @@ with the number operator $n_i = c^\dagger_i c_i$, that simply returns the number
 	&&&&\ddots
 	\end{pmatrix*}
 \end{align}
-In the simple case of equally spaced atoms with distance $a$ all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. To calculate the eigenstates and eigenenergies of this Hamiltonian the notation $\left|j\right\rangle := \varphi_n(\vec{r} - \vec{R}_j)$ will be handy. Thus any superposition can be written as:
-\begin{align}
-	\left|\Psi\right\rangle = \sum_j \mu_j\left|j\right\rangle
-\end{align}
-Through application of the Hamiltonian this conditions can be obtained:
-\begin{align}
-	\mathcal{H}\left|\Psi\right\rangle &= E \left|\Psi\right\rangle\\
-	E \mu_j &= -t\mu_{j-1} + E_n \mu_j -t \mu_{j+1}
-\end{align}
-This equations can be solved by the ansatz $\mu_j\propto\exp\left(ikj\right)$ NOTATIION!!!!!!!!!
-
-\subsection{Density Functional Theory}
-
-
-
-\subsection{Finite difference method}
-
-The finite difference method is used to solve the Schrödinger equation numerically, whereat the wave function will be evaluated only on discrete positions. For this purpose the Schrödinger equation has to be transformed into a finite difference equation.\\
+In the simple case of equally spaced atoms with distance $a$ all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. 
 
 \subsection{Peierls Distortion and SSH-Hamiltonian}
-
-\subsection{Polyacetylene Hamiltonian}
-Hamiltonian for trans-polyacetylene:
-
+\label{chapter_Peierls_SSH}
+\textsc{Peierls} instability theorem states, that an one-dimensional chain of atoms with a single unpaired electron will always distort from an perfect periodic placing of its atoms (see \cite{chandrasekhar,nalwa}). Or in other words, breaking the symmetry under the previous told conditions will lower the ground state energy.\\
+Thus a displacement $u_n$ of the atoms is expected yielding the new atom positions:
+\begin{align}
+	R_n &\mapsto (-1)^{n}u_n + R_n
+\end{align}
+As a consequence also the hopping-parameter will be effected in the way $t_{n, n+1} = t_0 + \delta_n$ and for small displacements $u_n$ the linear approximation $\delta_n = \alpha (u_{n+1} - u_n)$ with the \emph{phonon coupling constant} $\alpha = \nicefrac{\partial t}{\partial u_n}$ will hold.\\
+An important example which includes this hopping-term is the Hamiltonian used to describe the electron-hopping in \emph{trans}-polyacetylene (see \cref{image_trans_polyacetylene}). Here $u_n$ describes the displacement of an CH group.\\
 \begin{figure}
+	\begin{minipage}{0.49\textwidth}
 	\centering
+	\begin{tikzpicture}[show background rectangle, scale = 1]
+		\foreach \i in {0,2,4}{
+			\draw (\i, 0) -- +(1,1);
+			\draw (\i, 0.1) -- +(1,1);
+			\draw (\i + 1, 1.05) -- +(1, -1);
+			\draw (\i, 0) -- +(0,-.7) node[circle, fill = white, below] {H};
+			\draw (\i + 1, 1) -- +(0,.7) node[circle, fill = white, above] {H};
+			\node[circle, fill = white] (d\i) at (\i, 0) {C};
+			\node[circle, fill = white] (u\i) at (\i + 1, 1) {C};
+			}
+		\draw [<->] (d0) -- (d2) node [midway, below] {$2a$};
+		\draw [->] (d2) -- +(.8, 0) node [below, xshift = 6, yshift = -2] {$u_{n-1}$};
+		\draw [->] (d4) -- +(.8, 0) node [below, xshift = 6, yshift = -2] {$u_{n+1}$};
+		\draw [->] (u2) -- +(-.8, 0) node [above, yshift = 2] {$u_{n}$};
+		\node[circle, fill = white] (end) at (6,0) {C};
+		\draw [dotted] (end) -- +(.5,.5);
+		\draw [dotted] (d0) -- +(-.5,.5);
+	\end{tikzpicture}
+	\caption{structural formula of \emph{trans}-polyacetylene}
+	\label{image_trans_polyacetylene}
+	\end{minipage}
+	\begin{minipage}{0.49\textwidth}
+	\centering
+	\vspace*{1.67cm}
 	\begin{tikzpicture}[show background rectangle, scale = 1]
 		\pgfmathsetmacro{\j}{0.5};
 		\draw (0,0) -- (6,0);
@@ -132,156 +173,73 @@ Hamiltonian for trans-polyacetylene:
 		\draw[<->] (4, 0.5) -- (4 + \j, 0.5) node[midway, above] {$u$};
 		\draw[dotted] (-0.3,0) -- (6.3, 0);
 	\end{tikzpicture}
-	\caption{Schema: perfectly dimerized molecule}
-	\label{image_schema_dimer}
+	\caption{Scheme: perfectly dimerized molecule}
+	\label{image_scheme_dimer}
+	\end{minipage}
 \end{figure}
+Assuming that the $\sigma$-binding energy can be expanded to second order about the symmetric state using an effective spring constant $\kappa$ the energy contribution can be written as:
 \begin{align}
-	\mathcal{H} &= \underbrace{-2\sum_{n} t_{n+1,n}\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right)}_{\text{electron hopping}} +
-	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma \text{ bonding energy}} + 
+	\frac{\kappa}{2}\sum_n (u_{n+1} - u_n)^2
+\end{align}
+The $\pi$-binding energy is described in the tight-binding approximation derived earlier\footnote{since the description is spinless an additional factor 2 is obtained}. Finally the term of the kinetic energy of the atoms is added to get the so called \emph{SSH-Hamiltonian} (named after \textsc{W. P. Su, J. R. Schrieffer, A. J. Heeger}, see \cite{PhysRevB.22.2099, RevModPhys.60.781}):
+\begin{align}
+	\mathcal{H}_\text{SSH} &= \underbrace{-2\sum_{n} t_{n+1,n}\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right)}_{\text{electron hopping / $\pi$-binding energy}} +
+	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma-\text{binding energy}} + 
 	\underbrace{\frac{1}{2} \sum_n M \dot{u}^2_n}_{\text{kinetic energy}}
 \end{align}
-Born-Oppenheimer and $u_n = (-1)^nu$, $\alpha = \nicefrac{\partial t}{\partial u}$, $\delta = 2\alpha u$ (see \cref{image_schema_dimer}):
+Using \textsc{Born-Oppenheimer} approximation and a perfect symmetric dimerization $u_n = (-1)^nu$ (see \cref{image_scheme_dimer}) the Hamiltonian can be written as:
 \begin{align}
 	\mathcal{H} &= -2\sum_n \left[t_0 + (-1)^n\delta\right]\cdot\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right) + 2N\kappa u^2\\
 	&= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
-	\left(t_0-\delta\right)\left(c_{2n}^\dagger c_{2n-1} + c_{2n-1}^\dagger c_{2n} \right)\right]+2N\kappa u^2\\
-	&\neq -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
-	\left(t_0-\delta\right)\left(\textcolor{red}{c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1}}\right)\right]+2N\kappa u^2
+	\left(t_0-\delta\right)\left(c_{2n}^\dagger c_{2n-1} + c_{2n-1}^\dagger c_{2n} \right)\right]+2N\kappa u^2
 \end{align}
-Calculate creation and annihilation operator in k-space (symmetric normation factors):
+Calculation of the $k$-space representations of the creation and annihilation operators finally leads to the expression:
 \begin{align}
-	c_{2n} &= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n\right)a\right]\cdot c_{k}^{(e)}\\
-	c_{2n+1} &= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n+1\right)a\right]\cdot c_{k}^{(o)}\\
-	c_k^{(e)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n\right)a\right]\cdot c_{2n}\\
-	c_k^{(o)} &= \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n+1\right)a\right]\cdot c_{2n+1}
+\mathcal{H} &= \sum_k \left[
+\left(\epsilon_k + i\Delta_k\right)c_{k}^{\dagger(e)}c_{k}^{(o)} + \left(\epsilon_k-i\Delta_k \right)	c_{k}^{\dagger(o)}c_{k}^{(e)}\right] + 2N\kappa u^2
 \end{align}
-Remember: operators $c_{2n(+1)}$ operate on double unit cell length $\rightarrow$ halve Brillouin zone $\left(-\frac{\pi}{2a}, \frac{\pi}{2a}\right]$\\
-boundary condition: $\exp\left[2ik\left(n+N_d\right)a\right] = 1 \rightarrow N_d$ allowed kpts in Brillouin zone\\
-Check for $c_{2n}$:
+with the substitutions $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$. Here $c^{\dagger(e)}_k$, $c^{\dagger(o)}_k$, $c^{(e)}_k$, $c^{(o)}_k$ are the creation and annihilation operators at the even/odd $(e)$/$(o)$ positions to a certain $k$-point. Due to the displacement the primitive cell length doubled and therefore the first \textsc{Brillouine} zone goes only from $\nicefrac{-\pi}{2a}$ to $\nicefrac{\pi}{2a}$.\\
+In further calculations the term $2N\kappa u^2$ will be neglected since it's only causing an offset. Thus the contribution of the Hamiltonian responsible for the form of th band structure is given by the terms:
 \begin{align}
-	c_{2n_0}(c_k^{(e)}(c_{2n_i})) &= c_{2n} \\
-	&= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n_0\right)a\right]\cdot \frac{1}{\sqrt{N_d}}\sum_n \exp\left[-ik\left(2n\right)a\right]\cdot c_{2n}\\
-	&= \frac{1}{N_d}\sum_{k, n} \exp\left[ika\left(2n_0-2n\right)\right]\cdot c_{2n}\\
-	&= \frac{1}{N_d}\sum_n N_d \delta_{2n_0,2n} c_{2n}\\
-	&= c_{2n_0}
-\end{align}
-Warm up calculation:
-\begin{align}
-	\sum_n^{N_d}c_{2n+1}^\dagger c_{2n} &=\sum_{n, k, k'} \exp\left[ika(2n)\right] \cdot \exp\left[-ik'a(2n+1)\right] \cdot \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
-	&=\sum_{n, k, k'} \exp\left[ia(k-k')(2n)\right] \cdot \exp\left(-ik'a\right) \cdot  \frac{c_{k'}^{\dagger(o)}c_k^{(e)}}{N_d} \\
-	&=\sum_{k, k'} \delta_{k, k'} \cdot \exp\left(-ik'a\right)\cdot c_{k'}^{\dagger(o)}c_k^{(e)}\\
-	&=\sum_{k'} \exp\left(-ik'a\right) \cdot c_{k'}^{\dagger(o)}c_{k'}^{(e)}
-\end{align}
-Analogously:
-\begin{align}
-	\sum_n^{N_d} c_{2n}^\dagger c_{2n+1} &=\sum_{k'} \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
-	\sum_n^{N_d} c_{2n}^\dagger c_{2n-1}&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
-	\sum_n^{N_d} c_{2n-1}^\dagger c_{2n} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}
-\end{align}
-Thus one obtains:
-\begin{align}
-	\mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
-	\left(t_0-\delta\right)\left(c_{2n+2}^\dagger c_{2n+1} + c_{2n+1}^\dagger c_{2n+2}\right)\right]+2N\kappa u^2\\
-	&= -2\sum_{k'} \left[\left(t_0+\delta\right)\left(\exp\left(-ik'a\right) \cdot c_{k'}^{\dagger(o)}c_{k'}^{(e)} + \exp\left(ik'a\right)\cdot c_{k'}^{\dagger(e)}c_{k'}^{(o)}\right)+ \right.\nonumber\\
-	&\hspace*{1.6cm}\left.\left(t_0-\delta\right)\left(\exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}+\exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right)\right]+2N\kappa u^2\\
-	&= -2\sum_{k'} \left\{\left[2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
-	&\hspace*{1.7cm}\left. \left[2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right\}+2N\kappa u^2\\
-	&\neq-2\sum_{k'} \left\{\left[\textcolor{red}{-}2t_0\cos(k'a) + 2i\delta\sin(k'a)\right]c_{k'}^{\dagger(e)}c_{k'}^{(o)} + \right.\nonumber\\
-	&\hspace*{1.7cm}\left. \left[\textcolor{red}{-}2t_0\cos(k'a)-2i\delta\sin(k'a)\right] c_{k'}^{\dagger(o)}c_{k'}^{(e)}\right\}+2N\kappa u^2
-\end{align}
-Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the following form of the hopping term can be derived:
-\begin{align}
-	\mathcal{H}_{\text{hopp},k} &=
+	\mathcal{H}_k &=
 	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
 \end{align}
-with the eigenvalues $E_k = \pm \sqrt{\epsilon_k^2+\Delta_k^2}$ and the eigenfunctions
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width =\textwidth]{Images/Plots/bandstructure_without_gap}
+		\caption{Band structure for no distortion ($u = 0$) leading in no band gap}
+		\label{image_bs_wo_gap}
+	\end{subfigure}\hspace*{0.2cm}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width = \textwidth]{Images/Plots/bandstructure_with_gap}
+		\caption{Band structure for distortion ($u \neq 0$) leading to a band gap of $4\delta$}
+		\label{image_bs_w_gap}
+	\end{subfigure}
+	\caption{Structure of the HOMO- and LUMO-band arising from a tight-binding treatment of next-neighbor-hopping}
+	\label{images_bs}
+\end{figure}
+with the eigenvalues (see \cref{images_bs}):
+\begin{align}
+	E_k &= \pm \sqrt{\epsilon_k^2+\Delta_k^2}
+\end{align}
+and the eigenstates:
 \begin{align}
 	\Psi_k^{(c)} &= \frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}+\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\\
 	\Psi_k^{(v)} &= \frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)
 \end{align}
-corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfunctions have to be understood as operating on the vacuum state, $|(e),(o)\rangle = |0,0\rangle$. Due to this one can check the orthogonality and normalization, for example:
+corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfunctions have to be understood as operating on the vacuum state, $|(e),(o)\rangle = |0,0\rangle$. Thus the following relations can easily be shown:
 \begin{align}
-\left\langle\Psi_k^{(v)}\Big|\Psi_k^{(v)}\right\rangle &= \frac{1}{2}
-\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)
-\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\\
-&= \frac{1}{2} \left[c_k^{(e)}c_k^{\dagger(e)}+\frac{\left(\epsilon_k-i\Delta_k\right)\left(\epsilon_k+i\Delta_k\right)}{\left|E_k\right|^2}c_k^{(o)}c_k^{\dagger(o)}\right.\nonumber\\
-&\hspace*{1cm}\left.-\frac{\epsilon_k+i\Delta_k}{|E_k|}c_k^{(o)}c_k^{\dagger(e)}-\frac{\epsilon_k-i\Delta_k}{|E_k|}c_k^{(e)}c_k^{\dagger(o)}\right]\\
-&= \frac{1}{2}\left[c_k^{(e)}c_k^{\dagger(e)}+c_k^{(o)}c_k^{\dagger(o)}\right]\\
-&= 1
+	\left\langle\Psi_k^{(\lambda)}\Big|\Psi_k^{(\lambda\prime)}\right\rangle &= \delta_{\lambda,\lambda\prime}\\
+	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}\right\rangle &= - |E_k|\\
+	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
 \end{align}
-Check also the correspondence to the correct eigenvalues:
+It should be mentioned, that these $E_k$ are eigenvalues to single particle Hamiltonians. As a consequence the sum over all band structure energies of occupied states isn't equal to the ground state energy. For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms like the exchange correlation energy will be left out????. Nevertheless the sum over the HOMO-band energies is some quantity worth to compare:
 \begin{align}
-	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}\right\rangle &=  \left[\frac{1}{\sqrt{2}}\left(c_k^{(e)}-\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right)\right]\cdot\nonumber \\
-	&\hspace*{.5cm}\left[
-	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
-	\right]\cdot\nonumber\\
-	&\hspace*{.5cm}\left[\frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\right]\\
-	&=  \frac{1}{2}\left[-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}-\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
-	&= - |E_k|\\
-	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
+	E_0(u) &=-2\sum_k |E_k|\\
+	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
 \end{align}
-Hence it is shown explicitly, that the energies of the valence band are decreased by $-|E_k|$ and the energies of the conduction band are increased by $|E_k|$. Using this the ground state energy can be derived as follows (completely occupied valence, empty conduction band):
-\begin{align}
-	E_0(u) &=-2\sum_k |E_k| + 2N\kappa u^2\\
-	&= -2\sum_k \sqrt{\epsilon_k^2+\Delta_k^2} + 2N\kappa u^2\\
-	&= -2\sum_k \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
-\end{align}
-In the limit of $N \rightarrow \infty$ the sum becomes an integral:
-\begin{align}
-	E_0(u) &= \frac{-N}{\pi}\int\limits_{\nicefrac{-\pi}{2a}}^{\nicefrac{\pi}{2a}}\hspace*{-0.2cm}\text{d}k\ \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
-	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})} + 2N\kappa u^2
-\end{align}
-For small $\nicefrac{\delta}{t_0}$ the integral can be approximated as follows:
-\begin{align}
-	F\left(\frac{\delta}{t_0}\right) &\approx 1 + \frac{1}{2} \left[\ln\left(\frac{4|t_0|}{|\delta|}\right)-\frac{1}{2}\right]\frac{\delta^2}{t_0^2} 
-\end{align}
-To calculate the energies in manually charged states (cdft), use the states:
-\begin{align}
-		\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
-\end{align}
-To test for the correct properties one calculates $\left|\left\langle c^{(*)}_k|\Psi_k^{(v)}(q)\right\rangle\right|^2$, for example:
-\begin{align}
-	\left|\left\langle c^{\dagger(e)}_k|\Psi_k^{(v)}(q)\right\rangle\right|^2 &= \left|c_k^{(e)} \left(\sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)\right|^2\\
-	&= \frac{1-q}{2}
-\end{align}
-Because of the two different spin orientations of the electron an additional factor 2 has to be taken into account to get the correct number of valence electrons at the even/odd positions. Therefore the number of valence electrons is given by $1 \pm q$. The energies for this states are given by:
-\begin{align}
-	\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\cdot\nonumber\\
-	&\hspace*{0.5cm}\left[
-	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
-	\right]\cdot\nonumber\\
-	&\hspace*{0.5cm}\left[\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right]\\
-	&=-\sqrt{\frac{1-q}{2}}c_k^{(e)}\left[\epsilon_k+i\Delta_k \right]	c_{k}^{\dagger(e)}c_{k}^{(o)}\sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\nonumber\\
-	&\hspace*{0.4cm}-\sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\left[\epsilon_k - i\Delta_k\right]c_{k}^{\dagger(o)}c_{k}^{(e)}\sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}\\
-	&=-\sqrt{\frac{1+q}{2}}\sqrt{\frac{1-q}{2}}\left[\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}+\frac{(\epsilon_k-i\Delta_k)(\epsilon_k+i\Delta_k)}{|E_k|}\right]\\
-	&= -\sqrt{1-q^2} |E_k|
-\end{align}
-For this reason the expected ground state energy  as a function of the transferred charge in respect of a negligible small  phonon coupling constant $\delta$ has the form:
-\begin{align}
-	E_0(q, u) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2} + 2N\kappa u^2
-\end{align}  
-Fit this function with simulation results for small q, see \cref{image_cdft_many_kpts}. Optimized fit coefficient:
-\begin{align}
-	t_0 &= \unit[9,4]{eV}\qquad\text{from fit}\\
-	t_0 &= \unit[2.5]{eV}\qquad\text{Glen paper}
-\end{align}
-\begin{figure}
-\centering
-\includegraphics[width = \textwidth]{Images/CDFT/cdft_energy_many_kpts.pdf}
-\caption[Unit cell energy as function of the manually shiftet charge for many k-points]{Unit cell energy as function of the manually shiftet charge for many k-points}
-\label{image_cdft_many_kpts}
-\end{figure}
-Probably this assumption is wrong:
-\begin{align}
-	\Psi_k^{(v)}(q) &= \sqrt{\frac{1-q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
-\end{align}
-and should rather be formulated in a more general way:
-\begin{alignat}{3}
-	&&\Psi_k^{(v)}(q_k) &= \sqrt{\frac{1-q_k}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q_k}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\\
-\Rightarrow&\qquad&\left\langle\Psi_k^{(v)}(q_k)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q_k)\right\rangle &= -\sqrt{1-q^2_k} |E_k|
-\end{alignat}
-\newpage
-
+For small $\nicefrac{\delta}{t_0}$ the integral is approximately 1.\\ \\
 Due to the external potential the Hamiltonian can be written in the following form:
 \begin{align}
 	\mathcal{H} &= \begin{pmatrix*}[c]
