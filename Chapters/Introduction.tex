@@ -222,7 +222,7 @@ In further calculations the term $2N\kappa u^2$ will be neglected since it's onl
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\includegraphics[width =\textwidth]{Images/Plots/bandstructure_without_gap}
-		\caption{Band structure for no distortion ($u = 0$) leading in no band gap}
+		\caption{Band structure for no distortion ($u = 0$) leading to no band gap}
 		\label{image_bs_wo_gap}
 	\end{subfigure}\hspace*{0.2cm}
 	\begin{subfigure}{0.49\textwidth}
@@ -270,6 +270,7 @@ with the following expectation values for the energies:
 And the sum over the HOMO-band energies:
 \begin{align}
 E_0(q) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2}
+\label{equation_equal_charge}
 \end{align}
 The second approach leads to the Hamiltonian which decreases/increases the energies at the even/odd positions:
 \begin{align}
@@ -293,7 +294,9 @@ For $V=0$ this matches the previous result.
 The sum over the HOMO-band energies becomes approximately:
 \begin{align}
 	E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2}
+	\label{equation_ext_pot}
 \end{align} 
+Since a bigger absolute of the displaced charge $\left|q\right|$ is expected for a bigger absolute of the external potential $\left|V\right|$ these two approaches contradict each other (compare \cref{equation_equal_charge,equation_ext_pot}).
 
 \section{Other Preparations}
 \begin{figure}[!h]
