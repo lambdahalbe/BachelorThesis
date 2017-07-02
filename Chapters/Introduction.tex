@@ -24,7 +24,21 @@ Through numerical optimization (minimization) of the ground state energy in resp
 Furthermore it should be mentioned that DFT (often??) uses pseudo potentials and pseudo wave functions, what's also known as \emph{frozen core approximation}. Here the electrons close to the core will only be treated in the way, that they shield a part of the core potential and thus a modified core potential is obtained.\\
 To get the band structures the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem were calculated (see \cref{section_bloch}).(???)\\
 For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) together with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used.
-Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Thus the calculations are done on a real space grid in the manner of a finite distance method.
+Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Thus the calculations are done on a real space grid in the manner of a finite distance method.\\
+Finally calculations with manually shifted charges will be performed using \emph{constrained DFT} (CDFT). Thus is done by defining regions containing one or multiple cores and an absolute charge for each region. The charge of any region is calculated by integrating the electron density multiplied whit a sum of \textsc{Gaussian} curves centered at the atom positions (see \cref{image_region_gaussians}). The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $V_i$ scaling the height to change the density and get the correct charges in each region\footnote{In this way the $V_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of fixed charges for the regions}. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{} \textbf{Chapter CDFT for different sigmas}).
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[show background rectangle, scale = 0.6]
+	\foreach \i/\j/\color in {0/0/red, 1.5/2/red, 4.5/0/blue, 6/2/blue}{
+		\foreach \r in {0, 0.01, ..., 1}{
+		 	\fill[opacity = \r * 0.02, fill = \color] (\i, \j) circle ({2.5 * (1 - \r)});}}
+	\foreach \i/\j/\num in {0/0/1, 1.5/2/2, 4.5/0/3, 6/2/4}{
+	\node[fill = black, shape = circle, text = white] at (\i, \j)	 {\num};}
+	\end{tikzpicture}
+	\caption{Scheme: Sum of \textsc{Gaussian} curves for two regions (\textcolor{red}{red} and \textcolor{blue}{blue}), each with two cores (\{1, 2\} and \{3, 4\}), used as weights for the integration/summation over the electron density to calculate the charge in each region.}
+	\label{image_region_gaussians}
+\end{figure}
+
 
 \subsection{Lattice}
 In the following four sections the informations are basically from \cite{ashcroft} if not otherwise noted.\\
@@ -154,7 +168,7 @@ An important example which includes this hopping-term is the Hamiltonian used to
 		\draw [dotted] (end) -- +(.5,.5);
 		\draw [dotted] (d0) -- +(-.5,.5);
 	\end{tikzpicture}
-	\caption{structural formula of \emph{trans}-polyacetylene}
+	\caption{Structural formula of \emph{trans}-polyacetylene}
 	\label{image_trans_polyacetylene}
 	\end{minipage}
 	\begin{minipage}{0.49\textwidth}
@@ -239,56 +253,51 @@ It should be mentioned, that these $E_k$ are eigenvalues to single particle Hami
 	E_0(u) &=-2\sum_k |E_k|\\
 	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
 \end{align}
-For small $\nicefrac{\delta}{t_0}$ the integral is approximately 1.\\ \\
-Due to the external potential the Hamiltonian can be written in the following form:
+For small $\nicefrac{\delta}{t_0}$ the integral is approximately 1.\\
+To model the charging applied with CDFT of the two regions with $\pm q$ two approaches will be tested:
+\begin{compactitem}
+	\item[1)] simple modifications of the wave functions under the assumption that all $k$-points contribute equally to the charge displacement
+	\item[2)] modification of the Hamiltonian describing the external potential for the different regions
+\end{compactitem}
+The first approach leads to the valence wave function:
 \begin{align}
-	\mathcal{H} &= \begin{pmatrix*}[c]
+\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
+\end{align}
+with the following expectation values for the energies:
+\begin{align}
+\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle &= -\sqrt{1-q^2} |E_k|
+\end{align}
+And the sum over the HOMO-band energies:
+\begin{align}
+E_0(q) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2}
+\end{align}
+The second approach leads to the Hamiltonian which decreases/increases the energies at the even/odd positions:
+\begin{align}
+	\mathcal{H}_k &= \left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)} - V n^{(e)}_k + V n^{(o)}_k
+\end{align}
+or in matrix notation:
+\begin{align}
+	\mathcal{H}_k &= \begin{pmatrix*}[c]
 	-V & \epsilon_k + i \Delta_k \\
 	\epsilon_k - i \Delta_k & V
 	\end{pmatrix*}
 \end{align}
-With the eigenvalues $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the eigenstates\footnote{the valence state corresponds with the lower signs}:
+with the eigenvalues $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the eigenstates\footnote{the valence state corresponds with the lower signs}:
 \begin{align}
 	\vv{\Psi}_k(V) &= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{\nicefrac{-1}{2}} \cdot \begin{pmatrix*}[c]
 	-V\pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}\\
 	\epsilon_k - i \Delta_k
 	\end{pmatrix*}
 \end{align}
-For $V=0$ this matches the previous result. With this states one can easily calculate the number of valence electrons at the even/odd positions, for example :
+For $V=0$ this matches the previous result. 
+The sum over the HOMO-band energies becomes approximately:
 \begin{align}
-	q_k &= \vv{\Psi}_k^{*\top}\cdot\begin{pmatrix*}[c]
-	1 & 0\\
-	0 & 0
-	\end{pmatrix*}\cdot \vv{\Psi}_k\\
-	&= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{-1} \cdot \left(-V\pm |E_k|\right)^2\\
-	&= \frac{\left(-V \pm |E_k|\right)^2}{2\left(E_k^2\mp V|E_k|\right)}
-\end{align}
-Then the ground state energy can be calculated as follows:
-\begin{align}
-	E_0 &= -2\sum_k |E_k| + 2N\kappa u^2\\
-	&= -2 \sum_k \sqrt{V^2+\epsilon_k^2+\Delta_k^2}+ 2N\kappa u^2\\
-	&= -2 \sum_k \sqrt{V^2 + 4t_0^2\cos^2(ka) + 4 \delta^2\sin^2(ka)}+ 2N\kappa u^2\\
-	&= -4t_0 \sum_k\sqrt{\frac{V^2}{4t_0^2} + 1 - \left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(ka)}+ 2N\kappa u^2\\
-	&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - \frac{4t_0^2-4\delta^2}{V^2+4t_0^2} \sin^2(ka)}+ 2N\kappa u^2\\
-	&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - c^2 \cdot \sin^2(ka)}+ 2N\kappa u^2
+	E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2}
 \end{align} 
-with $c^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. In the limit of $N \to \infty$ the sum can be transformed into an integral:
-\begin{align}
-	E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \int\limits_{0}^{\nicefrac{\pi}{2}} \text{d}\theta \sqrt{1 - c^2 \cdot \sin^2(\theta)}\\
-	&= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \cdot F(\sqrt{1-c^2}) 
-\end{align}
-To write this expression as a function of the displaced charge a relationship between the potential $V$ and $q$ is needed:
-\begin{align}
-	q &= \frac{2}{N} \sum_k q_k\\
-	&= \langle q_k\rangle\\
-	&= \left\langle\frac{\left(V + |E_k|\right)^2}{2\left(E_k^2+ V|E_k|\right)}\right\rangle\\
-	&= \frac{1}{2} \left(\left\langle\frac{E_k^2+VE_k}{E_k^2+VE_k}\right\rangle + V\left\langle\frac{1}{E_k}\right\rangle\right)\\
-	&= \frac{1}{2} \left(1 + V \left\langle\frac{1}{E_k}\right\rangle\right)
-\end{align}
-\section{Other Preparations}
-\begin{figure}
-\centering
 
+\section{Other Preparations}
+\begin{figure}[!h]
+\centering
 \begin{tikzpicture}[show background rectangle, scale = 1]
 \foreach \x in {0,...,7}{
 	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;

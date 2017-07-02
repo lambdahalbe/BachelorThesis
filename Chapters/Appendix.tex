@@ -113,3 +113,35 @@ and should rather be formulated in a more general way:
 &&\Psi_k^{(v)}(q_k) &= \sqrt{\frac{1-q_k}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1+q_k}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\\
 \Rightarrow&\qquad&\left\langle\Psi_k^{(v)}(q_k)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q_k)\right\rangle &= -\sqrt{1-q^2_k} |E_k|
 \end{alignat}
+With this states one can easily calculate the number of valence electrons at the even/odd positions, for example :
+\begin{align}
+q_k &= \vv{\Psi}_k^{*\top}\cdot\begin{pmatrix*}[c]
+1 & 0\\
+0 & 0
+\end{pmatrix*}\cdot \vv{\Psi}_k\\
+&= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{-1} \cdot \left(-V\pm |E_k|\right)^2\\
+&= \frac{\left(-V \pm |E_k|\right)^2}{2\left(E_k^2\mp V|E_k|\right)}
+\end{align}
+
+Then the ground state energy can be calculated as follows:
+\begin{align}
+E_0 &= -2\sum_k |E_k| + 2N\kappa u^2\\
+&= -2 \sum_k \sqrt{V^2+\epsilon_k^2+\Delta_k^2}+ 2N\kappa u^2\\
+&= -2 \sum_k \sqrt{V^2 + 4t_0^2\cos^2(ka) + 4 \delta^2\sin^2(ka)}+ 2N\kappa u^2\\
+&= -4t_0 \sum_k\sqrt{\frac{V^2}{4t_0^2} + 1 - \left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(ka)}+ 2N\kappa u^2\\
+&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - \frac{4t_0^2-4\delta^2}{V^2+4t_0^2} \sin^2(ka)}+ 2N\kappa u^2\\
+&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - c^2 \cdot \sin^2(ka)}+ 2N\kappa u^2
+\end{align} 
+with $c^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. In the limit of $N \to \infty$ the sum can be transformed into an integral:
+\begin{align}
+E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \int\limits_{0}^{\nicefrac{\pi}{2}} \text{d}\theta \sqrt{1 - c^2 \cdot \sin^2(\theta)}\\
+&= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \cdot F(\sqrt{1-c^2}) 
+\end{align}
+To write this expression as a function of the displaced charge a relationship between the potential $V$ and $q$ is needed:
+\begin{align}
+q &= \frac{2}{N} \sum_k q_k\\
+&= \langle q_k\rangle\\
+&= \left\langle\frac{\left(V + |E_k|\right)^2}{2\left(E_k^2+ V|E_k|\right)}\right\rangle\\
+&= \frac{1}{2} \left(\left\langle\frac{E_k^2+VE_k}{E_k^2+VE_k}\right\rangle + V\left\langle\frac{1}{E_k}\right\rangle\right)\\
+&= \frac{1}{2} \left(1 + V \left\langle\frac{1}{E_k}\right\rangle\right)
+\end{align}
