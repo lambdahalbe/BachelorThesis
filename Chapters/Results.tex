@@ -1,41 +1,59 @@
 \chapter{Results}
 
-The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore convergence testing is performed first. Since \emph{trans}-polyacetylene has an alternation of single and double bonds a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}).
-\begin{figure}
+The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore the convergence is checked first. Since \emph{trans}-polyacetylene has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}). 
+
+\section{Convergence Testing of Polyacetylene}
+\begin{figure}[!b]
 	\centering
 	\begin{tikzpicture}[show background rectangle, scale = 0.8]
 	\foreach \x in {0,4,...,8}{
 		\foreach \y in {-1, 1}{
-		\node [circle, draw] at (\x + 0.8*\y, \y) {C};
-		\node [circle, draw] at (\x + 0.8*\y, 2 * \y) {H};
-		}}
-		\draw (2.2, 3) -- (2, 3) -- (2,-3) -- (2.2, -3);
-		\draw (5.8, 3) -- (6, 3) -- (6,-3) -- (5.8, -3);
-		\draw [dotted, line width = 1.5] (-2,0) -- (-1.5,0);
-		\draw [dotted, line width = 1.5] (9.5, 0) -- (10,0);
+			\node [circle, draw] at (\x + 0.8*\y, \y) {C};
+			\node [circle, draw] at (\x + 0.8*\y, 2 * \y) {H};
+	}}
+	\draw (2.2, 3) -- (2, 3) -- (2,-3) -- (2.2, -3);
+	\draw (5.8, 3) -- (6, 3) -- (6,-3) -- (5.8, -3);
+	\draw [dotted, line width = 1.5] (-2,0) -- (-1.5,0);
+	\draw [dotted, line width = 1.5] (9.5, 0) -- (10,0);
 	\end{tikzpicture}
 	\caption{Scheme: Unit cell for \emph{trans}-polyacetylene with periodic boundary conditions in one dimension}
 	\label{image_scheme_polyacetylene_unit_cell}
 \end{figure}
+\begin{figure}[!p]
+	\centering
+	\includegraphics[width = 11cm]{Images/polyacetylene/convergence/kpts-energy}
+	\caption{Ground state energy of relaxed polyacetylene in respect to the number of $k$-points}
+	\label{image_poly_kpts_energy}
+\end{figure}
+\begin{figure}[!p]
+	\centering
+	\includegraphics[width = 11cm]{Images/polyacetylene/convergence/gridspacing-energy}
+	\caption{Ground state energy of relaxed polyacetylene in respect to the grid spacing}
+	\label{image_poly_grid_energy}
+\end{figure}
+\begin{figure}[!p]
+	\centering
+	\includegraphics[width = 11cm]{Images/polyacetylene/convergence/forces-energy}
+	\caption{Ground state energy of relaxed polyacetylene in respect to the maximum force, for which the relaxation process stops}
+	\label{image_poly_force_energy}
+\end{figure}
+\begin{figure}[!p]
+	\centering
+	\includegraphics[width = 11cm]{Images/polyacetylene/convergence/unit_cell_width}
+	\caption{Ground state energy of relaxed polyacetylene in respect to width of the unit cell (not in direction of periodic boundary condition)}
+	\label{image_poly_width_energy}
+\end{figure}
+To check the convergence in respect to a certain parameter, all other parameters are chosen in a way, that the energy is definitely converged in respect to them. This includes also a relaxation of the atom positions in each step.\\
+First the convergence of the ground state energy in respect to the number of used $k$- points is tested, whereat automatic \textsc{Brillouin} zone sampling is used. It can be seen, that the energy is quite good converged for approximately 15 $k$-points (see \cref{image_poly_kpts_energy}), since a comparison of the energies for $15$ and $100$ $k$-points leads to a difference of only $\unit[0.014]{eV}$.\\
+In \cref{image_poly_grid_energy} the ground state energy in respect to the grid spacing can be seen. Since the number of grid points grows with $\nicefrac{1}{h^3}$, it is very important to find a reasonable compromise between computing time and accuracy. Because our system isn't that big, a $h$ value of $\unit[0.1]{\AA}$ is used for further calculations.\\
+The lowering of the ground state energy in respect to the maximum force for the relaxation process of the cores is in comparison with previous dependencies small. Therefore a maximum force of $\unitfrac[0.1]{eV}{\AA}$ should be appropriate.\\
+Finally the convergence of the energy in respect to the unit cell width (not in the direction of the periodic boundary condition) is tested. As can be seen in \cref{image_poly_width_energy}, the ground state energy increases for small unit cell widths, what can be understood intuitively by comparison to the quantum mechanical 'particle in a box'. For a with of approximately $\unit[9]{\AA}$ a stable level is reached, what corresponds with a minimal distance between core and cell surface of approximately $\unit[3]{\AA}$.
 
 
 
+\section{Real Stuff}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+In the following plots the $k$-point values are always given relative to the basis vectors of the reciprocal unit cell. Thus a value of $k = \pm 0.5$ corresponds to a state at the edge of the \textsc{Brillouin} zone.
 \chapter{Chaos}
 To model the charging applied with CDFT of the two regions with $\pm q$ two approaches will be tested:
 \begin{compactitem}

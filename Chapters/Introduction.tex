@@ -22,11 +22,11 @@ n\left(\vec{r}\right) &= \sum_i \left|\varPhi_i\right|^2
 This wave functions are eigenfunctions to single particle Hamiltonians depending on the electron density $n(\vec{r})$. Again this Hamiltonians contain an unknown term due to many particle interactions, called the \emph{exchange correlation} (XC) term, but can be approximated quite good for most purposes. Thus seperated equations depending on the electron density $n\left(\vec{r}\right)$ for the single particle wave functions were obtained, which contribute themselve to the electron density $n\left(\vec{r}\right)$. This equations can be solved by iteration and checking for self consistency.\\
 Through numerical optimization (minimization) of the ground state energy in respect to the core positions it is also possible to find the relaxed them.\\
 To get the band structures the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem were calculated (see \cref{section_bloch}).\\
-Finally, calculations with manually shifted charges will be performed using \emph{constrained DFT} (CDFT). This is done by defining $i$ regions containing one or multiple cores with positions $\vec{R}_j$ and an absolute charge $N_i$ for each region. The charge of any region is calculated by integrating the electron density $n\left(\vec{r}\right)$ multiplied whit a sum of \textsc{Gaussian} curves centred at the atom positions $R_j$
+Finally, calculations with manually shifted charges will be performed using \emph{constrained DFT} (CDFT). This is done by defining $i$ regions containing one or multiple cores with positions $\vec{R}_j$ and an absolute charge $N_i$ for each region. The charge of any region is calculated by integrating the electron density $n\left(\vec{r}\right)$ multiplied whit a sum of \textsc{Gaussian} curves centred at the atom positions $R_j$ for all cores in the $i$-th region (see \cref{image_region_gaussians}):
 \begin{align}
 w_i\left(\vec{r}\right) &= \sum_j w\left(\vec{r} - \vec{R}_j\right) \text{\quad}
 \end{align}
-over all cores in the $i$-th region (see \cref{image_region_gaussians}). This can be written as minimization problem of the CDFT energy $F[n\left(\vec{r}\right), V_i]$:
+This can be written as minimization problem of the CDFT energy $F[n\left(\vec{r}\right), V_i]$:
 \begin{align}
 F\left[n\left(\vec{r}\right), V_i\right] &= E_0\left[n\left(\vec{r}\right)\right] + \sum_i V_i\left(\int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i\right)
 \end{align}
@@ -260,7 +260,7 @@ corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfu
 	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}\right\rangle &= - |E_k|\\
 	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
 \end{align}
-It should be mentioned, that these $E_k$ are eigenvalues to single particle Hamiltonians. As a consequence the sum over all band structure energies of occupied states isn't equal to the ground state energy. For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms like the exchange correlation energy will be left out????. Nevertheless the sum over the HOMO-band energies is some quantity worth to compare:
+It should be mentioned, that these $E_k$ are eigenvalues to single particle Hamiltonians. As a consequence the sum over all band structure energies of occupied states isn't equal to the ground state energy. For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms of the exchange correlation energy would be left out. Nevertheless the sum over the HOMO-band energies is some quantity worth to compare:
 \begin{align}
 	E_0(u) &=-2\sum_k |E_k|\\
 	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
