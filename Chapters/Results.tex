@@ -1,4 +1,112 @@
 \chapter{Results}
+
+The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore convergence testing is performed first. Since \emph{trans}-polyacetylene has an alternation of single and double bonds a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}).
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[show background rectangle, scale = 0.8]
+	\foreach \x in {0,4,...,8}{
+		\foreach \y in {-1, 1}{
+		\node [circle, draw] at (\x + 0.8*\y, \y) {C};
+		\node [circle, draw] at (\x + 0.8*\y, 2 * \y) {H};
+		}}
+		\draw (2.2, 3) -- (2, 3) -- (2,-3) -- (2.2, -3);
+		\draw (5.8, 3) -- (6, 3) -- (6,-3) -- (5.8, -3);
+		\draw [dotted, line width = 1.5] (-2,0) -- (-1.5,0);
+		\draw [dotted, line width = 1.5] (9.5, 0) -- (10,0);
+	\end{tikzpicture}
+	\caption{Scheme: Unit cell for \emph{trans}-polyacetylene with periodic boundary conditions in one dimension}
+	\label{image_scheme_polyacetylene_unit_cell}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Chaos}
+To model the charging applied with CDFT of the two regions with $\pm q$ two approaches will be tested:
+\begin{compactitem}
+	\item[1)] simple modifications of the wave functions under the assumption that all $k$-points contribute equally to the charge displacement
+	\item[2)] modification of the Hamiltonian describing the external potential for the different regions
+\end{compactitem}
+The first approach leads to the valence wave function:
+\begin{align}
+\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
+\end{align}
+with the following expectation values for the energies:
+\begin{align}
+\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle &= -\sqrt{1-q^2} |E_k|
+\end{align}
+And the sum over the HOMO-band energies:
+\begin{align}
+E_0(q) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2}
+\label{equation_equal_charge}
+\end{align}
+The second approach leads to the Hamiltonian which decreases/increases the energies at the even/odd positions:
+\begin{align}
+	\mathcal{H}_k &= \left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)} - V n^{(e)}_k + V n^{(o)}_k
+\end{align}
+or in matrix notation:
+\begin{align}
+	\mathcal{H}_k &= \begin{pmatrix*}[c]
+	-V & \epsilon_k + i \Delta_k \\
+	\epsilon_k - i \Delta_k & V
+	\end{pmatrix*}
+\end{align}
+with the eigenvalues $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the eigenstates\footnote{the valence state corresponds with the lower signs}:
+\begin{align}
+	\vv{\Psi}_k(V) &= \left[2\left(E_k^2\mp V|E_k|\right)\right]^{\nicefrac{-1}{2}} \cdot \begin{pmatrix*}[c]
+	-V\pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}\\
+	\epsilon_k - i \Delta_k
+	\end{pmatrix*}
+\end{align}
+For $V=0$ this matches the previous result. 
+The sum over the HOMO-band energies becomes approximately:
+\begin{align}
+	E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2}
+	\label{equation_ext_pot}
+\end{align} 
+Since a bigger absolute of the displaced charge $\left|q\right|$ is expected for a bigger absolute of the external potential $\left|V\right|$ these two approaches contradict each other (compare \cref{equation_equal_charge,equation_ext_pot}).
+
+\section{Other Preparations}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[show background rectangle, scale = 1]
+\foreach \x in {0,...,7}{
+	\draw[line width=2pt] (\x,0) .. controls (\x + 1, 2) and (\x - 1 , 2) .. cycle .. controls (\x + 1, -2) and (\x - 1 , -2) .. cycle;
+}
+\foreach \x in {0, 4}
+	\foreach \y in {0, 1}
+		\foreach \z in {-1, 1}
+		\node at (\x + \y - \z + 1, \z) {\huge +};
+\foreach \x in {0, 4}{
+	\foreach \y in {0, 1}{
+		\foreach \z in {-1, 1}{
+			\node at (\x + \y - \z + 1, -\z) {\huge -};
+}}}
+\draw[line width = 0.2] (-0.1, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (1.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (3.9, -1.8) -- +(-0.3, 0) -- +(-0.3 ,3.6) -- +(0,3.6);
+\draw[line width = 0.2] (7.1, -1.8) -- +(0.3, 0) -- +(0.3 ,3.6) -- +(0,3.6);
+\end{tikzpicture}
+\end{figure}
+
+
+
+
 \section{Hydrogen Chain}
 
 A simple system of equidistant hydrogen atoms is used to test the predictions of the earlier motivated Hamiltonian. For this purpose the set-up and convergence of the unit cell will be tested. Afterwards the results from the application of CDFT to the band structure will be shown and compared to the predictions of our modeling approaches.
