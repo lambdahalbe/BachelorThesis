@@ -1,9 +1,9 @@
 \chapter{Results}
 
-The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore the convergence is checked first. Since \emph{trans}-polyacetylene has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}). 
+The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore the convergence is checked first. Since \emph{trans}-polyacetylene\footnote{In the following always \emph{trans}-polyacetylene is meant when only polyacetylene is said.} has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}). 
 
 \section{Convergence Testing of Polyacetylene}
-\begin{figure}[!b]
+\begin{figure}[]
 	\centering
 	\includegraphics[width = .65\textwidth]{Images/polyacetylene/convergence/polyacetylene_nice_unit_cell}
 	\caption{Scheme: Unit cell for \emph{trans}-polyacetylene with periodic boundary conditions in one dimension. The grey circles represent the carbon atoms, the white ones the hydrogen atoms.}
@@ -85,7 +85,7 @@ First, the bond length in direction of the periodic boundaries $a$ is calculated
 Second, the displacement $u$ of the carbon atoms is checked. Here no distortion at all is obtained ($u < \unit[10^{-4}]{\AA}$) by using automatic $k$-point sampling, which doesn't include a $k$-point directly at the edge of the \textsc{Brillouin} zone. If the $k$-points are chosen manually in the way, that a $k$-point at the edge of the \textsc{Brillouin} zone is included, a bigger displacement of approximately $u = \unit[5\cdot10^{-3}]{\AA}$ is obtained (see \cref{image_k_point_sampling_assymetry}). In comparison to a literature value of $u = \unit[0.042]{\AA}$ (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) it is still one order of magnitude to small, but it is known, that PBE delocalizes electrons to much, which results in to small distortions and therefore in to small band gaps (see \cite{JIANG2009120,PhysRevB.84}).\\
 The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can be understood by looking at the sign of the p-orbitals of carbon, which form an alternating $\pi$ bond (see \cref{image_scheme_pi_bonds}). Consequently the gamma point is expected to be important for getting asymmetry in an unit cell containing four carbon atoms. This is checked by simply using automatic $k$-point sampling, which includes the gamma point for an odd number of $k$-points automatically. As expected an alternating behaviour for the displacement in respect to the number of $k$-points can be seen in \cref{image_disp_double_cell_poly}.\\
 Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms). In particular this means, that the HOMO- and LUMO-band have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, what can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
-\begin{figure}[]
+\begin{figure}
 	\centering
 	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/displacement_double_cell_poly}
 	\caption{Displacement $u$ of the carbon atoms in respect to the number of $k$-points for automatic sampling. The gamma point is automatically included for odd numbers of $k$-points, which leads to some asymmetry.}
@@ -108,10 +108,31 @@ Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Br
 	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/HOMO_Side_View}
 	\caption{Side view of the isosurface for the HOMO-band state at the edge of the \textsc{Brillouin} zone. The typical 'out of plane' character of the $\pi$-bonds can be seen.}
 	\label{image_homo1_side_view}
-\end{figure}\\
+\end{figure}
 The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches a literature value of $E_\text{Gap} = \unit[1.4]{eV}$ (see \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predictions. In the central region some interaction between the bands occurs, which leads to the well known effect of \emph{avoided crossings} (see \cite{ashcroft}). This effect can also be seen by looking at the wave functions of the third and the HOMO-band at the $\Gamma$-point (see \cref{image_homo_mid_k,image_homo_mid_k_side_view,image_third_band,image_third_band_side_view}), which shows that for the $\Gamma$-point the third band and not the HOMO-band corresponds with the p-orbitals. Further it can be seen, that the state of the third band at the $\Gamma$-point drawn in the schematic way of \cref{image_scheme_pi_bonds} would have the same sign for all p-orbitals in the upper row and the other sign for all states in the lower row (see \cref{image_scheme_p_orbitals_gamma_point}).\\
-To obtain the hopping parameter $t_0$ the earlier derived hopping energy $E_k = -\sqrt{\epsilon_k^2+\Delta_k^2}$ (\cref{equation_energy_band}) is fitted to parts of the third, forth and fifth band, which correspond with the p-orbitals
-
+To get the hopping parameter $t_0$ a fit of the earlier derived form  $E_k = -\sqrt{\epsilon_k^2+\Delta_k^2}$ (\cref{equation_energy_band}) is done to a continuous band containing parts of the third, forth and fifth band (see \cref{image_band_fit_t0}) because band interactions aren't treated in this simple model. Thus a hopping parameter of $\unit[2.62]{eV}$ is obtained, what matches a literature value of approximately $\unit[2.5]{eV}$ (see \cite{PhysRevLett.42.1698}) very well.\\
+To calculate the phonon coupling constant the following relation is used:
+\begin{align}
+	\alpha &= \frac{1}{8} \frac{\partial E_\text{Gap}}{\partial u}
+\end{align}
+Thus the band gap is calculated for different displacements $u$ and a linear fit is applied to this data (see \cref{image_alpha_fit}), whereat the phonon coupling constant is calculated from the slope. In this way a value of $\alpha = \unitfrac[3.95]{eV}{\AA}$ is obtained, which again matches a literature value of $\alpha = \unitfrac[4.1]{eV}{\AA}$ very well.\\
+Finally the band gap for a manually displacement in accordance to the literature value of $u = \unit[0.042]{\AA}$ (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) is calculated (see \cref{image_manually_displaced_poly_bandstructure}). This yields a band gap of $E = \unit[1.27]{eV}$, what is quite good in comparison with a literature value of $E_\text{Gap} = \unit[1.4]{eV}$ (see \cite{PhysRevLett.42.1698}).\\
+A short summary of the results is given in \cref{table_summary_polyacetylene}.
+\begin{table}[!b]
+	\centering
+	\begin{tabular}{l|c|c}
+	Quantety & Calculated Value & Literature Value (\cref{image_manually_displaced_poly_bandstructure})\\
+	\hline \hline
+	&&\\[-.3cm]
+	Bond length \hfill$a [\unit{\AA}]$ & $1.23$ & $1.2$\\ \hline&&\\[-.3cm]
+	Displacement \hfill$u [\unit{\AA}]$& $0 - 5\cdot10^{-3}$ & $0.042$\\ \hline&&\\[-.3cm]
+	Energy gap \hfill$E_\text{Gap} [\unit{eV}]$ & $0.137$ / $1.27$ (md) & $1.4$\\ \hline &&\\[-.3cm]
+	Hopping parameter \hfill$t_0 [\unit{eV}]$ & $2.62$ & $2.5$ \\ \hline&&\\[-.3cm]
+	Phonon coupling constant \hspace*{.5cm}$\alpha [\unitfrac{eV}{\AA}]$& $3.95$ & $4.1$
+	\end{tabular}
+	\caption{Summary of the results for polyacetylene. ('md' denotes results for manually displaced positions)}
+	\label{table_summary_polyacetylene}
+\end{table}
 \begin{figure}
 	\centering
 	\includegraphics[width = 14cm]{Images/polyacetylene/bands/band_structure}
@@ -157,7 +178,24 @@ To obtain the hopping parameter $t_0$ the earlier derived hopping energy $E_k = 
 	\caption{Scheme: Sign of p-orbitals in a linear chain, that form }
 	\label{image_scheme_p_orbitals_gamma_point}
 \end{figure}
-
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/polyacetylene/bands/band_fit}
+	\caption{Fit of the derived band form to a continuous combination of the third, forth and fifth band.}
+	\label{image_band_fit_t0}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/polyacetylene/bands/alpha}
+	\caption{Band gap for manually displacements $u$ with a linear fit.}
+	\label{image_alpha_fit}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/polyacetylene/bands/bandstructure_manually_displaced}
+	\caption{Band structure of manually displaced polyacetylene.}
+	\label{image_manually_displaced_poly_bandstructure}
+\end{figure}
 
 
 
