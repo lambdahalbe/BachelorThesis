@@ -5,7 +5,7 @@ The predictions of the previous sections are tested on \emph{trans}-polyacetylen
 \section{Convergence Testing of Polyacetylene}
 \begin{figure}[]
 	\centering
-	\includegraphics[width = .65\textwidth]{Images/polyacetylene/convergence/polyacetylene_nice_unit_cell}
+	\includegraphics[width = .5\textwidth]{Images/polyacetylene/convergence/polyacetylene_nice_unit_cell}
 	\caption{Scheme: Unit cell for \emph{trans}-polyacetylene with periodic boundary conditions in one dimension. The grey circles represent the carbon atoms, the white ones the hydrogen atoms.}
 	\label{image_scheme_polyacetylene_unit_cell}
 \end{figure}
@@ -18,25 +18,25 @@ Convergence testing for other systems is done analogously and thus is added to t
 
 \begin{figure}[]
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/kpts-energy}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/kpts-energy}
 	\caption{Ground state energy of relaxed polyacetylene in respect to the number of $k$-points}
 	\label{image_poly_kpts_energy}
 \end{figure}
 \begin{figure}[]
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/gridspacing-energy}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/gridspacing-energy}
 	\caption{Ground state energy of relaxed polyacetylene in respect to the grid spacing}
 	\label{image_poly_grid_energy}
 \end{figure}
 \begin{figure}[]
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/forces-energy}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/forces-energy}
 	\caption{Ground state energy of relaxed polyacetylene in respect to the maximum force, for which the relaxation process stops}
 	\label{image_poly_force_energy}
 \end{figure}
 \begin{figure}[]
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/unit_cell_width}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/unit_cell_width}
 	\caption{Ground state energy of relaxed polyacetylene in respect to the width of the unit cell (not in direction of periodic boundary condition)}
 	\label{image_poly_width_energy}
 \end{figure}
@@ -46,14 +46,14 @@ Convergence testing for other systems is done analogously and thus is added to t
 \section{Physical Quantities of Polyacetylene}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/unit_cell_length}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/unit_cell_length}
 	\caption{Ground state energy of relaxed polyacetylene in respect to the length of the unit cell in direction of periodic boundaries}
 	\label{image_poly_cell_len}
 \end{figure}
 First, the bond length in direction of the periodic boundaries $a$ is calculated (see \cref{image_trans_polyacetylene}). This quantity corresponds with the half unit cell length (in the direction of periodic boundaries) and thus is calculated by minimizing the ground state energy in respect to the cell length (see \cref{image_poly_cell_len}). Through a quadratic fit a parameter of $a = \unit[1.23]{\AA}$ is obtained, what matches a literature value of $\unit[1.2]{\AA}$ (from \cite{PhysRevLett.42.1698}) perfectly.\\
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/polyacetylene_displacement}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/polyacetylene_displacement}
 	\caption{Displacement $u$ of the carbon atoms in respect to the number of $k$-points for automatic sampling (without $k$-point at the edge of the \textsc{Brillouin} zone) and manually placed $k$-points (with one $k$-point at the edge of the \textsc{Brillouin} zone).}
 	\label{image_k_point_sampling_assymetry}
 \end{figure}
@@ -87,25 +87,25 @@ The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can b
 Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms). In particular this means, that the HOMO- and LUMO-band have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, what can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/displacement_double_cell_poly}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/displacement_double_cell_poly}
 	\caption{Displacement $u$ of the carbon atoms in respect to the number of $k$-points for automatic sampling. The gamma point is automatically included for odd numbers of $k$-points, which leads to some asymmetry.}
 	\label{image_disp_double_cell_poly}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/Homo}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/Homo}
 	\caption{Isosurface for the HOMO-band state at the edge of the \textsc{Brillouin} zone.}
 	\label{image_homo1}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/LUMO}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/LUMO}
 	\caption{Isosurface for the LUMO-band state at the edge of the \textsc{Brillouin} zone.}
 	\label{image_lumo1}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/HOMO_Side_View}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/HOMO_Side_View}
 	\caption{Side view of the isosurface for the HOMO-band state at the edge of the \textsc{Brillouin} zone. The typical 'out of plane' character of the $\pi$-bonds can be seen.}
 	\label{image_homo1_side_view}
 \end{figure}
@@ -126,40 +126,40 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 	&&\\[-.3cm]
 	Bond length \hfill$a [\unit{\AA}]$ & $1.23$ & $1.2$\\ \hline&&\\[-.3cm]
 	Displacement \hfill$u [\unit{\AA}]$& $0 - 5\cdot10^{-3}$ & $0.042$\\ \hline&&\\[-.3cm]
-	Energy gap \hfill$E_\text{Gap} [\unit{eV}]$ & $0.137$ / $1.27$ (md) & $1.4$\\ \hline &&\\[-.3cm]
+	Energy gap (manually displaced)\hfill$E_\text{Gap} [\unit{eV}]$ & $0.137\quad(1.27)$ & $1.4$\\ \hline &&\\[-.3cm]
 	Hopping parameter \hfill$t_0 [\unit{eV}]$ & $2.62$ & $2.5$ \\ \hline&&\\[-.3cm]
-	Phonon coupling constant \hspace*{.5cm}$\alpha [\unitfrac{eV}{\AA}]$& $3.95$ & $4.1$
+	Phonon coupling constant \hspace*{2cm}$\alpha [\unitfrac{eV}{\AA}]$& $3.95$ & $4.1$
 	\end{tabular}
-	\caption{Summary of the results for polyacetylene. ('md' denotes results for manually displaced positions)}
+	\caption{Summary of the results for polyacetylene.}
 	\label{table_summary_polyacetylene}
 \end{table}
 \begin{figure}
 	\centering
-	\includegraphics[width = 14cm]{Images/polyacetylene/bands/band_structure}
+	\includegraphics[width = 13cm]{Images/polyacetylene/bands/band_structure}
 	\caption{Band structure of relaxed polyacetylene containing the five highest occupied bands and three unoccupied bands.}
 	\label{image_band_structure_relaxed_polyacetylene}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/Homo_mid_k}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/Homo_mid_k}
 	\caption{Isosurface for the HOMO-band state at the $\Gamma$-point.}
 	\label{image_homo_mid_k}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/Homo_mid_k_Side_View}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/Homo_mid_k_Side_View}
 	\caption{Side view of the isosurface for the HOMO-band state at the $\Gamma$-point without an 'out of plane' character.}
 	\label{image_homo_mid_k_side_view}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/Mid_band_2}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/Mid_band_2}
 	\caption{Isosurface of the third band at the $\Gamma$-point.}
 	\label{image_third_band}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/wavefunctions/Mid_band_2_Side_View}
+	\includegraphics[width = 13cm]{Images/polyacetylene/wavefunctions/Mid_band_2_Side_View}
 	\caption{Side view of the third band at the $\Gamma$-point, showing an 'out of plane' character.}
 	\label{image_third_band_side_view}
 \end{figure}
@@ -186,27 +186,27 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/bands/alpha}
+	\includegraphics[width = 13cm]{Images/polyacetylene/bands/alpha}
 	\caption{Band gap for manually displacements $u$ with a linear fit.}
 	\label{image_alpha_fit}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/bands/bandstructure_manually_displaced}
+	\includegraphics[width = 13cm]{Images/polyacetylene/bands/bandstructure_manually_displaced}
 	\caption{Band structure of manually displaced polyacetylene.}
 	\label{image_manually_displaced_poly_bandstructure}
 \end{figure}
 
-In \cref{image_potential_with_asymmetry,image_potential_without_asymmetry} the ground state energies in respect to the asymmetry $\nicefrac{u}{u_0}$, whereat $u_0$ denotes the earlier obtained displacement, can be seen. For the case of $k$-points including the edge of the \textsc{Brillouin} zone (\cref{image_potential_with_asymmetry}), a twofold degeneracy can be seen, which arises from the symmetry of the problem.
+In \cref{image_potential_with_asymmetry,image_potential_without_asymmetry} the ground state energies in respect to the asymmetry $\nicefrac{u}{u_0}$, whereat $u_0$ denotes the earlier obtained displacement, can be seen. For the case of $k$-points including the edge of the \textsc{Brillouin} zone (\cref{image_potential_with_asymmetry}), a twofold degeneracy of the ground state corresponding with the displacements $u = \pm u_0$ can be seen, which arises from the symmetry of the problem. In contradiction to this a non degenerate ground state, corresponding with no asymmetry, is obtained in the case of excluding the edge of the \textsc{Brillouin} zone (\cref{image_potential_without_asymmetry}).
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/Potential_with_asymmetry}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/Potential_with_asymmetry}
 	\caption{Ground state energy for manually displaced atoms for calculations including a $k$-point at the edge of the \textsc{Brillouin} zone.}
 	\label{image_potential_with_asymmetry}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/Potential_without_asymmetry}
+	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/Potential_without_asymmetry}
 	\caption{Ground state energy for manually displaced atoms for calculations excluding a $k$-point at the edge of the \textsc{Brillouin} zone.}
 	\label{image_potential_without_asymmetry}
 \end{figure}
