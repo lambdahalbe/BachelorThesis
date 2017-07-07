@@ -117,7 +117,7 @@ To calculate the phonon coupling constant the following relation is used:
 \end{align}
 Thus the band gap is calculated for different displacements $u$ and a linear fit is applied to this data (see \cref{image_alpha_fit}), whereat the phonon coupling constant is calculated from the slope. In this way a value of $\alpha = \unitfrac[3.95]{eV}{\AA}$ is obtained, which again matches a literature value of $\alpha = \unitfrac[4.1]{eV}{\AA}$ very well.\\
 Finally the band gap for a manually displacement in accordance to the literature value of $u = \unit[0.042]{\AA}$ (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) is calculated (see \cref{image_manually_displaced_poly_bandstructure}). This yields a band gap of $E = \unit[1.27]{eV}$, what is quite good in comparison with a literature value of $E_\text{Gap} = \unit[1.4]{eV}$ (see \cite{PhysRevLett.42.1698}).\\
-A short summary of the results is given in \cref{table_summary_polyacetylene}.
+A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 \begin{table}[!b]
 	\centering
 	\begin{tabular}{l|c|c}
@@ -197,7 +197,19 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.
 	\label{image_manually_displaced_poly_bandstructure}
 \end{figure}
 
-
+In \cref{image_potential_with_asymmetry,image_potential_without_asymmetry} the ground state energies in respect to the asymmetry $\nicefrac{u}{u_0}$, whereat $u_0$ denotes the earlier obtained displacement, can be seen. For the case of $k$-points including the edge of the \textsc{Brillouin} zone (\cref{image_potential_with_asymmetry}), a twofold degeneracy can be seen, which arises from the symmetry of the problem.
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/Potential_with_asymmetry}
+	\caption{Ground state energy for manually displaced atoms for calculations including a $k$-point at the edge of the \textsc{Brillouin} zone.}
+	\label{image_potential_with_asymmetry}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 12cm]{Images/polyacetylene/convergence/Potential_without_asymmetry}
+	\caption{Ground state energy for manually displaced atoms for calculations excluding a $k$-point at the edge of the \textsc{Brillouin} zone.}
+	\label{image_potential_without_asymmetry}
+\end{figure}
 
 
 
