@@ -122,9 +122,9 @@ The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can b
 	\caption{Side view of the isosurface for the HOMO-band state at the edge of the \textsc{Brillouin} zone. The typical 'out of plane' character of the $\pi$-bonds can be seen.}
 	\label{image_homo1_side_view}
 \end{figure}
-Here a unit cell containing two carbon atoms needs a phase difference of $\pi$, what corresponds with a $k$-point at the edge of the \textsc{Brillouin} zone.\\
+Here a unit cell containing two carbon atoms needs a phase difference of $\pi$ between adjacent unit cells, what corresponds with a $k$-point at the edge of the \textsc{Brillouin} zone.\\
 Consequently the gamma point is expected to be important for getting asymmetry in an unit cell containing four carbon atoms, since the phase difference of two such adjacent unit cells has to be $0$ to form alternating $\pi$-bonds. This is checked by simply using automatic $k$-point sampling, which includes the gamma point for an odd number of $k$-points automatically. As expected, an alternating behavior for the displacement in respect to the number of $k$-points can be seen in \cref{image_disp_double_cell_poly}.\\
-Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms). In particular this means, that the HOMO- and LUMO-band have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, what can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
+Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms. All plots of isosurfaces are made with VMD \cite{HUMP96}). In particular this means, that the HOMO- and LUMO-band have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, what can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 11cm]{Images/polyacetylene/bands/band_structure}
@@ -134,6 +134,7 @@ Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Br
 The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches a literature value of $E_\text{Gap} = \unit[1.4]{eV}$ (see \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predicted form (compare \cref{equation_energy_band}):
 \begin{align}
 E_k &= \pm \sqrt{\left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
+\label{equation_explicit_energy_band}
 \end{align} In the central region some interaction between the bands occurs, which leads to the well known effect of \emph{avoided crossings} (see \cite{ashcroft}). This effect can also be seen by looking at the wave functions of the third and the HOMO-band at the $\Gamma$-point (see \cref{image_homo_mid_k,image_homo_mid_k_side_view,image_third_band,image_third_band_side_view}), which shows that for the $\Gamma$-point the third band and not the HOMO-band corresponds with the p-orbitals. Further it can be seen, that the state of the third band at the $\Gamma$-point drawn in the schematic way of \cref{image_scheme_pi_bonds} would have the same sign for all p-orbitals in the upper row and the other sign for all states in the lower row (see \cref{image_scheme_p_orbitals_gamma_point}).\\
 \begin{figure}
 	\centering
@@ -174,7 +175,7 @@ E_k &= \pm \sqrt{\left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
 	\caption{Scheme: Sign of p-orbitals of the valence state at the $\Gamma$-point}
 	\label{image_scheme_p_orbitals_gamma_point}
 \end{figure}
-To get the hopping parameter $t_0$ a fit of the earlier derived form  $E_k = -\sqrt{\epsilon_k^2+\Delta_k^2}$ (\cref{equation_energy_band}) is done to a continuous band containing parts of the third, forth and fifth band (see \cref{image_band_fit_t0}) because band interactions aren't treated in this simple model. Thus a hopping parameter of $\unit[2.62]{eV}$ is obtained, what matches a literature value of approximately $\unit[2.5]{eV}$ (see \cite{PhysRevLett.42.1698}) very well.\\
+To get the hopping parameter $t_0$ a fit with the form of \cref{equation_explicit_energy_band} is done to a continuous combination of the third, forth and fifth band (see \cref{image_band_fit_t0}), since band interactions aren't treated in this simple model. Thus a hopping parameter of $\unit[2.62]{eV}$ is obtained, what matches a literature value of approximately $\unit[2.5]{eV}$ (see \cite{PhysRevLett.42.1698}) very well.\\
 To calculate the phonon coupling constant the following relation is used:
 \begin{align}
 	\alpha &= \frac{1}{8} \frac{\partial E_\text{Gap}}{\partial u}
@@ -200,7 +201,7 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 	\caption{Band structure of manually displaced polyacetylene.}
 	\label{image_manually_displaced_poly_bandstructure}
 \end{figure}
-\begin{table}[!b]
+\begin{table}[]
 	\centering
 	\begin{tabular}{l|c|c}
 	Quantety & Calculated Value & Literature Value (\cite{PhysRevLett.42.1698, doi:10.1021/cr990357p})\\
@@ -217,12 +218,86 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 \end{table}
 
 
+\section{Constraint Density Functional Theory}
+In this section the influences of charging different regions using cDFT is studied and two alternative methods of calculating the hopping parameter $t_0$ are tested. First this is done for a system as simple as possible, namely a chain of equidistant hydrogen atoms.
+\subsection{Chain of Hydrogen Atoms}
+Even if there's no distortion, a unit cell with two hydrogen atoms is needed, because later the application of the external potential and the consequential charge displacement will break the symmetry. First, the unit cell length for the lowest ground state energy is determined to $L = \unit[2.0]{\AA}$ (see \cref{image_hydrogen_unit_cell_length}).
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/Hydrogen/convergence/hydrogen_length}
+	\caption{Ground state energy of a unit cell containing two equidistant hydrogen atoms in respect to the unit cell length in direction of the periodic boundaries.}
+	\label{image_hydrogen_unit_cell_length}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/Hydrogen/bands/hydrogen_band_structure}
+	\caption{Band structure of a hydrogen chain with a fit to its HOMO-band.}
+	\label{image_hydrogen_band_structure}
+\end{figure}
+As can be seen in \cref{image_hydrogen_band_structure} the HOMO-band is in good accordance with the expected form\footnote{Since there's no distortion $\Delta_k = 0$ (compare \cref{equation_energy_band})} of:
+\begin{align}
+	E_k = -2t_0\cos(ka)
+\end{align}
+from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value is used as reference later.\\
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{Images/Hydrogen/charging/energy_contributions_asymmetric}
+		\caption{Initial}
+		\label{image_contributions_initial}
+	\end{subfigure}\hspace*{1cm}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{Images/Hydrogen/charging/energy_contributions_symmetric}
+		\caption{Corrected}
+		\label{image_contributions_corrected}
+	\end{subfigure}
+	\caption{Some energy contributions in respect to the displaced charge. The offsets are set to zero for $q=0$.}
+\end{figure}
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[]
+		\begin{scope}
+		\clip [draw] (-.5, -1.5) rectangle (4.5, 1.5);
+		\foreach \x/\color in {0/red, 2.5/blue}{
+			\foreach \r in {0, 0.01, ..., 1}{
+				\fill[opacity = \r * 0.02, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
+		\foreach \x/\num in {0/1, 2.5/2}{
+			\node[fill = black, shape = circle, text = white] at (\x, 0)	 {\num};}
+		\end{scope}
+		\end{tikzpicture}
+		\caption{\textsc{Gaussian} curves cut at periodic boundary.\\}
+	\end{subfigure}\hspace*{1cm}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\begin{scope}
+		\clip [draw] (-.5, -1.5) rectangle (4.5, 1.5);
+		\foreach \x/\color in {0/red, 2.5/blue, 5/red}{
+			\foreach \r in {0, 0.01, ..., 1}{
+				\fill[opacity = \r * 0.02, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
+		\foreach \x/\num in {0/1, 2.5/2}{
+			\node[fill = black, shape = circle, text = white] at (\x, 0)	 {\num};}
+		\end{scope}
+		\end{tikzpicture}
+		\caption{\textsc{Gaussian} curves continued at opposite site for periodic boundary.}
+	\end{subfigure}
+	\caption{Schemes: \textsc{Gaussian} curves for two regions (\textcolor{red}{red} and \textcolor{blue}{blue}) used as weights for the integration/summation over the electron density to calculate the charge in each region.}
+	\label{image_periodicity_gaussians}
+\end{figure}
+By using cDFT with periodic boundary conditions some asymmetric contributions to the ground state energy can be seen (see \cref{image_contributions_initial}), which isn't expected due to the symmetry of the problem. Therefore it shouldn't matter if charge is moved from region one to region two or the other way around. And indeed, this issue is caused by some shortcoming in the cDFT source code, namely the cut of the \textsc{Gaussian} curves at periodic boundaries (see \cref{image_periodicity_gaussians}). Correcting this resolved the issues with the asymmetry (see \cref{image_contributions_corrected}).\\
+Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gaussian} curves has to be obtained. A to small $\sigma$ would localize the electrons to much and thus make the displacement of charge more difficult. On the contrary a to big $\sigma$ would lead to the problem, that the electrons have to be shifted further to change the charge in the regions, what would also make the charge displacement more difficult or even lead to problems with the convergence of the wave functions. In consequence there should be a value of $\sigma$, for which the displacement of charge becomes easiest. \\
+
 \chapter{Chaos}
-To model the charging applied with CDFT of the two regions with $\pm q$ two approaches will be tested:
+To model the charging applied with cDFT of the two regions with $\pm q$ two approaches will be tested:
 \begin{compactitem}
 	\item[1)] simple modifications of the wave functions under the assumption that all $k$-points contribute equally to the charge displacement
 	\item[2)] modification of the Hamiltonian describing the external potential for the different regions
 \end{compactitem}
+
 The first approach leads to the valence wave function:
 \begin{align}
 \Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
@@ -327,3 +402,4 @@ Analogously this ratio can be calculated by fitting the energy at the gamma poin
 	\caption{$c(k)$}
 	\label{image_hydrogen_proportionality_constant}
 \end{figure}
+For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms of the exchange correlation energy would be left out.

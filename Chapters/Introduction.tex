@@ -36,8 +36,7 @@ with the energy functional of the undisturbed system $E_0\left[n\left(\vec{r}\ri
 \end{align}
 for all $i$ regions.
 The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $V_i$ scaling the strength of the potentials to change the density and thus get the correct charges in each region\footnote{In this way the $V_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of fixed number of charges in the regions}. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{} \textbf{Chapter CDFT for different sigmas}).\\
-For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) together with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used.
-Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Further the calculations were performed on a real space grid in the manner of a finite difference method.
+For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) together with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Further the calculations were performed on a real space grid in the manner of a finite difference method.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[show background rectangle, scale = 0.6]
@@ -245,7 +244,7 @@ In further calculations the term $2N\kappa u^2$ will be neglected since it's onl
 	\caption{Structure of the HOMO- and LUMO-band arising from a tight-binding treatment of next-neighbor-hopping}
 	\label{images_bs}
 \end{figure}
-with the eigenvalues (see \cref{images_bs}):
+with the eigenvalues\footnote{Note, that the $E_k$ are eigenvalues to single particle Hamiltonians} (see \cref{images_bs}):
 \begin{align}
 	E_k &= \pm \sqrt{\epsilon_k^2+\Delta_k^2}
 	\label{equation_energy_band}
@@ -263,9 +262,9 @@ corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenfu
 	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}\right\rangle &= - |E_k|\\
 	\left\langle\Psi_k^{(c)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(c)}\right\rangle &= |E_k|
 \end{align}
-It should be mentioned, that these $E_k$ are eigenvalues to single particle Hamiltonians. As a consequence the sum over all band structure energies of occupied states isn't equal to the ground state energy. For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms of the exchange correlation energy would be left out. Nevertheless the sum over the HOMO-band energies is some quantity worth to compare:
+It can also be shown, that the sum over the HOMO-band energies takes the form:
 \begin{align}
-	E_0(u) &=-2\sum_k |E_k|\\
-	&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
+E_0(u) &=-2\sum_k |E_k|\\
+&=\frac{-4Nt_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
 \end{align}
-For small $\nicefrac{\delta}{t_0}$ the integral is approximately 1.\\
+Here $F\left(\nicefrac{\delta}{t_0}\right)\approx 1$ for $\nicefrac{\delta}{t_0} \ll 1$.
