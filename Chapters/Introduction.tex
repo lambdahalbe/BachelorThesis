@@ -28,14 +28,14 @@ w_i\left(\vec{r}\right) &= \sum_j w\left(\vec{r} - \vec{R}_j\right) \text{\quad}
 \end{align}
 This can be written as minimization problem of the cDFT energy $F[n\left(\vec{r}\right), V_i]$:
 \begin{align}
-F\left[n\left(\vec{r}\right), V_i\right] &= E_0\left[n\left(\vec{r}\right)\right] + \sum_i V_i\left(\int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i\right)
+F\left[n\left(\vec{r}\right), U_i\right] &= E_0\left[n\left(\vec{r}\right)\right] + \sum_i U_i\left(\int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i\right)
 \end{align}
 with the energy functional of the undisturbed system $E_0\left[n\left(\vec{r}\right)\right]$ and the constraints:
 \begin{align}
 0 &= \int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i
 \end{align}
 for all $i$ regions.
-The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $V_i$ scaling the strength of the potentials to change the density and thus get the correct charges in each region\footnote{In this way the $V_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of fixed number of charges in the regions}. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{section_constraint_density_functonal_theory}).\\
+The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $U_i$ scaling the strength of the potentials to change the density and thus get the correct charges in each region\footnote{In this way the $U_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of a fixed charge in each region.}. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{section_constraint_density_functonal_theory}).\\
 For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) together with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and it's gradient. Further the calculations were performed on a real space grid in the manner of a finite difference method.
 \begin{figure}
 	\centering
