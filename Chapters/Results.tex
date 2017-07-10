@@ -308,6 +308,7 @@ where $q$ denotes the displaced charge. These states show the needed behavior:
 which corresponds with a charge transfer of $q$ in each unit cell. Further these states have an energy expectation value of:
 \begin{align}
 \left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle &= -\sqrt{1-q^2} |E_k|
+\label{equation_method_1_energies}
 \end{align}
 Finally the assumption that the ground state energy can be approximated by the sum of the single electron energies is made, what leads to the expression:
 \begin{align}
@@ -380,7 +381,18 @@ As can be seen in \cref{image_ground_state_hydrogen_qs} the fits match the data 
 	\item $t_0 = \unit[14.9]{eV}$ for $\sigma = \unit[0.40]{\AA}$ and the proportionality constant $c = 1.10$ (just for comparison)
 \end{compactitem}
 Two things can be seen from this. First, the hopping parameters do not match the earlier calculated value of $t_0 = \unit[4.8]{eV}$ and thus there must have been some wrong assumptions in the derivation. Second, the values for different $\sigma$ show a tolerable deviation if the correct proportionality constants are used. This would make the choice of an appropriate $\sigma$ much simpler, since the physical quantities would not strongly depend on it.\\
-A second approach to modify the tight binding model for cDFT is the following:\\
+A possible reason, why this method fails or at least gives a wrong prefactor, could be that the sum of the single particle energies can not be assumed to be equal to the ground state energy. For example the \textsc{Coulomb} energy of the electrons in the field of the other electrons is added twice and terms of the exchange correlation energy are left out. Also the assumption that all states $\Psi_k^{(v)}$ contribute equally to the charge displacement could be wrong but could be tested easily. Therefore assume that the $q = q(k)$ in \cref{equation_method_1_energies}, from which we get:
+\begin{align}
+	q(k) &= 1 - \left(\frac{\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle}{\left|E_k\right|}\right)^2
+\end{align}
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.45\textwidth]{Images/Hydrogen/charging/charge_vs_k}
+	\caption{Displaced charge in a simplified tight binding picture in respect to $k$.}
+	\label{image_tight_binding_q_vs_k}
+\end{figure}
+The form of this $q(k)$ obtained from the simulation can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected(???). Hence a modification of the initial tight binding model is searched, that describes the changes of the band structure correctly.\\
+The second approach to do this is the following:\\
 Modify the hopping Hamiltonian to decrease/increase the energies at the even/odd positions (matrix notation):
 \begin{align}
 \begin{pmatrix*}[c]
@@ -439,7 +451,7 @@ Here the heights of the potentials $U_i$ from cDFT correspond with the energy $V
 \begin{align}
 	E_\text{edge} &= -\left|c \cdot U\right|
 \end{align}
-to the band energies at the edge of the \textsc{Brillouin} zone (see \cref{image_edge_energy_qs_1}). The fit is very nice and yields a value of $c = \unit[12.3]{e}$.\\
+to the band energies at the edge of the \textsc{Brillouin} zone (see \cref{image_edge_energy_qs_1}). The fit looks good and yields a value of $c = \unit[12.3]{e}$.\\
 This can be used to fit the function
 \begin{align}
 	E\left(k, U\right) &= - \sqrt{\left(cU\right)^2 + \left(2t_0\cos(ka)\right)^2}
@@ -462,11 +474,6 @@ in $t_0$ to the calculated band structures for different charge displacements (s
 \end{figure}
 
 
-
-
-\newpage
-
-For example the \textsc{Coulomb} repulsion of the electrons would be added twice and other terms of the exchange correlation energy would be left out.
 \chapter{Things to do}
 \begin{compactitem}
 	\item Correlation check, charge regions
