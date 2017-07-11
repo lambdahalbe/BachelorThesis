@@ -387,11 +387,11 @@ A possible reason, why this method fails or at least gives a wrong prefactor, co
 \end{align}
 \begin{figure}
 	\centering
-	\includegraphics[width = 0.45\textwidth]{Images/Hydrogen/charging/charge_vs_k}
-	\caption{Displaced charge in a simplified tight binding picture in respect to $k$.}
+	\includegraphics[width = 0.4\textwidth]{Images/Hydrogen/charging/charge_vs_k}
+	\caption{Displaced charge in respect to $k$ in a simplified tight binding picture.}
 	\label{image_tight_binding_q_vs_k}
 \end{figure}
-The form of this $q(k)$ obtained from the simulation can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected(???). Hence a modification of the initial tight binding model is searched, that describes the changes of the band structure correctly.\\
+The form of this $q(k)$ obtained from the simulation can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected. Hence a modification of the initial tight binding model is searched, that describes the changes of the band structure correctly.\\
 The second approach to do this is the following:\\
 Modify the hopping Hamiltonian to decrease/increase the energies at the even/odd positions (matrix notation):
 \begin{align}
@@ -412,11 +412,7 @@ with the eigenenergies $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the ei
 \epsilon_k - i \Delta_k
 \end{pmatrix*}
 \end{align}
-For $V=0$ this matches the previous result. The sum over the HOMO-band energies becomes approximately:
-\begin{align}
-	E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2}
-	\label{equation_ext_pot}
-\end{align} 
+For $V=0$ this matches the previous result.\\
 Next, the band structure for the hydrogen chain with different charge displacements is calculated (see \cref{image_hydrogen_charged_bands}). As expected from the symmetry, the form of the band structures do not depend on the direction (sign) of the charge displacement. It can also be seen, that the influence of charging is bigger for $k$-points closer to the edge of the \textsc{Brillouin} zone and the bands are systematically shifted to lower energies. Both is in good agreement with the predictions of the second approach.
 \begin{figure}
 	\centering
@@ -435,10 +431,27 @@ E_\text{edge}(V) &= -\left|V\right|
 \begin{figure}
 	\centering
 	\begin{minipage}{0.49\textwidth}
+		\centering
+			\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
+			\caption{cDFT potentials in respect to the displaced charge.}
+			\label{image_potentials_qs_1}
+		\end{minipage}\hspace*{.5cm}
+		\begin{minipage}{0.49\textwidth}
+				\centering
+				\includegraphics[width = \textwidth]{Images/Hydrogen/charging/Potential_asymmetry}
+				\caption{cDFT potentials $U_i$ and their sum in respect to the displaced charge for symmetric initial potentials ($U_1 = U_2 > 0$).}
+				\label{image_potential_asymmetrys}
+	
+		\end{minipage}
+\end{figure}
+\begin{figure}
 	\centering
-	\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
-	\caption{cDFT potentials in respect to the displaced charge.}
-	\label{image_potentials_qs_1}
+	\begin{minipage}{0.49\textwidth}
+		\centering
+			\includegraphics[width = \textwidth]{Images/Hydrogen/charging/charge_correlation}
+			\caption{Charge in the second region (not chosen) in respect to the charge in the first region (chosen).}
+			\label{image_charge_correlation}
+	
 	\end{minipage}\hspace*{.5cm}
 	\begin{minipage}{0.49\textwidth}
 	\centering
@@ -447,7 +460,7 @@ E_\text{edge}(V) &= -\left|V\right|
 	\label{image_edge_energy_qs_1}
 	\end{minipage}
 \end{figure}
-Here the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, why a proportionality between them is assumed. Thus the cDFT potentials should satisfy $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). In the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$. The proportionality constant between $U$ and $V$ is obtained by fitting
+Here the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, why a proportionality between them is assumed. Thus the cDFT potentials should satisfy $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). It should be mentioned, that this can be influenced by the choice of initial external potentials $U_i$ (see \cref{image_potential_asymmetrys}). This effect can be understood by looking at the amount of charge in the second region (free) for different charges (determined with cDFT) in the first region (see \cref{image_charge_correlation}). Here a perfect anticorrelation (correlation value of $-1$) is obtained, which means that for any charge pushed out of region one some proportional charge ($\approx 86\%$) gets pushed into region two. Consequently an symmetric increase/decrease of $U_1$ and $U_2$ has a small effect on the amount of charge in the two regions. Thus the initial potentials are always chosen antisymmetric and in the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$. The proportionality constant between $U$ and $V$ is obtained by fitting
 \begin{align}
 	E_\text{edge} &= -\left|c \cdot U\right|
 \end{align}
@@ -456,8 +469,7 @@ This can be used to fit the function
 \begin{align}
 	E\left(k, U\right) &= - \sqrt{\left(cU\right)^2 + \left(2t_0\cos(ka)\right)^2}
 \end{align}
-in $t_0$ to the calculated band structures for different charge displacements (see \cref{image_hydrogen_3D_2}). The fit seems to describe the general form very well and yields a hopping parameter of $t_0 = \unit[4.6]{eV}$. This differs slightly from the earlier obtained value of $t_0 = \unit[4.8]{eV}$, but a look on the slices in \cref{image_hydrogen_3D_slices} shows that for no displaced charge the fit and data still match very nicely.
-
+in $t_0$ to the calculated band structures for different charge displacements (see \cref{image_hydrogen_3D_2}). The fit seems to describe the general form very well and yields a hopping parameter of $t_0 = \unit[4.6]{eV}$. This differs slightly from the earlier obtained value of $t_0 = \unit[4.8]{eV}$, but a look on the slices in \cref{image_hydrogen_3D_slices} shows that for no displaced charge $q = 0$ the fit and data still match very nicely.\\
 \begin{figure}[!p]
 	\centering
 	\includegraphics[width = 13cm]{Images/Hydrogen/charging/3D/figure_1-2}
@@ -465,13 +477,30 @@ in $t_0$ to the calculated band structures for different charge displacements (s
 	\caption{Band structure in respect to the cDFT potential $U$. Data points in blue and surface from fit.}
 	\label{image_hydrogen_3D_2}
 \end{figure}
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/Hydrogen/charging/3D_cuts}
 	\caption{Some slices of the band structure and fit for different displaced charges. The distance between the curves is manually increased for a better overview.}
 	\label{image_hydrogen_3D_slices}
 \end{figure}
+To get rid of $k$-dependency the average HOMO-band energy $E_\text{A}$ in respect to the external potential $V$ is calculated. A theoretical expression for this quantity can be found, namely:
+\begin{align}
+	E_\text{A}(V) &= \frac{-2}{N}\sum_k \left|E_k(V)\right|\\
+				  &= \frac{-2}{\pi}\sqrt{V^2+4t_0^2}\int\limits_0^{\nicefrac{\pi}{2}}\dd\theta\ \sqrt{1-\xi^2\cdot\sin^2(\theta)}
+				  \label{equation_elliptical_integral}
+\end{align}
+with $\xi^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. The integral in \cref{equation_elliptical_integral} is known as the elliptical integral of the second kind and can be solved numerically. With this expression it may be possible to obtain the hopping parameter $t_0$ through a fit to the average HOMO-band energy. To check this calculation for self-consistency a fit to some modelled data (data of the previous fit) is done. In \cref{image_hydrogen_homo_energy_charging} the data and fits can be seen, which already shows some mismatch between the calculated and from the earlier fit modelled data. It can be seen, that the modelled data is too big for a small external potential and to small for a big external potential. This tendency can also be seen by a close look at \cref{image_hydrogen_3D_slices}.\\
+Nevertheless the data is fitted nicely and for the modelled data a value of $t_0 = \unit[4.6]{eV}$ is obtained, what is in perfect accordance to the previous result. From the real data a value of $t_0 = \unit[9.1]{eV}$ is obtained.\\
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge}
+	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits.}
+	\label{image_hydrogen_homo_energy_charging}
+\end{figure}
+
+
 
 
 \chapter{Things to do}

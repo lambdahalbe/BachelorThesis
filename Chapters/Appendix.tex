@@ -53,9 +53,9 @@ Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the 
 
 Using this the ground state energy can be derived as follows (completely occupied valence, empty conduction band):
 \begin{align}
-E_0(u) &=-2\sum_k |E_k| + 2N\kappa u^2\\
-&= -2\sum_k \sqrt{\epsilon_k^2+\Delta_k^2} + 2N\kappa u^2\\
-&= -2\sum_k \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2} + 2N\kappa u^2\\
+E_0(u) &=-2\sum_k |E_k|\\
+&= -2\sum_k \sqrt{\epsilon_k^2+\Delta_k^2}\\
+&= -2\sum_k \sqrt{\left[2t_0\cos(ka)\right]^2+\left[2\delta\sin(ka)\right]^2}\\
 \end{align}
 In the limit of $N \rightarrow \infty$ the sum becomes an integral:
 \begin{align}
@@ -123,19 +123,17 @@ q_k &= \vv{\Psi}_k^{*\top}\cdot\begin{pmatrix*}[c]
 &= \frac{\left(-V \pm |E_k|\right)^2}{2\left(E_k^2\mp V|E_k|\right)}
 \end{align}
 
-Then the ground state energy can be calculated as follows:
+Then the HOMO-band energy sum can be calculated as follows:
 \begin{align}
-E_0 &= -2\sum_k |E_k| + 2N\kappa u^2\\
-&= -2 \sum_k \sqrt{V^2+\epsilon_k^2+\Delta_k^2}+ 2N\kappa u^2\\
-&= -2 \sum_k \sqrt{V^2 + 4t_0^2\cos^2(ka) + 4 \delta^2\sin^2(ka)}+ 2N\kappa u^2\\
-&= -4t_0 \sum_k\sqrt{\frac{V^2}{4t_0^2} + 1 - \left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(ka)}+ 2N\kappa u^2\\
-&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - \frac{4t_0^2-4\delta^2}{V^2+4t_0^2} \sin^2(ka)}+ 2N\kappa u^2\\
-&= -4t_0 \sqrt{\frac{V^2}{4t_0^2}+1}\sum_k \sqrt{1 - c^2 \cdot \sin^2(ka)}+ 2N\kappa u^2
+E_0 &= -\sum_k |E_k|\\
+&= -\sum_k \sqrt{V^2+\epsilon_k^2+\Delta_k^2}\\
+&= -\sum_k \sqrt{V^2 + 4t_0^2\cos^2(ka) + 4 \delta^2\sin^2(ka)}\\
+&= -\sqrt{V^2 + 4t_0^2}\sum_k \sqrt{1 - c^2 \cdot \sin^2(ka)}
 \end{align} 
-with $c^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. In the limit of $N \to \infty$ the sum can be transformed into an integral:
+with $c^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. In the limit of $N \to \infty$ (number of $k$-points is $\nicefrac{N}{2}$) the sum can be transformed into an integral:
 \begin{align}
-E_0 &= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \int\limits_{0}^{\nicefrac{\pi}{2}} \text{d}\theta \sqrt{1 - c^2 \cdot \sin^2(\theta)}\\
-&= \frac{-2N}{\pi} \sqrt{V^2+4t_0^2} \cdot F(\sqrt{1-c^2}) 
+E_0 &= \frac{-N}{\pi} \sqrt{V^2+4t_0^2} \int\limits_{0}^{\nicefrac{\pi}{2}} \text{d}\theta \sqrt{1 - c^2 \cdot \sin^2(\theta)}\\
+&= \frac{-N}{\pi} \sqrt{V^2+4t_0^2} \cdot F(\sqrt{1-c^2}) 
 \end{align}
 To write this expression as a function of the displaced charge a relationship between the potential $V$ and $q$ is needed:
 \begin{align}
