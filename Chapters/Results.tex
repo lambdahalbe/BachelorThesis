@@ -290,7 +290,7 @@ from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value 
 	\label{image_periodicity_gaussians}
 \end{figure}
 By using cDFT with periodic boundary conditions some asymmetric contributions to the ground state energy can be seen (see \cref{image_contributions_initial}), which isn't expected due to the symmetry of the problem. Therefore it shouldn't matter if charge is moved from region one to region two or the other way around. And indeed, this issue is caused by some shortcoming in the cDFT source code, namely the cut of the \textsc{Gaussian} curves at periodic boundaries (see \cref{image_periodicity_gaussians}). Correcting this resolved the issues with the asymmetry (see \cref{image_contributions_corrected}).\\
-Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gaussian} curves has to be obtained. A to small $\sigma$ would localize the electrons to much and thus make the displacement of charge more difficult. On the contrary a to big $\sigma$ would lead to more displaced charge than needed and consequently make the charge transfer more difficult, too. In consequence there should be a value of $\sigma$, for which the displacement of charge becomes easiest. Out of the previous considerations this $\sigma$ is expected to give a good match of the \textsc{Gaussian} curves with the electron densities. As can be seen in \cref{image_gaussian_sigmas_hydrogen}, this is the case for $\sigma \approx \unit[0.24]{\AA}$ (smallest curvature). Consequently this $\sigma$ is used for the following calculations.\\
+Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gaussian} curves has to be obtained. A to small $\sigma$ would localize the electrons to much and thus make the displacement of charge more difficult. On the contrary a to big $\sigma$ would lead to more displaced charge than needed and consequently make the charge transfer more difficult, too. In consequence there should be a value of $\sigma$, for which the displacement of charge becomes easiest. Out of the previous considerations this $\sigma$ is expected to give a good match of the \textsc{Gaussian} curves with the electron densities. As can be seen in \cref{image_gaussian_sigmas_hydrogen}, this is the case for $\sigma \approx \unit[0.24]{\AA}$ (smallest curvature). Consequently this $\sigma$ is used for the following calculations if not otherwise mentioned.\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 10cm]{Images/Hydrogen/charging/gaussian_sigmas}
@@ -491,15 +491,21 @@ To get rid of $k$-dependency the average HOMO-band energy $E_\text{A}$ in respec
 \end{align}
 with $\xi^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. The integral in \cref{equation_elliptical_integral} is known as the elliptical integral of the second kind and can be solved numerically. With this expression it may be possible to obtain the hopping parameter $t_0$ through a fit to the average HOMO-band energy. To check this calculation for self-consistency a fit to some modelled data (data of the previous fit) is done. In \cref{image_hydrogen_homo_energy_charging} the data and fits can be seen, which already shows some mismatch between the calculated and from the earlier fit modelled data. It can be seen, that the modelled data is too big for a small external potential and to small for a big external potential. This tendency can also be seen by a close look at \cref{image_hydrogen_3D_slices}.\\
 Nevertheless the data is fitted nicely and for the modelled data a value of $t_0 = \unit[4.6]{eV}$ is obtained, what is in perfect accordance to the previous result. From the real data a value of $t_0 = \unit[9.1]{eV}$ is obtained.\\
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge}
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits.}
 	\label{image_hydrogen_homo_energy_charging}
 \end{figure}
-
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge_sigma_32}
+	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits for $\sigma = \unit[0.32]{\AA}$.}
+	\label{image_hydrogen_homo_energy_charging_sigma_32}
+\end{figure}
+Thus it can be concluded that additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new quantities, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
+The qualitative results of this section will now be tested on a more complex system, namely the earlier discussed \emph{trans}-polyacetylene.
+\subsection{Polyacetylene}
 
 
 
