@@ -417,7 +417,7 @@ Next, the band structure for the hydrogen chain with different charge displaceme
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/Hydrogen/charging/band_structure_q_1}
-	\caption{Band structure of the HOMO-band for different charge displacements.}
+	\caption{Band structure of the HOMO- and LUMO-band for different charge displacements.}
 	\label{image_hydrogen_charged_bands}
 \end{figure}
 Since there's no distortion in the unit cell, the expected HOMO-band form becomes:
@@ -504,9 +504,63 @@ Nevertheless the data is fitted nicely and for the modelled data a value of $t_0
 	\label{image_hydrogen_homo_energy_charging_sigma_32}
 \end{figure}
 Thus it can be concluded that additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new quantities, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
-The qualitative results of this section will now be tested on a more complex system, namely the earlier discussed \emph{trans}-polyacetylene.
+The methods shown in this section will now be tested on the earlier discussed \emph{trans}-polyacetylene.
 \subsection{Polyacetylene}
+First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$ for which charge transport becomes easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
+\begin{figure}
+	\centering
+	\includegraphics[width = 10cm]{Images/polyacetylene/charging/sigmas}
+	\caption{Ground state energy of polyacetylene in respect to the displaced charge for different $\sigma$ of the \textsc{Gaussian} curves.}
+	\label{image_sigmas_polyacetylene}
+\end{figure}
 
+
+
+
+\newpage
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/polyacetylene/charging/band_structure_q_1}
+	\caption{Band structure of polyacetylene for different charge displacements. Here the five highest occupied bands and the LUMO-band are shown.}
+	\label{}
+\end{figure}
+
+For fit used $\delta = \unit[0.035]{eV}$ from earlier derivation.
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/potential_q_1}
+	\caption{}
+	\label{}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/border_energy_q_1}
+	\caption{Homo-band energy at the edge of the \textsc{Brillouin} zone with fit.}
+	\label{}
+	\end{minipage}
+\end{figure}
+Gives $c = \unit[7.70]{e}$.
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D/figure_1-1}
+	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D/figure_1-2}
+	\caption{}
+	\label{}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D_cuts}
+	\caption{}
+	\label{}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = 13cm]{Images/polyacetylene/charging/Homo_energy_charge}
+	\caption{}
+	\label{}
+\end{figure}
+Fitdata: $t_0 = \unit[2.6]{eV}$\\
+Real Data: $t_0 = \unit[2.7]{eV}$
 
 
 \chapter{Things to do}
