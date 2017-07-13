@@ -491,51 +491,51 @@ To get rid of $k$-dependency the average HOMO-band energy $E_\text{A}$ in respec
 \end{align}
 with $\xi^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. The integral in \cref{equation_elliptical_integral} is known as the elliptical integral of the second kind and can be solved numerically. With this expression it may be possible to obtain the hopping parameter $t_0$ through a fit to the average HOMO-band energy. To check this calculation for self-consistency a fit to some modelled data (data of the previous fit) is done. In \cref{image_hydrogen_homo_energy_charging} the data and fits can be seen, which already shows some mismatch between the calculated and from the earlier fit modelled data. It can be seen, that the modelled data is too big for a small external potential and to small for a big external potential. This tendency can also be seen by a close look at \cref{image_hydrogen_3D_slices}.\\
 Nevertheless the data is fitted nicely and for the modelled data a value of $t_0 = \unit[4.6]{eV}$ is obtained, what is in perfect accordance to the previous result. From the real data a value of $t_0 = \unit[9.1]{eV}$ is obtained.\\
-\begin{figure}
+\begin{figure}[]
 	\centering
 	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge}
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits.}
 	\label{image_hydrogen_homo_energy_charging}
 \end{figure}
-\begin{figure}
+\begin{figure}[]
 	\centering
 	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge_sigma_32}
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits for $\sigma = \unit[0.32]{\AA}$.}
 	\label{image_hydrogen_homo_energy_charging_sigma_32}
 \end{figure}
-Thus it can be concluded that additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new quantities, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
+Thus it can be concluded that additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new parameters, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
 The methods shown in this section will now be tested on the earlier discussed \emph{trans}-polyacetylene.
 \subsection{Polyacetylene}
-First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$ for which charge transport becomes easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
+To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (compare \cref{image_region_gaussians}).\\
+First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$, for which charge transport becomes easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
+Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all other bands.
 \begin{figure}
 	\centering
 	\includegraphics[width = 10cm]{Images/polyacetylene/charging/sigmas}
 	\caption{Ground state energy of polyacetylene in respect to the displaced charge for different $\sigma$ of the \textsc{Gaussian} curves.}
 	\label{image_sigmas_polyacetylene}
 \end{figure}
-
-
-
-
-\newpage
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/polyacetylene/charging/band_structure_q_1}
 	\caption{Band structure of polyacetylene for different charge displacements. Here the five highest occupied bands and the LUMO-band are shown.}
-	\label{}
+	\label{image_polyacetylene_band_structure_charging}
 \end{figure}
 
+
+
+\newpage
 For fit used $\delta = \unit[0.035]{eV}$ from earlier derivation.
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\textwidth}
 	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/potential_q_1}
-	\caption{}
+	\caption{cDFT potentials $U_i$ in respect to the displaced charge for polyacetylene.}
 	\label{}
 	\end{minipage}
 	\begin{minipage}{.45\textwidth}
 	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/border_energy_q_1}
-	\caption{Homo-band energy at the edge of the \textsc{Brillouin} zone with fit.}
+	\caption{Homo-band energy at the edge of the \textsc{Brillouin} zone with fit for polyacetylene.}
 	\label{}
 	\end{minipage}
 \end{figure}
