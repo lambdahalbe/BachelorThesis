@@ -508,7 +508,7 @@ The methods shown in this section will now be tested on the earlier discussed \e
 \subsection{Polyacetylene}
 To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (compare \cref{image_region_gaussians}).\\
 First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$, for which charge transport becomes easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
-Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all other bands.
+Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all the other bands.\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 10cm]{Images/polyacetylene/charging/sigmas}
@@ -521,47 +521,79 @@ Next the band structure for different charge displacements is calculated (see \c
 	\caption{Band structure of polyacetylene for different charge displacements. Here the five highest occupied bands and the LUMO-band are shown.}
 	\label{image_polyacetylene_band_structure_charging}
 \end{figure}
-
-
-
-\newpage
-For fit used $\delta = \unit[0.035]{eV}$ from earlier derivation.
+Also the nice asymmetric behaviour of the HOMO- and LUMO-band in the outer regions, where no band interactions appear, can be seen, which matches the predictions of the calculated hopping eigenenergies:
+\begin{align}
+	E_k &= \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}
+\end{align}
+In the next step the cDFT potentials $U_i$ are checked to show the expected antisymmetric behaviour $U_1 = -U_2$ for the different charge displacements. Here it is even more important than for the hydrogen chain to start from a neutral state and to use antisymmetric initial potentials (see \cref{image_polyacetylene_potentials_asymmetry}). In further calculations again $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding cDFT quantity to the energy variation $V$ at the even/odd positions from the model.\\
+To calculate the proportionality factor between $U$ and $V$ the same method as for hydrogen is used, namely fitting the HOMO-band energies at the edge of the \textsc{Brillouin} zone to the predicted form:
+\begin{align}
+	E_\text{edge} &= -\sqrt{\left(cU\right)^2 + 4 \delta^2}
+\end{align}
+Due to the small but not vanishing distortion the additional term under the root is obtained. Thus a similar form of a negative absolute but with a little rounding at the tip is expected. For the fit $\delta$ is fixed to a quarter of the earlier calculated band gap (\cref{table_summary_polyacetylene}), which yields a proportionality constant of $c = \unit[7.70]{e}$ (see \cref{image_border_energy_polyacetylene}).\\
 \begin{figure}
 	\centering
-	\begin{minipage}{0.45\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/potential_q_asymmetric}
+	\caption{Symmetric initial cDFT potentials $U_1 = U_2 > 0$ and order of charge displacement going from negative to  positive $q$.}
+	\label{}
+	\end{subfigure}\hspace*{.5cm}
+	\begin{subfigure}{0.45\textwidth}
+	\centering
 	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/potential_q_1}
-	\caption{cDFT potentials $U_i$ in respect to the displaced charge for polyacetylene.}
+	\caption{Asymmetric initial cDFT potentials $U_1 = -U_2$ and order of charge displacement going from neutral to  positive/negative $q$.}
 	\label{}
-	\end{minipage}
-	\begin{minipage}{.45\textwidth}
-	\includegraphics[width = \textwidth]{Images/polyacetylene/charging/border_energy_q_1}
-	\caption{Homo-band energy at the edge of the \textsc{Brillouin} zone with fit for polyacetylene.}
-	\label{}
-	\end{minipage}
+	\end{subfigure}
+	\caption{cDFT potentials $U_i$ in respect to the displaced charge for polyacetylene. The calculations are made for different orders of charging and different initial cDFT potentials.}
+	\label{image_polyacetylene_potentials_asymmetry}
 \end{figure}
-Gives $c = \unit[7.70]{e}$.
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.4\textwidth]{Images/polyacetylene/charging/border_energy_q_1}
+	\caption{Homo-band energy at the edge of the \textsc{Brillouin} zone with fit for polyacetylene.}
+	\label{image_border_energy_polyacetylene}
+\end{figure}
+For the further calculations the form of the HOMO-band without interactions has to be determined by taking corresponding contributions of the third, forth and fifth (HOMO) band. This data can then be fitted with the function (see \cref{image_polyacetylene_2D_fit}):
+\begin{align}
+	E(k, U) &= -\sqrt{\left(cU\right)^2 + \left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
+\end{align}
+from which a value of $t_0 = \unit[2.6]{eV}$ is obtained, which matches the earlier calculated value perfectly. Furthermore it can be seen that the data is fitted very nicely. Also some slices of the 3D-plot in \cref{image_slices_polyacetylene} show the very good accordance of fit and data.\\
+The average of the HOMO-band for the data and fit (modelled data) can be seen in \cref{image_HOMO_average_polyacetylene}, which are well matching, too. Also the data is fitted well by the expected form (see \cref{equation_elliptical_integral}). From the fit of the modelled data a perfect, self-consistent value of $t_0 = \unit[2.6]{eV}$ is obtained. The fit to the real data yields an also very good value of $t_0 = \unit[2.7]{eV}$.\\
+Thus we've shown as proof of principle that the hopping parameter $t_0$ for molecules which are applicable for a description with the SSH-model can be obtained by using cDFT charge displacement.\\
+If the same procedure is done for \textsc{Gaussian} curves with $\sigma = \unit[0.24]{\AA}$ the average HOMO-band energies of the modelled and real data match much worse (see \cref{image_HOMO_average_polyacetylene_smaller_sigma}) and also a much worse hopping parameter of $t_0 = \unit[4.2]{\AA}$ is obtained. This shows that the heuristic way of choosing a value for $\sigma$ is at least for polyacetylene appropriate.\\
+Since the first and second band and the third and forth band in \cref{image_polyacetylene_band_structure_charging} show some antisymmetric behaviour for charging and the calculation of the HOMO-band with no band interactions still needs some direct evaluation of the band structure a fit to the average energy of all five occupied bands in the hope that influences of the lower bands cancel out seems worth a try. In \cref{image_all_average_polyacetylene} this and the earlier calculated modelled data are shown. This yields a hopping parameter of $t_0 = \unit[1.7]{eV}$, which is a not too bad estimate.
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D/figure_1-1}
 	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D/figure_1-2}
-	\caption{}
-	\label{}
+	\caption{HOMO-band structure (for no band interactions) of polyacetylene in respect to the cDFT potential $U$. Data points in blue and surface from fit.}
+	\label{image_polyacetylene_2D_fit}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/polyacetylene/charging/3D_cuts}
-	\caption{}
-	\label{}
+	\caption{Some slices of the band structure and fit  from polyacetylene for different displaced charges. The distance between the curves is manually increased for a better overview.}
+	\label{image_slices_polyacetylene}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width = 13cm]{Images/polyacetylene/charging/Homo_energy_charge}
-	\caption{}
-	\label{}
+	\includegraphics[width = 0.7\textwidth]{Images/polyacetylene/charging/Homo_energy_charge}
+	\caption{Average HOMO-band energies of polyacetylene in respect to the external potential $U$ with fits.}
+	\label{image_HOMO_average_polyacetylene}
 \end{figure}
-Fitdata: $t_0 = \unit[2.6]{eV}$\\
-Real Data: $t_0 = \unit[2.7]{eV}$
-
+\begin{figure}
+	\centering
+	\includegraphics[width = .7\textwidth]{Images/polyacetylene/charging/Homo_energy_charge_smaller_sigma}
+	\caption{Average HOMO-band energies of polyacetylene in respect to the external potential $U$ with fits for $\sigma = \unit[0.24]{\AA}$ of the \textsc{Gaussian} curves.}
+	\label{image_HOMO_average_polyacetylene_smaller_sigma}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width = .7\textwidth]{Images/polyacetylene/charging/Band_energy_average_charge}
+	\caption{Average energies of the five highest occupied bands of polyacetylene in respect to the external potential $U$. The modelled data from the HOMO-band is shown for comparison and thus the offsets are set to zero.}
+	\label{image_all_average_polyacetylene}
+\end{figure}
 
 \chapter{Things to do}
 \begin{compactitem}
