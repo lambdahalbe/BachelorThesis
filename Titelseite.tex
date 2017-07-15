@@ -1,4 +1,4 @@
-\documentclass[english,a4paper,10pt,twoside, headsepline]{scrbook}
+\documentclass[english,a4paper,10pt,twoside, headsepline, bibliography=totocnumbered, listof=totocnumbered]{scrbook}
 
 % Language
 
@@ -66,20 +66,32 @@
   colorlinks=false}
 
 \begin{document}
+\selectlanguage{english}
 \begin{titlepage}
- \centering 
- \Huge\thetitle\\ 
+\centering 
+\Huge\thetitle\\ 
  
- \vspace*{1cm}
+\vspace*{1cm}
  
- \Large Bachelor Thesis\\
- \vspace*{5cm}
+\Large Bachelor Thesis\\
+\vspace*{2cm}
+\begin{minipage}{0.49\textwidth}
+Author:\\
+\theauthor
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{flushright}
+Supervisor:\\
+PD Dr. Michael Walter	
+\end{flushright}
+\end{minipage}
+\vspace*{2cm}
  
- \includegraphics[width=10cm]{Images/logo_freiburg}
- 
- \vspace*{5cm}
- \theauthor
- \normalsize 
+\includegraphics[width=10cm]{Images/logo_freiburg}\\
+Institute of Physics\\
+\vspace*{5cm}
+\thedate
+\normalsize 
 \end{titlepage}
 
 \input{Chapters/Abstract}
