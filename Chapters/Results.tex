@@ -209,7 +209,7 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 	&&\\[-.3cm]
 	Bond length \hfill$a [\unit{\AA}]$ & $1.23$ & $1.2$\\ \hline&&\\[-.3cm]
 	Displacement \hfill$u [\unit{\AA}]$& $0 - 5\cdot10^{-3}$ & $0.042$\\ \hline&&\\[-.3cm]
-	Energy gap (manually displaced)\hfill$E_\text{Gap} [\unit{eV}]$ & $0.137\quad(1.27)$ & $1.4$\\ \hline &&\\[-.3cm]
+	Band gap (manually displaced)\hfill$E_\text{Gap} [\unit{eV}]$ & $0.137\quad(1.27)$ & $1.4$\\ \hline &&\\[-.3cm]
 	Hopping parameter \hfill$t_0 [\unit{eV}]$ & $2.62$ & $2.5$ \\ \hline&&\\[-.3cm]
 	Phonon coupling constant \hspace*{2cm}$\alpha [\unitfrac{eV}{\AA}]$& $3.95$ & $4.1$
 	\end{tabular}
@@ -265,7 +265,7 @@ from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value 
 		\clip [draw] (-.5, -1.5) rectangle (4.5, 1.5);
 		\foreach \x/\color in {0/red, 2.5/blue}{
 			\foreach \r in {0, 0.01, ..., 1}{
-				\fill[opacity = \r * 0.02, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
+				\fill[opacity = \r * 0.03, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
 		\foreach \x/\num in {0/1, 2.5/2}{
 			\node[fill = black, shape = circle, text = white] at (\x, 0)	 {\num};}
 		\end{scope}
@@ -279,7 +279,7 @@ from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value 
 		\clip [draw] (-.5, -1.5) rectangle (4.5, 1.5);
 		\foreach \x/\color in {0/red, 2.5/blue, 5/red}{
 			\foreach \r in {0, 0.01, ..., 1}{
-				\fill[opacity = \r * 0.02, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
+				\fill[opacity = \r * 0.03, fill = \color] (\x, 0) circle ({2.5 * (.5 - 0.5 * \r)});}}
 		\foreach \x/\num in {0/1, 2.5/2}{
 			\node[fill = black, shape = circle, text = white] at (\x, 0)	 {\num};}
 		\end{scope}

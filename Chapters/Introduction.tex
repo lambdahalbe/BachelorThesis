@@ -46,7 +46,7 @@ For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cit
 	\begin{tikzpicture}[show background rectangle, scale = 0.6]
 	\foreach \i/\j/\color in {0/0.2/red, 0/1.7/red, 2.8/-0.2/blue, 2.8/-1.7/blue}{
 		\foreach \r in {0, 0.01, ..., 1}{
-		 	\fill[opacity = \r * 0.01, fill = \color] (\i, \j) circle ({2.5 * (1 - \r)});}}
+		 	\fill[opacity = \r * 0.02, fill = \color] (\i, \j) circle ({2.5 * (1 - \r)});}}
 	\foreach \i/\j/\num in {0/0.2/1, 0/1.7/2, 2.8/-0.2/3, 2.8/-1.7/4}{
 	\node[fill = black, shape = circle, text = white] at (\i, \j)	 {\num};}
 	\end{tikzpicture}
