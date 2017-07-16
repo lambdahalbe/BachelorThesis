@@ -1,6 +1,7 @@
 \chapter{Appendix}
+\label{chapter_appendix}
 \section{Calculations}
-\subsection{Creation and Annihilation Operators}
+\subsection*{Creation and Annihilation Operators}
 The creation and annihilation operators in k-space can be defined as follows (symmetric normalization factors, and the number of unit cells in the chain $N_d = \nicefrac{N}{2}$):
 \begin{align}
 c_{2n} &= \frac{1}{\sqrt{N_d}}\sum_k\exp\left[ik\left(2n\right)a\right]\cdot c_{k}^{(e)}\\
@@ -28,7 +29,7 @@ Analogously:
 \sum_n^{N_d} c_{2n}^\dagger c_{2n-1}&=\sum_{k'} \exp\left(-ik'a\right)\cdot  c_{k'}^{\dagger(e)}c_{k'}^{(o)}\\
 \sum_n^{N_d} c_{2n-1}^\dagger c_{2n} &=\sum_{k'} \exp\left(ik'a\right)\cdot  c_{k'}^{\dagger(o)}c_{k'}^{(e)}
 \end{align}
-\subsection{Transformation of the SSH-Hamiltonian}
+\subsection*{Transformation of the SSH-Hamiltonian}
 Using the relations of the previous section the Hamiltonian from \cref{equation_SSH_hamiltonian_real_space} can be transformed as follows:
 \begin{align}
 \mathcal{H} &= -2\sum_n^{N_d} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
@@ -43,7 +44,7 @@ Substituting $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$ the 
 \mathcal{H}_{\text{hopp},k} &=
 \left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
 \end{align}
-\subsection{Calculation of the Average HOMO-Band Energy}
+\subsection*{Calculation of the Average HOMO-Band Energy}
 The average energy of the hopping term for the HOMO-band can be calculated as follows:
 \begin{align}
 E_A &=-\frac{1}{N_d}\sum_k |E_k|\\
@@ -56,7 +57,7 @@ E_A &= -\frac{1}{\pi}\int\limits_{\nicefrac{-\pi}{2}}^{\nicefrac{\pi}{2}}\hspace
 \end{align}
 with the complete elliptical integral of the second kind $F(x)$. Later $F(x) \approx 1$ for $|x|\ll 1$ is used.
 
-\subsection{Calculation of the Ground State Energy for the First Method}
+\subsection*{Calculation of the Ground State Energy for the First Method}
 The expectation value of the hopping energy can be calculated as follows:
 \begin{align}
 \left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{\text{hopp},k}\Big|\Psi_k^{(v)}(q)\right\rangle &= \left[\sqrt{\frac{1-q}{2}}c_k^{(e)}- \sqrt{\frac{1+q}{2}}\frac{\epsilon_k + i \Delta_k}{|E_k|}c_{k}^{(o)}\right]\cdot\nonumber\\
@@ -73,7 +74,7 @@ Thus the sum over the HOMO-band hopping energies becomes for small $\nicefrac{\d
 \begin{align}
 E_0(q) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2}
 \end{align}
-\subsection{Calculation of the Average HOMO-Band Energy for the Second Method}
+\subsection*{Calculation of the Average HOMO-Band Energy for the Second Method}
 Then the HOMO-band energy sum can be calculated as follows:
 \begin{align}
 E_A &= -\frac{1}{N_d}\sum_k |E_k|\\
@@ -87,7 +88,7 @@ E_A &= -\frac{2}{\pi} \sqrt{V^2+4t_0^2} \int\limits_{0}^{\nicefrac{\pi}{2}} \tex
 \end{align}
 
 \section{Convergence Testing of the Hydrogen Chain}
-
+\label{section_conv_hyd}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width = 13cm]{Images/Hydrogen/convergence/kpts-energy}
