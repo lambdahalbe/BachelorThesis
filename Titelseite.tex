@@ -38,7 +38,7 @@
 \usepackage{titling}
 \usepackage{lmodern}
 \usepackage[]{hyperref} % hidelinks to hide links :D
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper, bindingoffset = 10mm]{geometry}
 \usepackage{graphicx}
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
@@ -47,6 +47,9 @@
 \usepackage{paralist}
 \usepackage{listings}
 \usepackage{rotating}
+\usepackage{pdfpages}
+\usepackage[percent]{overpic}
+\usepackage{layout}
 
 
 % Tikz
@@ -65,11 +68,13 @@
   pdfauthor=\theauthor,
   colorlinks=false}
 
+%\KOMAoptions{BCOR=0mm}
+
 \begin{document}
 \selectlanguage{english}
 \begin{titlepage}
 \centering 
-\Huge\thetitle\\ 
+\huge\thetitle\\ 
  
 \vspace*{1cm}
  
@@ -94,7 +99,14 @@ Institute of Physics\\
 \normalsize 
 \end{titlepage}
 
+\cleardoublepage
+
+\includepdf{Images/erklaerung}
+
+
+
 \input{Chapters/Abstract}
+
 \tableofcontents
 \pagenumbering{Roman}
 
