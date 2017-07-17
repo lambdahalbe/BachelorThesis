@@ -1,21 +1,6 @@
 \chapter*{Abstract}
 \pagenumbering{gobble}
-In this thesis tight-binding parameters for \emph{trans}-polyacetylene are calculated with density functional theory, which are mainly in good accordance with known literature values. 
-\\
-The following physical quantities for \emph{trans}-polyacetylene are calculated by using density functional theory with the BPE exchange-correlation-functional\footnote{In the table 'manually displaced' denotes the result obtained for a manually set displacement of $u = \unit[0.042]{\AA}$.}:
-\begin{table}[!h]
-	\centering
-	\begin{tabular}{l|c|c}
-		Quantety & Calculated Value & Literature Value (\cite{PhysRevLett.42.1698, doi:10.1021/cr990357p})\\
-		\hline \hline
-		&&\\[-.3cm]
-		Bond length \hfill$a [\unit{\AA}]$ & $1.23$ & $1.2$\\ \hline&&\\[-.3cm]
-		Displacement \hfill$u [\unit{\AA}]$& $0 - 5\cdot10^{-3}$ & $0.042$\\ \hline&&\\[-.3cm]
-		Band gap (manually displaced)\hfill$E_\text{Gap} [\unit{eV}]$ & $0.137\quad(1.27)$ & $1.4$\\ \hline &&\\[-.3cm]
-		Hopping parameter \hfill$t_0 [\unit{eV}]$ & $2.62$ & $2.5$ \\ \hline&&\\[-.3cm]
-		Phonon coupling constant \hspace*{2cm}$\alpha [\unitfrac{eV}{\AA}]$& $3.95$ & $4.1$
-	\end{tabular}
-\end{table}\\
+In this thesis tight-binding parameters for \emph{trans}-polyacetylene are calculated with density functional theory using the PBE exchange-correlation-functional. First, this is done by direct evaluation of the band structures from density functional theory. Here most quantities are in good accordance with literature values (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) and the mismatching ones can be traced back to a well known issue of PBE, namely a too big delocalization of the electrons. For example, the hopping parameter is determined to $t_0 = \unit[2.62]{eV}$, which matches the literature value of $t_0 = \unit[2.5]{eV}$ quite well.\\
 Furthermore, a proof of principle is given, that for \emph{trans}-polyacetylene the hopping parameter can be calculated by the application of charge displacements with constrained density functional theory. Here a quite good hopping parameter of $t_0 = \unit[2.7]{eV}$ is obtained.
 
 \begin{otherlanguage}{german}
