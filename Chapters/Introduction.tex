@@ -1,6 +1,6 @@
 \section{Motivation}
-The big relevance of electronic transport in organic semiconductors can be seen by looking at the variety of its applications including photovoltaic, OLED's and many more. To understand the underlying phenomena, including a description of the electronic band structure, a simple model of a perfect, infinite, one-dimensional polymer chain is often assumed. Therefore a well-tried example is polyacetylene, which was already used in the 1950s by \textsc{Salem} and \textsc{Longuet-Higgins} and later in the 1980s by \textsc{Su, Schrieffer} and \textsc{Heeger} to describe the electronic structure under periodic boundary conditions or effects of excitations (e. g. solitons). In this connection a tight-binding picture describing the charge transport by electron hopping has shown to yield a good prediction of the band structure with very few parameters  \cite{koehler2015electronic,Longuet-Higgins172,PhysRevLett.42.1698}.\\
-This parameters can be obtained by \emph{density functional theory} (DFT), which is an efficient computational, \emph{ab initio}, self consistency method to calculate quantum mechanical ground states and their properties. Since an analytical solution to Schrödinger's equation can only be found in the simplest cases, but quantum mechanical effects gain more and more relevance in many fields, including nanoelectronics and modern materials sciences, DFT comes in very handy.\\
+The big relevance of electronic transport in organic semiconductors can be seen by looking at the variety of its applications, including photovoltaic, OLED's and many more. To understand the underlying phenomena, including a description of the electronic band structure, a simple model of a perfect, infinite, one-dimensional polymer chain is often assumed. Therefore, a well-tried example is \emph{trans}-polyacetylene, which was already used in the 1950s by \textsc{Salem} and \textsc{Longuet-Higgins} and later in the 1980s by \textsc{Su, Schrieffer} and \textsc{Heeger} to describe the electronic structure under periodic boundary conditions or effects of excitations (e. g. solitons). In this connection, a tight-binding picture describing the charge transport by electron hopping has shown to yield a good prediction of the band structure with very few parameters  \cite{koehler2015electronic,Longuet-Higgins172,PhysRevLett.42.1698}.\\
+This parameters can be obtained by \emph{density functional theory} (DFT), which is an efficient computational, \emph{ab initio}, self consistency method to calculate quantum mechanical ground states and their properties. Since an analytical solution to Schrödinger's equation can only be found in the simplest cases, but quantum mechanical effects gain more and more relevance in many fields, such as nanoelectronics and modern materials sciences, DFT comes in very handy.\\
 The standard method to obtain these parameters is to fit tight-binding energies to DFT energies. Beyond this, the electron hopping can be interpreted in a visual way, that localized electrons are hopping between discrete sites. Further, we want to understand how this visual approach can be connected to the mathematical description in the tight-binding model. For this, we move a charge by constraints from one side to another. This concept is also closely related to the charge transport in a liner molecule, e. g. \emph{trans}-polyacetylene, where incoherent transport takes place.\\
 
 \section{Theoretical Background}
@@ -12,19 +12,19 @@ A simple look at the many-body Schrödinger equation with the electron positions
 \end{align}
 shows the disadvantage, that this expression is $3(N+M)$-dimensional, which leads to a high computational effort.
 At first the \textsc{Born-Oppenheimer} approximation is applied, stating that the timescale of changing dynamics for the light electrons is much shorter then for the heavy cores and therefore the cores can be assumed to be fixed at their positions to calculate the electrons ground state. But this only reduces the problem to $3N$-dimensions.\\
-The \textsc{Hohenberg-Kohn} theorem states that the complete electron ground state density
+Here the \textsc{Hohenberg-Kohn} theorem states that the complete electron ground state density
 \begin{align}
 n_0\left(\vec{r}\right) = N\int\dd\vec{r}_2\ \dots\int\dd\vec{r}_N\ \left|\Psi_0\left(\vec{r}, \vec{r}_2, \dots,\vec{r}_N,\right)\right|^2
 \end{align}
-determines the external potential (for example the \textsc{Coulomb} potentials of the cores) and thus the electrons ground state wave function $\Psi_0$. Mathematically this means that the wave function is a unique functional of the electron density with $\Psi_0\left(\vec{r}\right) = \Psi\left[n_0\left(\vec{r}\right)\right]$ and consequently every observable can be obtained as a functional of the electron density (hence the name 'Density Functional Theory').\\
-Of course this includes the energy observable $E[n\left(\vec{r}\right)]$, which becomes minimal for the correct ground state $n_0\left(\vec{r}\right)$. Thus the dimension of the problem is reduced to $3$, but causes a new problem, since even if it's known that this functional exists, it contains terms of unknown form due to electron-electron interaction.\\
+determines the external potential (for example the \textsc{Coulomb} potentials of the cores) and thus the electrons ground state wave function $\Psi_0$. Mathematically, this means that the ground state wave function is a unique functional of the ground state electron density with $\Psi_0\left(\vec{r}\right) = \Psi\left[n_0\left(\vec{r}\right)\right]$ and consequently every observable of $\Psi_0$ can be obtained as a functional of the electron density (hence the name 'Density Functional Theory').\\
+Of course this includes the energy observable $E[n\left(\vec{r}\right)]$, which becomes minimal for the correct ground state $n_0\left(\vec{r}\right)$. Thus, the dimension of the problem is reduced to $3$, but causes a new problem, since even if it's known that this functional exists, it contains terms of unknown form due to electron-electron-interaction.\\
 To resolve this problem, a system with the same electron density out of non directly interacting electrons is assumed. In other words, a system of wave functions $\varPhi_i$ (the so called \textsc{Kohn-Sham} orbitals) is assumed with:
 \begin{align}
 n\left(\vec{r}\right) &= \sum_i \left|\varPhi_i\right|^2
 \end{align}
-This wave functions are eigenfunctions to single particle Hamiltonians depending on the electron density $n(\vec{r})$. Again these Hamiltonians contain an unknown term due to many-particle-interactions, called the \emph{exchange-correlation} (XC) term, but this one can be approximated for most purposes. Thus separated equations depending on the electron density $n\left(\vec{r}\right)$ for the single particle wave functions are obtained, which again contribute themselves to the electron density $n\left(\vec{r}\right)$. These equations can be solved by iteration and checking for self consistency. This information is based on \cite{KOSKINEN2009237,1402-4896-2004-T109-001}, where a more detailed explanation can be found.\\
-Through numerical optimization (minimization) of the ground state energy in respect to the core positions it is also possible to find the relaxed core positions.\\
-To get the band structures the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem are calculated (see \cref{section_bloch}).\\
+This wave functions are eigenfunctions to single particle Hamiltonians depending on the electron density $n(\vec{r})$. Again these Hamiltonians contain an unknown term due to many-particle-interactions, called the \emph{exchange-correlation} (XC) term, but this one can be approximated for most purposes. Thus, separated equations depending on the electron density $n\left(\vec{r}\right)$ for the single particle wave functions are obtained, which again contribute themselves to the electron density $n\left(\vec{r}\right)$. These equations can be solved by iteration and checking for self consistency. This information is based on \cite{KOSKINEN2009237,1402-4896-2004-T109-001}, where a more detailed explanation can be found.\\
+Through numerical optimization (minimization) of the ground state energy in respect to the core positions, it is also possible to find the relaxed core positions.\\
+To get the band structures, the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem are calculated (see \cref{section_bloch}).\\
 Finally, calculations with manually shifted charges are performed using \emph{constrained DFT} (cDFT). This is done by defining $i$ regions containing one or multiple cores with positions $\vec{R}_j$ and an absolute charge $N_i$ for each region. The charge of any region is calculated by integrating the electron density $n\left(\vec{r}\right)$ multiplied whit a sum of \textsc{Gaussian} curves  $w(\vec{r})$ centered at the atom positions $R_j$ for all cores in the $i$-th region (see \cref{image_region_gaussians}):
 \begin{figure}
 	\centering
@@ -41,7 +41,7 @@ Finally, calculations with manually shifted charges are performed using \emph{co
 \begin{align}
 w_i\left(\vec{r}\right) &= \sum_j w\left(\vec{r} - \vec{R}_j\right) \text{\quad}
 \end{align}
-The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $U_i$ scaling the strength of the potentials to change the density and thus get the correct charges in each region\footnote{In this way the $U_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of a fixed charge in each region.}.This can be written as minimization problem of the cDFT energy $F[n\left(\vec{r}\right), U_i]$:
+The same \textsc{Gaussian} curves are used as external potentials with additional prefactors $U_i$ scaling the strength of the potentials to change the density and thus get the correct charges in each region\footnote{In this way, the $U_i$ can be understood as \textsc{Lagrange} multipliers for the minimization problem of the energy with the constraints of a fixed charge in each region.}.This can be written as minimization problem of the cDFT energy $F[n\left(\vec{r}\right), U_i]$:
 \begin{align}
 F\left[n\left(\vec{r}\right), U_i\right] &= E_0\left[n\left(\vec{r}\right)\right] + \sum_i U_i\left(\int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i\right)
 \end{align}
@@ -50,12 +50,12 @@ with the energy functional of the undisturbed system $E_0\left[n\left(\vec{r}\ri
 0 &= \int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i
 \end{align}
 for all $i$ regions. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{section_constraint_density_functonal_theory}).\\
-For the calculations in this thesis the DFT package \emph{GPAW} \cite{GPAW1, GPAW2} in combination with the atomic simulation environment \emph{ASE} \cite{ASE} is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and its gradient. Further the calculations are performed on a real space grid in the manner of a finite difference method.
+For the calculations in this thesis the DFT package \emph{GPAW} \cite{GPAW1, GPAW2} in combination with the atomic simulation environment \emph{ASE} \cite{ASE} is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and its gradient. Further, the calculations are performed on a real-space grid in the manner of a finite difference method.
 \subsection{Lattice}
 Since a periodic system is investigated, which can be described with a one-dimensional lattice, basic principles of lattices are explained in this section.
 If not otherwise mentioned, the information of the following four sections is based on \cite{ashcroft}.\\
 In a solid the atoms are typically placed periodically. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, which behave like very viscous fluids and will not be discussed here \cite{gerthsen}.\\
-In the simplest case the atom positions can be described by a \emph{\textsc{Bravais} lattice}. This is a perfect periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
+In the simplest case, the atom positions can be described by a \emph{\textsc{Bravais} lattice}. This is a perfect periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.33\textwidth}
@@ -110,29 +110,29 @@ Supposing that the boundary condition at the surface should not change the physi
 \begin{align}
 	\Psi\left(\vec{r} + N_i \vec{a}_i\right) &= \Psi\left(\vec{r}\right)
 \end{align}
-where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the bulk. Hereby one obtains an additional condition for the wave vectors $\vec{k}$, namely:
+where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the bulk. Here, one obtains an additional condition for the wave vectors $\vec{k}$, namely:
 \begin{align}
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
-It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. The conclusion is that one has to take only the states within the first \textsc{Brillouine} zone into account for a complete description. Hence, the number of states in the first \textsc{Brillouine} zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. In the one dimensional case this means that the number of states within the first \textsc{Brillouine} zone is the number of primitive cells in the chain.\\
+It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. The conclusion is that one has to take only the states within the first \textsc{Brillouine} zone into account for a complete description. Hence, the number of states in the first \textsc{Brillouine} zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. In the one dimensional case, this means that the number of states within the first \textsc{Brillouine} zone is the number of primitive cells in the chain.\\
 Since there are multiple solutions to \textsc{Schrödinger's} equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, which corresponds with a high density of states in the reciprocal space. As limit of an infinite chain, a continuum of states can be assumed in the reciprocal space. This leads to a continuum of eigenenergies in some interval (\emph{band}). Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
 
 \subsection{Tight-Binding Method}
-In the previous section the eigenstates have been calculated by using the translational symmetries of a \textsc{Bravais} lattice, which results in completely delocalized states. A different approach is the following:\\
+In the previous section, the eigenstates have been calculated by using the translational symmetries of a \textsc{Bravais} lattice, which results in completely delocalized states. A different approach is the following:\\
 If the distance between adjacent atoms is much bigger than the typical width of the electron wave functions for isolated atoms, the wave functions shouldn't differ much from those states. By decreasing the distance between the atoms, the electrons will start to feel the presence of the other atoms and will therefore change their states. The tight-binding method handles the case, in which the interaction doesn't completely change the wave functions, but the effects are also too big to neglect. Since the tight-binding method is a single particle model, it seems quite suitable for the \textsc{Kohn-Sham} orbitals and therefore for the description of the band structures.\\
 Mathematically, one starts with the basic single atom Hamiltonian $\mathcal{H}_{\text{at}}$ and its single particle eigenfunctions $\varphi_n$ satisfying the Schrödinger equation of an isolated atom:
 \begin{align}
 	\mathcal{H}_{\text{at}} \varphi_n &= E_n \varphi_n
 \end{align}
-In the next step a second term is added to the Hamiltonian, that applies the corrections needed to describe the lattice correctly. In an one-dimensional chain with atom positions $\vec{R}_i$ the modified Hamiltonian contains a term describing the interaction $U$ of adjacent valence electrons with the matrix elements $M_{i, i\pm1}$ in the basis of the single atom wave functions $\varphi_n$ belonging to the $i$-th atom:
+In the next step, a second term is added to the Hamiltonian, that applies the corrections needed to describe the lattice correctly. In an one-dimensional chain with atom positions $\vec{R}_i$ the modified Hamiltonian contains a term describing the interaction $U$ of adjacent valence electrons with the matrix elements $M_{i, i\pm1}$ in the basis of the single atom wave functions $\varphi_n$ belonging to the $i$-th atom:
 \begin{align}
 	M_{i, i\pm1} &= \int\dd\vec{r}\ \varphi_n^*\left(\vec{r} - \vec{R}_i\right)\ U\ \varphi_n\left(\vec{r}-\vec{R}_{i\pm1}\right) 
 \end{align}
-In can be shown that this term is negative if the wave functions have the same sign where they meet and therefore form a binding state (see \cite{rohrer}). Hence the positive so called \emph{hopping parameter} $t_{i, i\pm 1} = - M_{i, i\pm 1}$ is introduced. In terms of second quantization this interaction Hamiltonian can be written as\footnote{Neglecting spin degree of freedom}:
+In can be shown that this term is negative if the wave functions have the same sign where they meet and therefore form a binding state (see \cite{rohrer}). Hence, the positive so called \emph{hopping parameter} $t_{i, i\pm 1} = - M_{i, i\pm 1}$ is introduced. In terms of second quantization this interaction Hamiltonian can be written as\footnote{Neglecting spin degree of freedom}:
 \begin{align}
 	- \sum_i t_{i, i+1} \left(c_i^\dagger\  c_{i+1} + c_{i+1}^\dagger\  c_i\right)
 \end{align}
-with the creation and annihilation operators $c^\dagger_i, c_i$ for an electron located at the $i$-th atom. Thus the term $c_i^\dagger c_{i\pm1}$ can be interpreted as shifting an electron from the ($i\pm1$)-th atom to the $i$-th atom, which explains the name hopping parameter for $t$.\\
+with the creation and annihilation operators $c^\dagger_i, c_i$ for an electron located at the $i$-th atom. Thus, the term $c_i^\dagger c_{i\pm1}$ can be interpreted as shifting an electron from the ($i\pm1$)-th atom to the $i$-th atom, which explains the name hopping parameter for $t$.\\
 The combination of the single atom Hamiltonian $\mathcal{H}_\text{at}$ and the next-neighbor-hopping term can then be written as:
 \begin{align}
 	\mathcal{H} &= \sum_i E_n n_i - \sum_i t_{i, i+1} \left(c_i^\dagger\  c_{i+1} + c_{i+1}^\dagger\  c_i\right)
@@ -147,7 +147,7 @@ with the number operator $n_i = c^\dagger_i c_i$, which simply returns the numbe
 	&&&&\ddots
 	\end{pmatrix*}
 \end{align}
-In the simple case of a perfect periodic chain all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. A simple transformation into reciprocal space yields the eigenvalues (see appendix, \cref{chapter_appendix}):
+In the simple case of a perfect periodic chain, all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. A simple transformation into reciprocal space yields the eigenvalues (see appendix, \cref{chapter_appendix}):
 \begin{align}
 E_k &= E_n \pm 2t_0\cos(ka)
 \end{align}
@@ -210,7 +210,7 @@ Assuming that the $\sigma$-binding energy can be expanded to second order about 
 \begin{align}
 	\frac{\kappa}{2}\sum_n (u_{n+1} - u_n)^2
 \end{align}
-The $\pi$-binding energy is described in the earlier derived tight-binding approximation\footnote{Since the description is spinless, an additional factor of 2 is obtained.}. Finally the term for the kinetic energy of the atoms is added to get the so called \emph{SSH-Hamiltonian} (named after \textsc{W. P. Su, J. R. Schrieffer, A. J. Heeger}, see \cite{PhysRevB.22.2099, RevModPhys.60.781}):
+The $\pi$-binding energy is described in the earlier derived tight-binding approximation\footnote{Since the description is spinless, an additional factor of 2 is obtained.}. Finally, the term for the kinetic energy of the atoms is added to get the so called \emph{SSH-Hamiltonian} (named after \textsc{W. P. Su, J. R. Schrieffer, A. J. Heeger}, see \cite{PhysRevB.22.2099, RevModPhys.60.781}):
 \begin{align}
 	\mathcal{H}_\text{SSH} &= \underbrace{-2\sum_{n} t_{n+1,n}\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right)}_{\text{electron hopping / $\pi$-binding energy}} +
 	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma-\text{binding energy}} + 
@@ -228,8 +228,8 @@ Calculation of the $k$-space representations of the creation and annihilation op
 \mathcal{H} &= \sum_k \left[
 \left(\epsilon_k + i\Delta_k\right)c_{k}^{\dagger(e)}c_{k}^{(o)} + \left(\epsilon_k-i\Delta_k \right)	c_{k}^{\dagger(o)}c_{k}^{(e)}\right] + 2N\kappa u^2
 \end{align}
-with the substitutions $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$. Here $c^{\dagger(e)}_k$, $c^{\dagger(o)}_k$, $c^{(e)}_k$, $c^{(o)}_k$ are the creation and annihilation operators at the even/odd $(e)$/$(o)$ positions for a certain $k$-point. Due to the displacement the primitive cell length doubles and therefore the first \textsc{Brillouine} zone goes only from $\nicefrac{-\pi}{2a}$ to $\nicefrac{\pi}{2a}$.\\
-In further calculations the term $2N\kappa u^2$ will be neglected since it's only causing an offset. Thus, the contribution of the Hamiltonian responsible for the form of the band structure is given by the terms:
+with the substitutions $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$. Here, $c^{\dagger(e)}_k$, $c^{\dagger(o)}_k$, $c^{(e)}_k$, $c^{(o)}_k$ are the creation and annihilation operators at the even/odd $(e)$/$(o)$ positions for a certain $k$-point. Due to the displacement, the primitive cell length doubles and therefore the first \textsc{Brillouine} zone goes only from $\nicefrac{-\pi}{2a}$ to $\nicefrac{\pi}{2a}$.\\
+In further calculations the term $2N\kappa u^2$ will be neglected, since it's only causing an offset. Thus, the contribution of the Hamiltonian responsible for the form of the band structure is given by the terms:
 \begin{align}
 	\mathcal{H}_k &=
 	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
@@ -272,4 +272,4 @@ It can also be shown, that the average HOMO-band energy takes the form:
 E_A &=-\frac{2}{N}\sum_k |E_k|\\
 &=\frac{-4t_0}{\pi}\underbrace{\int\limits_{0}^{\nicefrac{\pi}{2}}\text{d}\theta\ \sqrt{1-\left(1-\frac{\delta^2}{t_0^2}\right)\sin^2(\theta)}}_{=:F(\nicefrac{\delta}{t_0})}
 \end{align}
-Here $F\left(\nicefrac{\delta}{t_0}\right)\approx 1$ for $\nicefrac{\delta}{t_0} \ll 1$.
+Here, $F\left(\nicefrac{\delta}{t_0}\right)\approx 1$ for $\nicefrac{\delta}{t_0} \ll 1$.
