@@ -128,7 +128,7 @@ In the next step a second term is added to the Hamiltonian, that applies the cor
 \begin{align}
 	M_{i, i\pm1} &= \int\dd\vec{r}\ \varphi_n^*\left(\vec{r} - \vec{R}_i\right)\ U\ \varphi_n\left(\vec{r}-\vec{R}_{i\pm1}\right) 
 \end{align}
-In can be shown that this term is negative if the wave functions have the same sign where they meet and therefore form a binding state (see \cite{rohrer}). Hence the positive so called \emph{hopping parameter} $t_{i, i\pm 1} = - M_{i, i\pm 1}$ is introduced. In terms of second quantization this interaction Hamiltonian can be written as\footnote{neglecting spin degree of freedom}:
+In can be shown that this term is negative if the wave functions have the same sign where they meet and therefore form a binding state (see \cite{rohrer}). Hence the positive so called \emph{hopping parameter} $t_{i, i\pm 1} = - M_{i, i\pm 1}$ is introduced. In terms of second quantization this interaction Hamiltonian can be written as\footnote{Neglecting spin degree of freedom}:
 \begin{align}
 	- \sum_i t_{i, i+1} \left(c_i^\dagger\  c_{i+1} + c_{i+1}^\dagger\  c_i\right)
 \end{align}
@@ -147,20 +147,20 @@ with the number operator $n_i = c^\dagger_i c_i$, which simply returns the numbe
 	&&&&\ddots
 	\end{pmatrix*}
 \end{align}
-In the simple case of a perfect periodic chain all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. A simple transformation into reciprocal space yields the eigenvalues (see appendix \cref{chapter_appendix}):
+In the simple case of a perfect periodic chain all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. A simple transformation into reciprocal space yields the eigenvalues (see appendix, \cref{chapter_appendix}):
 \begin{align}
 E_k &= E_n \pm 2t_0\cos(ka)
 \end{align}
 
 \subsection{Peierls Distortion and SSH-Hamiltonian}
 \label{chapter_Peierls_SSH}
-\textsc{Peierls} instability theorem states, that an one-dimensional chain of atoms with a single unpaired electron will always distort from a perfect periodic placing of its atoms (see \cite{chandrasekhar,nalwa}). Or in other words, breaking the symmetry under the previous conditions will always lower the ground state energy.\\
-Thus a displacement $u_n$ of the atoms is expected yielding the new atom positions (here one-dimensional):
+\textsc{Peierls} instability theorem states, that an one-dimensional chain of atoms with a single unpaired electron will always distort from a perfect periodic placing of its atoms (see \cite{chandrasekhar,nalwa}). Or in other words, breaking the symmetry under the previous conditions will always lower the ground state energy.\newpage
+Thus, a displacement $u_n$ of the atoms is expected yielding the new atom positions (here one-dimensional):
 \begin{align}
 	R_n &\mapsto (-1)^{n}u_n + R_n
 \end{align}
-As a consequence also the hopping-parameter will be effected in the way $t_{n, n+1} = t_0 + \delta_n$ and for small displacements $u_n$ the linear approximation $\delta_n = \alpha (u_{n+1} - u_n)$ with the \emph{phonon coupling constant} $\alpha = \nicefrac{\partial t}{\partial u}$ will hold.\\
-An important example which includes this hopping-term is the Hamiltonian used to describe the electron-hopping in \emph{trans}-polyacetylene (see \cref{image_trans_polyacetylene}). Here $u_n$ describes the displacement of a CH group.\\
+As a consequence, also the hopping-parameter will be effected in the way $t_{n, n+1} = t_0 + \delta_n$ and for small displacements $u_n$ the linear approximation $\delta_n = \alpha (u_{n+1} - u_n)$ with the \emph{phonon coupling constant} $\alpha = \nicefrac{\partial t}{\partial u}$ will hold.\\
+An important example, which includes this hopping-term, is the Hamiltonian used to describe the electron-hopping in \emph{trans}-polyacetylene (see \cref{image_trans_polyacetylene}). Here $u_n$ describes the displacement of a CH group.\\
 \begin{figure}
 	\begin{minipage}{0.49\textwidth}
 	\centering
@@ -216,7 +216,7 @@ The $\pi$-binding energy is described in the earlier derived tight-binding appro
 	\underbrace{\frac{1}{2}\sum_n \kappa (u_{n+1} - u_n)^2}_{\sigma-\text{binding energy}} + 
 	\underbrace{\frac{1}{2} \sum_n M \dot{u}^2_n}_{\text{kinetic energy}}
 \end{align}
-Using the \textsc{Born-Oppenheimer} approximation and a perfect symmetric dimerization $u_n = (-1)^nu$ (see \cref{image_scheme_dimer}) the Hamiltonian can be written as:
+\newpage Using the \textsc{Born-Oppenheimer} approximation and a perfect, symmetric dimerization $u_n = (-1)^nu$ (see \cref{image_scheme_dimer}) the Hamiltonian can be written as:
 \begin{align}
 	\mathcal{H} &= -2\sum_n \left[t_0 + (-1)^n\delta\right]\cdot\left(c_{n+1}^\dagger c_n + c_n^\dagger c_{n+1}\right) + 2N\kappa u^2\\
 	&= -2\sum_n^{\nicefrac{N}{2}} \left[\left(t_0+\delta\right)\left(c_{2n+1}^\dagger c_{2n} + c_{2n}^\dagger c_{2n+1} \right) + 
@@ -229,7 +229,7 @@ Calculation of the $k$-space representations of the creation and annihilation op
 \left(\epsilon_k + i\Delta_k\right)c_{k}^{\dagger(e)}c_{k}^{(o)} + \left(\epsilon_k-i\Delta_k \right)	c_{k}^{\dagger(o)}c_{k}^{(e)}\right] + 2N\kappa u^2
 \end{align}
 with the substitutions $\epsilon_k := 2t_0\cos(ka)$ and $\Delta_k := 2\delta\sin(ka)$. Here $c^{\dagger(e)}_k$, $c^{\dagger(o)}_k$, $c^{(e)}_k$, $c^{(o)}_k$ are the creation and annihilation operators at the even/odd $(e)$/$(o)$ positions for a certain $k$-point. Due to the displacement the primitive cell length doubles and therefore the first \textsc{Brillouine} zone goes only from $\nicefrac{-\pi}{2a}$ to $\nicefrac{\pi}{2a}$.\\
-In further calculations, the term $2N\kappa u^2$ will be neglected since it's only causing an offset. Thus the contribution of the Hamiltonian responsible for the form of the band structure is given by the terms:
+In further calculations the term $2N\kappa u^2$ will be neglected since it's only causing an offset. Thus, the contribution of the Hamiltonian responsible for the form of the band structure is given by the terms:
 \begin{align}
 	\mathcal{H}_k &=
 	\left[\epsilon_k + i\Delta_k\right]c_{k}^{\dagger(e)}c_{k}^{(o)} + \left[\epsilon_k-i\Delta_k \right]	c_{k}^{\dagger(o)}c_{k}^{(e)}
@@ -261,7 +261,7 @@ and the eigenstates:
 	\Psi_k^{(v)} &= \frac{1}{\sqrt{2}}\left(c_k^{\dagger(e)}-\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}\right)
 	\label{equation_valence_eigenstate}
 \end{align}
-corresponding to the valance $(v)$ and conduction $(c)$ band. Hereby the eigenstates have to be understood as operating on the vacuum state $|(e),(o)\rangle = |0,0\rangle$. Thus the following relations can easily be shown:
+corresponding to the valance $(v)$ and conduction $(c)$ band. Here, the eigenstates have to be understood as operating on the vacuum state $|(e),(o)\rangle = |0,0\rangle$. Thus, the following relations can easily be shown:
 \begin{align}
 	\left\langle\Psi_k^{(\lambda)}\Big|\Psi_k^{(\lambda\prime)}\right\rangle &= \delta_{\lambda,\lambda\prime}\\
 	\left\langle\Psi_k^{(v)}\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}\right\rangle &= - |E_k|\\

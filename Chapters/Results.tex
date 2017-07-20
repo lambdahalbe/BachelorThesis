@@ -1,5 +1,5 @@
 \chapter{Results}
-The models of the previous sections are tested on \emph{trans}-polyacetylene. Since \emph{trans}-polyacetylene\footnote{In the following always \emph{trans}-polyacetylene is meant when only polyacetylene is said.} has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_trans_polyacetylene,image_scheme_polyacetylene_unit_cell}). 
+The models of the previous sections are tested on \emph{trans}-polyacetylene. Since \emph{trans}-polyacetylene\footnote{In the following always \emph{trans}-polyacetylene is meant when only polyacetylene is said.} has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}). 
 
 \section{Convergence Tests for Polyacetylene}
 \begin{figure}[]
@@ -102,7 +102,7 @@ In \cref{image_potential_with_asymmetry,image_potential_without_asymmetry} the g
 	\caption{Displacement $u$ of the carbon atoms in respect to the number of $k$-points for automatic sampling. The $\Gamma$-point is automatically included for odd numbers of $k$-points, which leads to some asymmetry.}
 	\label{image_disp_double_cell_poly}
 \end{figure}
-The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can be understood by looking at the sign of the p-orbitals of the carbon atoms, which form an alternating $\pi$-bond (see \cref{image_scheme_pi_bonds}). 
+\newpage The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can be understood by looking at the sign of the p-orbitals of the carbon atoms, which form an alternating $\pi$-bond (see \cref{image_scheme_pi_bonds}). 
 \begin{figure}[!b]
 	\centering
 	\includegraphics[width = 10cm]{Images/polyacetylene/wavefunctions/Homo}
@@ -121,16 +121,16 @@ The importance of the $k$-point at the edge of the \textsc{Brillouin} zone can b
 	\caption{Side view of the isosurface for the HOMO-band state at the edge of the \textsc{Brillouin} zone. The typical 'out of plane' character of the $\pi$-bonds can be seen.}
 	\label{image_homo1_side_view}
 \end{figure}
-Here a unit cell containing two carbon atoms has a phase shift of $\pi$ between adjacent unit cells, which corresponds with a $k$-point at the edge of the \textsc{Brillouin} zone.\\
-Consequently the $\Gamma$-point is expected to be important for getting an asymmetry in an unit cell containing four carbon atoms, since the phase difference of two such adjacent unit cells has to be $0$ to form alternating $\pi$-bonds. This is checked by simply using automatic $k$-point sampling, which includes the $\Gamma$-point for an odd number of $k$-points automatically. As expected, an alternating behavior for the displacement in respect to the number of $k$-points can be seen in \cref{image_disp_double_cell_poly}.\\
-Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms. All plots of isosurfaces are made with VMD \cite{HUMP96}). In particular this means, that the HOMO- and LUMO-band states at the edge of the \textsc{Brillouin} zone have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, which can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
+Here, a unit cell containing two carbon atoms has a phase shift of $\pi$ between adjacent unit cells, which corresponds with a $k$-point at the edge of the \textsc{Brillouin} zone.\\
+Consequently, the $\Gamma$-point is expected to be important for getting an asymmetry in an unit cell containing four carbon atoms, since the phase difference of two such adjacent unit cells has to be $0$ to form alternating $\pi$-bonds. This is checked by simply using automatic $k$-point sampling, which includes the $\Gamma$-point for an odd number of $k$-points automatically. As expected, an alternating behavior for the displacement in respect to the number of $k$-points can be seen in \cref{image_disp_double_cell_poly}.\\
+Also, the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Brillouin} zone show the expected forms (see \cref{image_homo1,image_lumo1,image_homo1_side_view}, where the turquoise balls represent the carbon atoms, the white ones the hydrogen atoms. All plots of isosurfaces are made with VMD \cite{HUMP96}). In particular this means, that the HOMO- and LUMO-band states at the edge of the \textsc{Brillouin} zone have basically the same form but form alternating $\pi$-bonds between opposite pairs of carbon. This would correspond with changing the sign of the p-orbitals of every second carbon atom in \cref{image_scheme_pi_bonds}, which can also be seen directly from the earlier derived eigenstates (see \cref{equation_conduction_eigenstate,equation_valence_eigenstate}). From the symmetry it can be concluded, that for $u=0$ this two states should have the same energy and therefore no band gap is expected.\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 11cm]{Images/polyacetylene/bands/band_structure}
 	\caption{Band structure of relaxed polyacetylene containing the five highest occupied bands and three unoccupied bands.}
 	\label{image_band_structure_relaxed_polyacetylene}
 \end{figure}
-The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches the literature value of $E_\text{Gap} = \unit[1.4]{eV}$  (from \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predicted form (compare \cref{equation_energy_band}):
+The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures, the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches the literature value of $E_\text{Gap} = \unit[1.4]{eV}$  (from \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predicted form (compare \cref{equation_energy_band}):
 \begin{align}
 E_k &= \pm \sqrt{\left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
 \label{equation_explicit_energy_band}
@@ -220,28 +220,9 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 
 \section{Constraint Density Functional Theory}
 \label{section_constraint_density_functonal_theory}
-In this section the influences of charging different regions by using cDFT is studied and two alternative methods for calculating the hopping parameter $t_0$ are tested. First this is done for a system as simple as possible, namely a chain of equidistant hydrogen atoms.
-
-
-\subsection{Chain of Hydrogen Atoms}
-Even if there's no distortion a unit cell with two hydrogen atoms is needed, because later the application of the external potentials and the consequential charge displacement will break the symmetry. First, the unit cell length for the lowest ground state energy is determined to $L = \unit[2.0]{\AA}$ (see \cref{image_hydrogen_unit_cell_length}).
-\begin{figure}
-	\centering
-	\includegraphics[width = 13cm]{Images/Hydrogen/convergence/hydrogen_length}
-	\caption{Ground state energy of a unit cell containing two equidistant hydrogen atoms in respect to the unit cell length in direction of the periodic boundaries.}
-	\label{image_hydrogen_unit_cell_length}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width = 13cm]{Images/Hydrogen/bands/hydrogen_band_structure}
-	\caption{Band structure of a hydrogen chain with a fit to its HOMO-band.}
-	\label{image_hydrogen_band_structure}
-\end{figure}
-As can be seen in \cref{image_hydrogen_band_structure} the HOMO-band is in good accordance with the expected form\footnote{Since there's no distortion $\Delta_k = 0$ (compare \cref{equation_energy_band}.)} of:
-\begin{align}
-	E_k = -2t_0\cos(ka)
-\end{align}
-from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value is used as reference later.\\
+In this section the influences of charging different regions by using cDFT is studied and two alternative methods for calculating the hopping parameter $t_0$ are tested. First, this is done for a system as simple as possible, namely a chain of equidistant hydrogen atoms. But before doing this, some technical issues with cDFT are discussed.
+\subsection{Technical Issues}
+\label{section_technical_issues}
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.45\textwidth}
@@ -256,7 +237,7 @@ from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value 
 		\caption{Corrected}
 		\label{image_contributions_corrected}
 	\end{subfigure}
-	\caption{Some energy contributions for the hydrogen chain in respect to the displaced charge. The offsets are set to zero for $q=0$.}
+	\caption{Different energy contributions for the hydrogen chain in respect to the displaced charge. The offsets are set to zero for $q=0$.}
 \end{figure}
 \begin{figure}
 	\centering
@@ -290,15 +271,11 @@ from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value 
 	\end{subfigure}
 	\caption[Schemes: \textsc{Gaussian} curves from cDFT with periodic boundary conditions.]{Schemes: \textsc{Gaussian} curves for two regions (\textcolor{red}{red} and \textcolor{blue}{blue}) used as weights for the integration/summation over the electron density to calculate the charge in each region.}
 	\label{image_periodicity_gaussians}
-\end{figure}
-By using cDFT with periodic boundary conditions some asymmetric contributions to the ground state energy can be seen (see \cref{image_contributions_initial}), which isn't expected due to the symmetry of the problem. \newpage Therefore it shouldn't matter if charge is moved from region one to region two or the other way around. And indeed, this issue is caused by some shortcoming in the cDFT source code, namely the cut of the \textsc{Gaussian} curves at periodic boundaries (see \cref{image_periodicity_gaussians}). Correcting this resolved the issues with the asymmetry (see \cref{image_contributions_corrected}).\\
-Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gaussian} curves has to be obtained. A too small $\sigma$ would localize the electrons too much and thus make the displacement of charge more difficult. On the contrary a too big $\sigma$ would lead to more displaced charge than needed and consequently make the charge transfer also more difficult. In consequence there should be a value of $\sigma$, for which the displacement of charge becomes the easiest. Out of the previous considerations this $\sigma$ is expected to give a good match of the \textsc{Gaussian} curves with the electron density. As can be seen in \cref{image_gaussian_sigmas_hydrogen}, this is the case for $\sigma \approx \unit[0.24]{\AA}$ (smallest curvature). Consequently this $\sigma$ is used for the following calculations if not otherwise mentioned.\\
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width = 9.5cm]{Images/Hydrogen/charging/gaussian_sigmas}
-	\caption{Ground state energy of the hydrogen chain in respect to the displaced charge for different standard deviations $\sigma$ of the \textsc{Gaussian} curves.}
-	\label{image_gaussian_sigmas_hydrogen}
-\end{figure}
+\end{figure} 
+By using cDFT with periodic boundary conditions, different asymmetric contributions to the ground state energy can be seen (see \cref{image_contributions_initial}), which isn't expected due to the symmetry of the problem. Therefore, it shouldn't matter if charge is moved from region one to region two or the other way around. And indeed, this issue is caused by some shortcoming in the cDFT source code, namely the cut of the \textsc{Gaussian} curves at periodic boundaries (see \cref{image_periodicity_gaussians}). Correcting this resolved the issues with the asymmetry (see \cref{image_contributions_corrected}).\\
+Next, an issue with the quantity $q$ is discussed:\\
+From the tight-binding point of view, $q$ denotes the charge belonging to some distinct core. On the other hand, there is the $q$ appearing in the cDFT code, describing the integral over the charge density weighted with some \textsc{Gaussian} curves centered at the core positions. Even if they look somehow similar, they can't be simply assumed to be the same. To get some relation between them a 'tight-binding' $q$ has to be calculated out of the charge density. Here the most natural approach seems to associate the charge at any point with the nearest core. This can be done by dividing the unit cell into two separate parts and integrating the charge density over each of this regions (see \cref{image_tight_binding_q_regions}).\\
+For a test system of an infinite hydrogen chain (see \cref{section_hydrogen_chain}), a linear dependency between the tight-binding and cDFT charge can be seen in \cref{image_qs_hydrogen}. The proportionality constants derived from the fits depend on the value for $\sigma$ of the \textsc{Gaussian} curves from cDFT. For $\sigma = \unit[0.24]{\AA}$ the relation $q_\text{tb} \approx 1.10\cdot q_\text{cDFT}$ and for $\sigma = \unit[0.32]{\AA}$ the relation $q_\text{tb} \approx 1.17\cdot q_\text{cDFT}$ is obtained.\\
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[scale = .9]
@@ -314,32 +291,6 @@ Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gau
 	\caption[Scheme: Integration regions to calculate a 'tight-binding' q]{Scheme: Integration regions (\textcolor{red}{red} and \textcolor{blue}{blue}) to calculate a 'tight-binding charge'.}
 	\label{image_tight_binding_q_regions}
 \end{figure}
-In the next step an appropriate modification of the tight-binding model is needed to describe this charge displacements. The simplest approach would be to vary the electron wave functions $\Psi_k^{(v)}$ as follows, under the assumption that the Hamiltonian stays unchanged:
-\begin{align}
-\Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
-\end{align}
-where $q$ denotes the displaced charge. These states show the needed behavior:
-\begin{align}
-	2\sum_k\left\langle\Psi_k^{(v)}(q)\Big|\hat{n}_k^{(e/o)}\Big|\Psi_k^{(v)}(q)\right\rangle &= N \left(1 \pm q\right)
-\end{align}
-which corresponds with a charge transfer of $q$ in each unit cell. Further these states have an energy expectation value of:
-\begin{align}
-\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle &= -\sqrt{1-q^2} |E_k|
-\label{equation_method_1_energies}
-\end{align}
-Finally the assumption that the ground state energy can be approximated by the sum of the single electron energies is made, which leads to the expression:
-\begin{align}
-E_0(q) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2}
-\label{equation_ground_state_energy_charge}
-\end{align}
-Many assumptions are made up to this point, that have to be tested. But before doing this, some issue with the quantity $q$ is discussed:\\
-From the tight binding point of view, $q$ denotes the charge belonging to some distinct core. On the other hand, there is the $q$ appearing in the cDFT code, describing the integral over the charge density weighted with some \textsc{Gaussian} curves centered at the core positions. Even if they look somehow similar, they can't be simply assumed to be the same. To get some relation between them a 'tight-binding' $q$ has to be calculated out of the charge density. Here the most natural approach seems to associate the charge at any point with the nearest core. This can be done by dividing the unit cell into two separate parts and integrating the charge density over each of this regions (see \cref{image_tight_binding_q_regions}).\\
-In \cref{image_qs_hydrogen} a linear dependency between the tight-binding and cDFT charge can be seen, from which a proportionality constant can be calculated. For $\sigma = \unit[0.24]{\AA}$ the relation $q_\text{tb} \approx 1.10\cdot q_\text{cDFT}$ and for $\sigma = \unit[0.32]{\AA}$ the relation $q_\text{tb} \approx 1.17\cdot q_\text{cDFT}$ is obtained.\\
-Using these proportionality constants $c$ the ground state energy can be fitted to the following expression\footnote{$N=2$, because the unit cell contains two hydrogen atoms.} (compare \cref{equation_ground_state_energy_charge}):
-\begin{align}
-	E_0(q) &= -\frac{8t_0}{\pi} \sqrt{1 - \left(c\cdot q_\text{cDFT}\right)^2}
-\end{align}
-
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
@@ -357,7 +308,74 @@ Using these proportionality constants $c$ the ground state energy can be fitted 
 	\caption{Tight binding $q$ in respect to the cDFT q with a linear fit for different $\sigma$.}
 	\label{image_qs_hydrogen}
 \end{figure}
+Finally, the relevance of choosing appropriate initial cDFT potential heights $U_i$ is shown.\\ For no displaced charge $q = 0$ the external potentials should vanish ($U_i = 0$), since this corresponds with the natural state. As can be seen in \cref{image_potential_asymmetrys}, this is not the case if symmetric initial potential heights $U_1 = U_2 > 0$ are used for a test system of an infinite hydrogen chain (see \cref{section_hydrogen_chain}). This effect can be understood by looking at the amount of charge in the second region (free) for different charges (determined with cDFT) in the first region (see \cref{image_charge_correlation}). Here a perfect anticorrelation (correlation value of $-1$) is obtained, which means that for any charge pushed out of region one some proportional charge ($\approx 86\%$) gets pushed into region two. Consequently a symmetric increase/decrease of $U_1$ and $U_2$ has a smaller effect on the amount of charge in the two regions.  Thus, the initial potentials are always chosen to be antisymmetric. This is of even bigger relevance for bigger systems like polyacetylene.
 \begin{figure}
+\centering
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width = \textwidth]{Images/Hydrogen/charging/Potential_asymmetry}
+\caption{cDFT potentials $U_i$ and their sum in respect to the displaced charge for symmetric initial potentials \mbox{($U_1 = U_2 > 0$)}.}
+\label{image_potential_asymmetrys}
+\end{minipage}\hspace*{.5cm}
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width = \textwidth]{Images/Hydrogen/charging/charge_correlation}
+\caption{Charge in the second region (not chosen) in respect to the charge in the first region (chosen).\\}
+\label{image_charge_correlation}
+\end{minipage}
+\end{figure}
+
+\subsection{Chain of Hydrogen Atoms}
+\label{section_hydrogen_chain}
+Even if there's no distortion, a unit cell with two hydrogen atoms is needed, because later the application of the external potentials and the consequential charge displacement will break the symmetry. First, the unit cell length for the lowest ground state energy is determined to $L = \unit[2.0]{\AA}$ (see \cref{image_hydrogen_unit_cell_length}).
+\begin{figure}[]
+	\centering
+	\includegraphics[width = 12cm]{Images/Hydrogen/convergence/hydrogen_length}
+	\caption{Ground state energy of a unit cell containing two equidistant hydrogen atoms in respect to the unit cell length in direction of the periodic boundaries.}
+	\label{image_hydrogen_unit_cell_length}
+\end{figure}
+\begin{figure}[]
+	\centering
+	\includegraphics[width = 12cm]{Images/Hydrogen/bands/hydrogen_band_structure}
+	\caption{Band structure of a hydrogen chain with a fit to its HOMO-band.}
+	\label{image_hydrogen_band_structure}
+\end{figure}
+\\
+As can be seen in \cref{image_hydrogen_band_structure}, the HOMO-band is in good accordance with the expected form\footnote{Since there's no distortion $\Delta_k = 0$ (compare \cref{equation_energy_band}).} of:
+\begin{align}
+	E_k = -2t_0\cos(ka)
+\end{align}
+from which the hopping parameter $t_0 = \unit[4.8]{eV}$ is obtained. This value is used as reference later.\\
+In the next step, an appropriate modification of the tight-binding model is needed to describe the charge displacements due to cDFT. The simplest approach would be, that the charge displacement does not change the Hamiltonian $\mathcal{H}_k$ and the wave functions $\Psi_k{(v)}$ change in the following way:
+\begin{align}
+\Psi_k^{(v)}(q_\text{tb}) &= \sqrt{\frac{1}{2}-\frac{q_\text{tb}}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q_\text{tb}}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
+\end{align}
+where $q_\text{tb}$ denotes the displaced tight-binding charge. These states show the needed behaviour:
+\begin{align}
+	2\sum_k\left\langle\Psi_k^{(v)}(q_\text{tb})\Big|\hat{n}_k^{(e/o)}\Big|\Psi_k^{(v)}(q_\text{tb})\right\rangle &= N \left(1 \pm q_\text{tb}\right)
+\end{align}
+which corresponds with a charge transfer of $q_\text{tb}$ in each unit cell. Further, these states have an energy expectation value of:
+\begin{align}
+\left\langle\Psi_k^{(v)}(q_\text{tb})\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q_\text{tb})\right\rangle &= -\sqrt{1-q^2_\text{tb}} |E_k|
+\label{equation_method_1_energies}
+\end{align}
+Finally, the assumption that the ground state energy can be approximated by the sum of the single electron energies is made, which leads to the expression:
+\begin{align}
+E_0(q_\text{tb}) &= -\frac{4Nt_0}{\pi} \sqrt{1-q^2_\text{tb}}
+\label{equation_ground_state_energy_charge}
+\end{align}
+Using the proportionality constants $c$ between $q_\text{tb}$ and $q_\text{cDFT}$ (see \cref{section_technical_issues}), the ground state energy can be fitted to the following expression\footnote{$N=2$, because the unit cell contains two hydrogen atoms.} (compare \cref{equation_ground_state_energy_charge}):
+\begin{align}
+	E_0(q_\text{cDFT}) &= -\frac{8t_0}{\pi} \sqrt{1 - \left(c\cdot q_\text{cDFT}\right)^2}
+\end{align}
+Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gaussian} curves has to be determined. A too small $\sigma$ would localize the electrons too much and thus make the displacement of charge more difficult. On the contrary, a too big $\sigma$ would lead to more displaced charge than needed and consequently make the charge transfer also more difficult. In consequence, there should be a value of $\sigma$, for which the displacement of charge becomes the easiest. Out of the previous considerations this $\sigma$ is expected to give a good match of the \textsc{Gaussian} curves with the electron density. As can be seen in \cref{image_gaussian_sigmas_hydrogen}, this is the case for $\sigma \approx \unit[0.24]{\AA}$ (smallest curvature). Consequently, this $\sigma$ is used for the following calculations if not otherwise mentioned.\\
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width = 9.5cm]{Images/Hydrogen/charging/gaussian_sigmas}
+	\caption{Ground state energy of the hydrogen chain in respect to the displaced charge for different standard deviations $\sigma$ of the \textsc{Gaussian} curves.}
+	\label{image_gaussian_sigmas_hydrogen}
+\end{figure}
+\begin{figure}[]
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -374,20 +392,26 @@ Using these proportionality constants $c$ the ground state energy can be fitted 
 	\caption{Ground state energy in respect to the displaced charge for different $\sigma$.}
 	\label{image_ground_state_hydrogen_qs}
 \end{figure}
-As can be seen in \cref{image_ground_state_hydrogen_qs} the fits match the data for both $\sigma$ well. \newpage The so obtained hopping parameters are:
-\begin{compactitem}
-	\item $t_0 = \unit[9.6]{eV}$ for $\sigma = \unit[0.18]{\AA}$ and the corresponding proportionality constant $c = 1.15$
-	\item $t_0 = \unit[9.0]{eV}$ for $\sigma = \unit[0.24]{\AA}$ and the corresponding proportionality constant $c = 1.10$
-	\item $t_0 = \unit[9.0]{eV}$ for $\sigma = \unit[0.28]{\AA}$ and the corresponding proportionality constant $c = 1.12$
-	\item $t_0 = \unit[9.1]{eV}$ for $\sigma = \unit[0.32]{\AA}$ and the corresponding proportionality constant $c = 1.17$
-	\item $t_0 = \unit[9.5]{eV}$ for $\sigma = \unit[0.40]{\AA}$ and the corresponding proportionality constant $c = 1.36$
-	\item $t_0 = \unit[14.9]{eV}$ for $\sigma = \unit[0.40]{\AA}$ and the proportionality constant $c = 1.10$ (just for comparison)
-\end{compactitem}
+\newpage
+As can be seen in \cref{image_ground_state_hydrogen_qs}, the fits match the data for both $\sigma$ well. The so obtained hopping parameters in respect to different $\sigma$ and corresponding proportionality constants $c$ are:
+\begin{table}[!h]
+\centering
+\begin{tabular}{c|c|c}
+$t_0 [\unit{eV}]$ & $\sigma [\unit{\AA}]$ & $c$\\
+\hline \hline
+9.6&0.18&1.15\\
+9.0&0.24&1.10\\
+9.0&0.28&1.12\\
+9.1&0.32&1.17\\
+9.5&0.40&1.36\\
+\end{tabular}
+\end{table}\\
+
 Two things can be seen from this:\\
 First, the hopping parameters do not match the earlier calculated value of $t_0 = \unit[4.8]{eV}$ and thus there must have been some wrong assumptions in the derivation. Second, the values for different $\sigma$ show a tolerable deviation if the correct proportionality constants are used. This would make the choice of an appropriate $\sigma$ much simpler, since the physical quantities would not strongly depend on it.\\
-A possible reason, why this method yields wrong values, could be, that the sum of the single particle energies can not be assumed to be equal to the ground state energy. For example the \textsc{Coulomb} energy of the electrons in the field of the other electrons is added twice and terms of the exchange correlation energy are left out. Also the assumption that all $k$-points contribute equally to the charge displacement could be wrong, which can be tested easily. Assuming that the $q = q(k)$ in \cref{equation_method_1_energies} yields:
+A possible reason why this method yields wrong values could be that the sum of the single particle energies can not be assumed to be equal to the ground state energy. For example the \textsc{Coulomb} energy of the electrons in the field of the other electrons is added twice and terms of the exchange correlation energy are left out. Also the assumption that all $k$-points contribute equally to the charge displacement could be wrong, which can be tested easily. Assuming that the $q_\text{tb} = q(k)$ in \cref{equation_method_1_energies} yields:
 \begin{align}
-	q(k) &= 1 - \left(\frac{\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle}{\left|E_k\right|}\right)^{2}
+	q(k) &= 1 - \left(\frac{\left\langle\Psi_k^{(v)}(q_\text{tb})\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q_\text{tb})\right\rangle}{\left|E_k\right|}\right)^{2}
 \end{align}
 \begin{figure}
 	\centering
@@ -395,7 +419,7 @@ A possible reason, why this method yields wrong values, could be, that the sum o
 	\caption{Displaced charge in respect to $k$ in a simplified tight binding picture.}
 	\label{image_tight_binding_q_vs_k}
 \end{figure}
-Assuming that the expression $\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle$ corresponds with the band structure energies from cDFT, the form of $q(k)$ can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight-binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected. Hence, a modification of the initial tight binding model is searched, that describes the influences on the band structure correctly.\\
+Assuming that the expression $\left\langle\Psi_k^{(v)}(q_\text{tb})\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q_\text{tb})\right\rangle$ corresponds with the band structure energies from cDFT, the form of $q(k)$ can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight-binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected. Hence, a modification of the initial tight binding model is searched, that describes the influences on the band structure correctly.\\
 The second approach to do this is the following:\\
 Modify the hopping Hamiltonian to decrease/increase the energies at the even/odd positions (matrix notation):
 \begin{align}
@@ -419,7 +443,7 @@ with the eigenenergies $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the ei
 For $V=0$ this matches the previous result.\\
 \begin{figure}
 	\centering
-	\includegraphics[width = 13cm]{Images/Hydrogen/charging/band_structure_q_1}
+	\includegraphics[width = 12cm]{Images/Hydrogen/charging/band_structure_q_1}
 	\caption{HOMO- and LUMO-band of the hydrogen chain for different charge displacements.}
 	\label{image_hydrogen_charged_bands}
 \end{figure}
@@ -435,27 +459,10 @@ E_\text{edge}(V) &= -\left|V\right|
 \begin{figure}
 	\centering
 	\begin{minipage}{0.49\textwidth}
-		\centering
-			\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
-			\caption{cDFT potentials in respect to the displaced charge.\\ \\ \\}
-			\label{image_potentials_qs_1}
-		\end{minipage}\hspace*{.5cm}
-		\begin{minipage}{0.49\textwidth}
-				\centering
-				\includegraphics[width = \textwidth]{Images/Hydrogen/charging/Potential_asymmetry}
-				\caption{cDFT potentials $U_i$ and their sum in respect to the displaced charge for symmetric initial potentials \mbox{($U_1 = U_2 > 0$)}.}
-				\label{image_potential_asymmetrys}
-	
-		\end{minipage}
-\end{figure}
-\begin{figure}
-	\centering
-	\begin{minipage}{0.49\textwidth}
-		\centering
-			\includegraphics[width = \textwidth]{Images/Hydrogen/charging/charge_correlation}
-			\caption{Charge in the second region (not chosen) in respect to the charge in the first region (chosen).}
-			\label{image_charge_correlation}
-	
+			\centering
+				\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
+				\caption{cDFT potentials in respect to the displaced charge.\\}
+				\label{image_potentials_qs_1}	
 	\end{minipage}\hspace*{.5cm}
 	\begin{minipage}{0.49\textwidth}
 	\centering
@@ -464,7 +471,8 @@ E_\text{edge}(V) &= -\left|V\right|
 	\label{image_edge_energy_qs_1}
 	\end{minipage}
 \end{figure}
-Here the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, wherefore a proportionality between them is assumed. Thus the cDFT potentials should fulfill the condition $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). It should be mentioned, that this can be influenced by the choice of initial external potentials $U_i$ (see \cref{image_potential_asymmetrys}). This effect can be understood by looking at the amount of charge in the second region (free) for different charges (determined with cDFT) in the first region (see \cref{image_charge_correlation}). Here a perfect anticorrelation (correlation value of $-1$) is obtained, which means that for any charge pushed out of region one some proportional charge ($\approx 86\%$) gets pushed into region two. Consequently a symmetric increase/decrease of $U_1$ and $U_2$ has a smaller effect on the amount of charge in the two regions. Thus the initial potentials are always chosen antisymmetric and in the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$. The proportionality constant between $U$ and $V$ is obtained by fitting
+Here, the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, wherefore a proportionality between them is assumed. Thus, the cDFT potentials should fulfill the condition $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). Thus, in the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$.
+The proportionality constant between $U$ and $V$ is obtained by fitting
 \begin{align}
 	E_\text{edge} &= -\left|c \cdot U\right|
 \end{align}
