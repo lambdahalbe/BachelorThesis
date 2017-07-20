@@ -1,6 +1,5 @@
 \chapter{Results}
-
-The predictions of the previous sections are tested on \emph{trans}-polyacetylene. Therefore the convergence is checked first. Since \emph{trans}-polyacetylene\footnote{In the following always \emph{trans}-polyacetylene is meant when only polyacetylene is said.} has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_scheme_polyacetylene_unit_cell}). 
+The models of the previous sections are tested on \emph{trans}-polyacetylene. Since \emph{trans}-polyacetylene\footnote{In the following always \emph{trans}-polyacetylene is meant when only polyacetylene is said.} has an alternation of single and double bonds between the carbon atoms, a unit cell containing two CH-groups with periodic boundary conditions in one dimension is used (see \cref{image_trans_polyacetylene,image_scheme_polyacetylene_unit_cell}). 
 
 \section{Convergence Tests for Polyacetylene}
 \begin{figure}[]
@@ -9,8 +8,8 @@ The predictions of the previous sections are tested on \emph{trans}-polyacetylen
 	\caption{Scheme: Unit cell for \emph{trans}-polyacetylene with periodic boundary conditions in one dimension. The grey circles represent the carbon atoms, the white ones the hydrogen atoms.}
 	\label{image_scheme_polyacetylene_unit_cell}
 \end{figure}
-To check the convergence in respect to a certain parameter, all other parameters are chosen in a way, that the energy is definitely converged in respect to them. This includes also a relaxation of the atom positions in each step.\\
-First the convergence of the ground state energy in respect to the number of used $k$- points is tested, whereat automatic \textsc{Brillouin} zone sampling is used. It can be seen that the energy is quite good converged for approximately 15 $k$-points (see \cref{image_poly_kpts_energy}). Hence, a comparison of the energies for $15$ and $100$ $k$-points gives a difference of only $\unit[0.014]{eV}$.\\
+To check the convergence in respect to a certain parameter, all other parameters are chosen in a way, that the energy is definitely converged in respect to them.\\
+First the convergence of the ground state energy in respect to the number of used $k$- points is tested, whereat automatic \textsc{Brillouin} zone sampling is used. It can be seen that the energy is converged for approximately 15 $k$-points (see \cref{image_poly_kpts_energy}). Hence, a comparison of the energies for $15$ and $100$ $k$-points gives a difference of only $\unit[0.014]{eV}$.\\
 In \cref{image_poly_grid_energy} the ground state energy in respect to the grid spacing $h$ can be seen. Since the number of grid points increases with $\nicefrac{1}{h^3}$, it is important to find a reasonable compromise between computing time and accuracy. Because the discussed system isn't that big, $h = \unit[0.1]{\AA}$ is used for further calculations.\\
 The lowering of the ground state energy in respect to the maximum force for the relaxation process of the cores is small in comparison with previous dependencies (see \cref{image_poly_force_energy}). Therefore a maximum force of $\unitfrac[0.1]{eV}{\AA}$ should be appropriate.\\
 Finally the convergence of the energy in respect to the unit cell width (not in the direction of the periodic boundary condition) is tested. As can be seen in \cref{image_poly_width_energy}, the ground state energy increases for small unit cell widths, which can be understood intuitively by comparison to the quantum mechanical 'particle in a box'. For a width of approximately $\unit[9]{\AA}$ a stable level is reached, which corresponds with a minimal distance between cores and cell surface of approximately $\unit[3]{\AA}$ (same for second direction of non periodic boundaries).\\
@@ -44,7 +43,7 @@ Convergence tests for other systems is done analogously and thus added to the ap
 
 
 \section{Physical Quantities of Polyacetylene}
-First, the bond length $a$ in direction of the periodic boundary is calculated (see \cref{image_trans_polyacetylene,image_scheme_dimer}). This quantity corresponds with the half unit cell length (in the direction of periodic boundaries) and thus is calculated by minimizing the ground state energy in respect to the cell length (see \cref{image_poly_cell_len}). Through a quadratic fit the parameter $a = \unit[1.23]{\AA}$ is obtained, that matches the literature value of $\unit[1.2]{\AA}$ (from \cite{PhysRevLett.42.1698}) perfectly.\\
+First, the bond length $a$ in direction of the periodic boundary is calculated (see \cref{image_trans_polyacetylene,image_scheme_dimer}). This quantity corresponds with the half unit cell length (in the direction of periodic boundaries) and thus is calculated by minimizing the ground state energy in respect to the cell length (see \cref{image_poly_cell_len}). Through a quadratic fit the parameter $a = \unit[1.23]{\AA}$ is obtained, that matches the literature value of $\unit[1.2]{\AA}$ (from \cite{PhysRevLett.42.1698}).\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/unit_cell_length}
@@ -52,7 +51,7 @@ First, the bond length $a$ in direction of the periodic boundary is calculated (
 	\label{image_poly_cell_len}
 \end{figure}
 \\
-Second, the displacement $u$ of the carbon atoms is checked. Here, no distortion is obtained  at all ($u < \unit[10^{-4}]{\AA}$) by using automatic $k$-point sampling, which doesn't include a $k$-point directly at the edge of the \textsc{Brillouin} zone. If the $k$-points are chosen manually in the way that a $k$-point at the edge of the \textsc{Brillouin} zone is included, a displacement of approximately $u = \unit[5\cdot10^{-3}]{\AA}$ is obtained (see \cref{image_k_point_sampling_assymetry}). In comparison to the literature value of $u = \unit[0.042]{\AA}$ (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) it is still one order of magnitude too small, but it is known that PBE delocalizes electrons too much, which results in too small distortions and therefore in too small band gaps (see \cite{JIANG2009120,PhysRevB.84}).\\
+Second, the displacement $u$ of the carbon atoms is checked. Here, no distortion is obtained  at all ($u < \unit[10^{-4}]{\AA}$) by using automatic $k$-point sampling, which doesn't include a $k$-point directly at the edge of the \textsc{Brillouin} zone. If the $k$-points are chosen manually in the way that a $k$-point at the edge of the \textsc{Brillouin} zone is included, a displacement of approximately $u = \unit[5\cdot10^{-3}]{\AA}$ is obtained (see \cref{image_k_point_sampling_assymetry}). In comparison to the literature value of $u = \unit[0.042]{\AA}$ (from \cite{PhysRevLett.42.1698, doi:10.1021/cr990357p}) it is still one order of magnitude too small, but it is known that PBE delocalizes electrons too much, which results in too small distortions and therefore in too small band gaps  \cite{JIANG2009120,PhysRevB.84}.\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 13cm]{Images/polyacetylene/convergence/polyacetylene_displacement}
@@ -131,7 +130,7 @@ Also the wave functions of the HOMO- and LUMO-band at the edge of the \textsc{Br
 	\caption{Band structure of relaxed polyacetylene containing the five highest occupied bands and three unoccupied bands.}
 	\label{image_band_structure_relaxed_polyacetylene}
 \end{figure}
-The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches the literature value of $E_\text{Gap} = \unit[1.4]{eV}$ (see \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predicted form (compare \cref{equation_energy_band}):
+The band structure of the relaxed polyacetylene can be seen in \cref{image_band_structure_relaxed_polyacetylene}. Here and in the following plots of band structures the $k$-values are given in respect to the basis of the reciprocal lattice and thus a value of $k = \pm 0.5$ corresponds with a state at the edge at the \textsc{Brillouin} zone. As expected a very small band gap of approximately $E_\text{Gap} \approx \unit[0.137]{eV}$ between the HOMO- and LUMO-band can be seen. Again this mismatches the literature value of $E_\text{Gap} = \unit[1.4]{eV}$  (from \cite{PhysRevLett.42.1698}) by a complete order of magnitude. The form of the HOMO- and LUMO-band in the outer regions seems to be in good accordance with the predicted form (compare \cref{equation_energy_band}):
 \begin{align}
 E_k &= \pm \sqrt{\left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
 \label{equation_explicit_energy_band}
@@ -160,7 +159,7 @@ E_k &= \pm \sqrt{\left(2t_0\cos(ka)\right)^2+\left(2\delta\sin(ka)\right)^2}
 	\caption{Side view of the third band at the $\Gamma$-point, showing an 'out of plane' character.}
 	\label{image_third_band_side_view}
 \end{figure}
-In the central region some interaction between the bands occurs, which leads to the well known effect of \emph{avoided crossings} (see \cite{ashcroft}). \newpage This effect can also be seen by looking at the wave functions of the third and the HOMO-band at the $\Gamma$-point (see \cref{image_homo_mid_k,image_homo_mid_k_side_view,image_third_band,image_third_band_side_view}), which shows that for the $\Gamma$-point the third band and not the HOMO-band corresponds with the p-orbitals. Further it can be seen that the state of the third band at the $\Gamma$-point drawn in the schematic way of \cref{image_scheme_pi_bonds} would have the same sign for all p-orbitals in the upper row and the other sign for all states in the lower row (see \cref{image_scheme_p_orbitals_gamma_point}).\\
+In the central region some interaction between the bands occurs, which leads to the well known effect of \emph{avoided crossings} \cite{ashcroft}. \newpage This effect can also be seen by looking at the wave functions of the third and the HOMO-band at the $\Gamma$-point (see \cref{image_homo_mid_k,image_homo_mid_k_side_view,image_third_band,image_third_band_side_view}), which shows that for the $\Gamma$-point the third band and not the HOMO-band corresponds with the p-orbitals. Further it can be seen that the state of the third band at the $\Gamma$-point drawn in the schematic way of \cref{image_scheme_pi_bonds} would have the same sign for all p-orbitals in the upper row and the other sign for all states in the lower row (see \cref{image_scheme_p_orbitals_gamma_point}).\\
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[show background rectangle, scale = 1]
@@ -176,7 +175,7 @@ In the central region some interaction between the bands occurs, which leads to 
 	\caption{Scheme: Sign of p-orbitals of the state for the HOMO-band at the $\Gamma$-point.}
 	\label{image_scheme_p_orbitals_gamma_point}
 \end{figure}
-To get the hopping parameter $t_0$ a fit with the form of \cref{equation_explicit_energy_band} is done to a continuous combination of the third, forth and fifth band (see \cref{image_band_fit_t0}), because band interactions aren't handled in this simple model\footnote{From the context can be seen if an offset is used for the fits. In most of the cases a fixed offset at the middle of the band gap is used.}. Thus a hopping parameter of $\unit[2.62]{eV}$ is obtained, which matches the literature value of $\unit[2.5]{eV}$ very well (see \cite{PhysRevLett.42.1698}).\\
+To get the hopping parameter $t_0$ a fit with the form of \cref{equation_explicit_energy_band} is done to a continuous combination of the third, forth and fifth band (see \cref{image_band_fit_t0}), because band interactions aren't handled in this simple model\footnote{From the context can be seen if an offset is used for the fits. In most of the cases a fixed offset at the middle of the band gap is used.}. Thus a hopping parameter of $\unit[2.62]{eV}$ is obtained, which matches the literature value of $\unit[2.5]{eV}$ very well (from \cite{PhysRevLett.42.1698}).\\
 To calculate the phonon coupling constant the following relation is used:
 \begin{align}
 	\alpha &= \frac{1}{8} \frac{\partial E_\text{Gap}}{\partial u}
@@ -222,6 +221,8 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 \section{Constraint Density Functional Theory}
 \label{section_constraint_density_functonal_theory}
 In this section the influences of charging different regions by using cDFT is studied and two alternative methods for calculating the hopping parameter $t_0$ are tested. First this is done for a system as simple as possible, namely a chain of equidistant hydrogen atoms.
+
+
 \subsection{Chain of Hydrogen Atoms}
 Even if there's no distortion a unit cell with two hydrogen atoms is needed, because later the application of the external potentials and the consequential charge displacement will break the symmetry. First, the unit cell length for the lowest ground state energy is determined to $L = \unit[2.0]{\AA}$ (see \cref{image_hydrogen_unit_cell_length}).
 \begin{figure}
@@ -313,7 +314,7 @@ Next an appropriate value for the standard deviation $\sigma$ of the \textsc{Gau
 	\caption[Scheme: Integration regions to calculate a 'tight-binding' q]{Scheme: Integration regions (\textcolor{red}{red} and \textcolor{blue}{blue}) to calculate a 'tight-binding charge'.}
 	\label{image_tight_binding_q_regions}
 \end{figure}
-In the next step an appropriate modification of the tight binding model is needed to describe this charge displacements. The simplest approach would be to assume that all states $\Psi_k^{(v)}$ contribute equally to the charge displacement and that the general form of the new eigenstates can be approximated as:
+In the next step an appropriate modification of the tight-binding model is needed to describe this charge displacements. The simplest approach would be to vary the electron wave functions $\Psi_k^{(v)}$ as follows, under the assumption that the Hamiltonian stays unchanged:
 \begin{align}
 \Psi_k^{(v)}(q) &= \sqrt{\frac{1}{2}-\frac{q}{2}}c_k^{\dagger(e)}- \sqrt{\frac{1}{2}+\frac{q}{2}}\frac{\epsilon_k - i \Delta_k}{|E_k|}c_{k}^{\dagger(o)}
 \end{align}
@@ -384,7 +385,7 @@ As can be seen in \cref{image_ground_state_hydrogen_qs} the fits match the data 
 \end{compactitem}
 Two things can be seen from this:\\
 First, the hopping parameters do not match the earlier calculated value of $t_0 = \unit[4.8]{eV}$ and thus there must have been some wrong assumptions in the derivation. Second, the values for different $\sigma$ show a tolerable deviation if the correct proportionality constants are used. This would make the choice of an appropriate $\sigma$ much simpler, since the physical quantities would not strongly depend on it.\\
-A possible reason, why this method fails or at least gives a wrong prefactor, could be that the sum of the single particle energies can not be assumed to be equal to the ground state energy. For example the \textsc{Coulomb} energy of the electrons in the field of the other electrons is added twice and terms of the exchange correlation energy are left out. Also the assumption that all states $\Psi_k^{(v)}$ contribute equally to the charge displacement could be wrong, which can be tested easily. Assuming that the $q = q(k)$ in \cref{equation_method_1_energies} yields:
+A possible reason, why this method yields wrong values, could be, that the sum of the single particle energies can not be assumed to be equal to the ground state energy. For example the \textsc{Coulomb} energy of the electrons in the field of the other electrons is added twice and terms of the exchange correlation energy are left out. Also the assumption that all $k$-points contribute equally to the charge displacement could be wrong, which can be tested easily. Assuming that the $q = q(k)$ in \cref{equation_method_1_energies} yields:
 \begin{align}
 	q(k) &= 1 - \left(\frac{\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle}{\left|E_k\right|}\right)^{2}
 \end{align}
@@ -394,7 +395,7 @@ A possible reason, why this method fails or at least gives a wrong prefactor, co
 	\caption{Displaced charge in respect to $k$ in a simplified tight binding picture.}
 	\label{image_tight_binding_q_vs_k}
 \end{figure}
-The form of this $q(k)$ obtained from the simulation can be seen in \cref{image_tight_binding_q_vs_k} and is obviously not constant. It can be seen that in this simplified tight-binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected. Hence, a modification of the initial tight binding model is searched, that describes the influences on the band structure correctly.\\
+Assuming that the expression $\left\langle\Psi_k^{(v)}(q)\Big|\mathcal{H}_{k}\Big|\Psi_k^{(v)}(q)\right\rangle$ corresponds with the band structure energies from cDFT, the form of $q(k)$ can be seen in \cref{image_tight_binding_q_vs_k}, which is obviously not constant. It can be seen that in this simplified tight-binding picture the states close to the edge of the \textsc{Brillouin} zone contribute most to the charge displacement. Furthermore the $q(k)$ diverges for $k = \pm \nicefrac{1}{2}$, which shows again the exceptional properties of the high symmetry points in the reciprocal space. At least the increase at the edges can be understood intuitively, since the kinetic energy of the electrons contains terms proportional to $k^2$ and thus a bigger contribution to conductivity can be expected. Hence, a modification of the initial tight binding model is searched, that describes the influences on the band structure correctly.\\
 The second approach to do this is the following:\\
 Modify the hopping Hamiltonian to decrease/increase the energies at the even/odd positions (matrix notation):
 \begin{align}
@@ -506,7 +507,7 @@ Nevertheless the data is fitted nicely and for the modelled data a value of $t_0
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits for $\sigma = \unit[0.32]{\AA}$.}
 	\label{image_hydrogen_homo_energy_charging_sigma_32}
 \end{figure}
-Thus it can be concluded that at least for the hydrogen chain additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour-hopping (see \cite{PhysRevLett.103.067004,PhysRevB.82.155141}). Both would make the derivation of an analytical expression for the band energies more difficult and add new parameters, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
+Thus it can be concluded that at least for the hydrogen chain additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour-hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new parameters, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
 Since the general form of the band structure in respect to the displaced charge is still qualitatively well described and hydrogen often behaves a little tricky, this method is also tested for \emph{trans}-polyacetylene.
 \subsection{Polyacetylene}
 To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (similar to \cref{image_region_gaussians}).\\

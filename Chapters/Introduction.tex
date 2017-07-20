@@ -1,19 +1,18 @@
 \section{Motivation}
-The big relevance of electronic transport in organic semiconductors can be seen by looking at the variety of its applications including photovoltaic, OLED's and many more. To understand the underlying phenomena, including a description of the electronic band structure, a simple model of a perfect, infinite, one-dimensional polymer chain is often assumed. Therefore a well-tried example is polyacetylene, which was already used in the 1950s by \textsc{Salem} and \textsc{Longuet-Higgins} and later in the 1980s by \textsc{Su, Schrieffer} and \textsc{Heeger} to describe the electronic structure under periodic boundary conditions or effects of excitations (e. g. solitons). In this connection a tight-binding picture describing the charge transport by electron hopping has shown to yield a good prediction of the band structure with very few parameters (see \cite{koehler2015electronic,Longuet-Higgins172,PhysRevLett.42.1698}).\\
-Thus, it would be nice to derive these parameters from density functional theory simulations. Besides of getting them directly out of the band structure from density functional theory, a new method using periodic charge displacements inside the molecule is tested in this thesis. For this purpose different models to describe the effects of charging on the ground state energy and the band structure are tested. Since many effects, such as band interactions, can make a direct fit to the band structure very difficult, new methods of calculating the tight-binding parameters from charged states could sometimes have serious advantage.
+The big relevance of electronic transport in organic semiconductors can be seen by looking at the variety of its applications including photovoltaic, OLED's and many more. To understand the underlying phenomena, including a description of the electronic band structure, a simple model of a perfect, infinite, one-dimensional polymer chain is often assumed. Therefore a well-tried example is polyacetylene, which was already used in the 1950s by \textsc{Salem} and \textsc{Longuet-Higgins} and later in the 1980s by \textsc{Su, Schrieffer} and \textsc{Heeger} to describe the electronic structure under periodic boundary conditions or effects of excitations (e. g. solitons). In this connection a tight-binding picture describing the charge transport by electron hopping has shown to yield a good prediction of the band structure with very few parameters  \cite{koehler2015electronic,Longuet-Higgins172,PhysRevLett.42.1698}.\\
+This parameters can be obtained by \emph{density functional theory} (DFT), which is an efficient computational, \emph{ab initio}, self consistency method to calculate quantum mechanical ground states and their properties. Since an analytical solution to Schrödinger's equation can only be found in the simplest cases, but quantum mechanical effects gain more and more relevance in many fields, including nanoelectronics and modern materials sciences, DFT comes in very handy.\\
+The standard method to obtain these parameters is to fit tight-binding energies to DFT energies. Beyond this, the electron hopping can be interpreted in a visual way, that localized electrons are hopping between discrete sites. Further, we want to understand how this visual approach can be connected to the mathematical description in the tight-binding model. For this, we move a charge by constraints from one side to another. This concept is also closely related to the charge transport in a liner molecule, e. g. \emph{trans}-polyacetylene, where incoherent transport takes place.\\
 
 \section{Theoretical Background}
 
 \subsection{Density Functional Theory}
-The informations of this section are mainly based on \cite{KOSKINEN2009237,1402-4896-2004-T109-001}.\\
-\emph{Density functional theory} (DFT) is an efficient computational, \emph{ab initio}, self consistency method to calculate quantum mechanical ground states and their properties. Since an analytical solution to Schrödinger's equation can only be found in the simplest cases, but quantum mechanical effects gain more and more relevance in many fields, including nanoelectronics and modern materials sciences, DFT comes in very handy.\\
 A simple look at the many-body Schrödinger equation with the electron positions $\vec{r}_i$ and the core positions $\vec{R}_j$
 \begin{align}
 	\mathcal{H} \Psi\left(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_N,\vec{R}_1,\dots,\vec{R}_M\right) &= E \Psi\left(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_N,\vec{R}_1,\dots,\vec{R}_M\right)
 \end{align}
-shows one of the big problems, since this expression is $3(N+M)$-dimensional.
+shows the disadvantage, that this expression is $3(N+M)$-dimensional, which leads to a high computational effort.
 At first the \textsc{Born-Oppenheimer} approximation is applied, stating that the timescale of changing dynamics for the light electrons is much shorter then for the heavy cores and therefore the cores can be assumed to be fixed at their positions to calculate the electrons ground state. But this only reduces the problem to $3N$-dimensions.\\
-Here comes in the \textsc{Hohenberg-Kohn} theorem, which states that the complete electron ground state density
+The \textsc{Hohenberg-Kohn} theorem states that the complete electron ground state density
 \begin{align}
 n_0\left(\vec{r}\right) = N\int\dd\vec{r}_2\ \dots\int\dd\vec{r}_N\ \left|\Psi_0\left(\vec{r}, \vec{r}_2, \dots,\vec{r}_N,\right)\right|^2
 \end{align}
@@ -23,7 +22,7 @@ To resolve this problem, a system with the same electron density out of non dire
 \begin{align}
 n\left(\vec{r}\right) &= \sum_i \left|\varPhi_i\right|^2
 \end{align}
-This wave functions are eigenfunctions to single particle Hamiltonians depending on the electron density $n(\vec{r})$. Again this Hamiltonians contain an unknown term due to many-particle-interactions, called the \emph{exchange correlation} (XC) term, but this one can be approximated quite good for most purposes. Thus separated equations depending on the electron density $n\left(\vec{r}\right)$ for the single particle wave functions are obtained, which again contribute themselves to the electron density $n\left(\vec{r}\right)$. These equations can be solved by iteration and checking for self consistency.\\
+This wave functions are eigenfunctions to single particle Hamiltonians depending on the electron density $n(\vec{r})$. Again these Hamiltonians contain an unknown term due to many-particle-interactions, called the \emph{exchange-correlation} (XC) term, but this one can be approximated for most purposes. Thus separated equations depending on the electron density $n\left(\vec{r}\right)$ for the single particle wave functions are obtained, which again contribute themselves to the electron density $n\left(\vec{r}\right)$. These equations can be solved by iteration and checking for self consistency. This information is based on \cite{KOSKINEN2009237,1402-4896-2004-T109-001}, where a more detailed explanation can be found.\\
 Through numerical optimization (minimization) of the ground state energy in respect to the core positions it is also possible to find the relaxed core positions.\\
 To get the band structures the single particle eigenvalues with a constrained periodic behavior according to \textsc{Blochs} theorem are calculated (see \cref{section_bloch}).\\
 Finally, calculations with manually shifted charges are performed using \emph{constrained DFT} (cDFT). This is done by defining $i$ regions containing one or multiple cores with positions $\vec{R}_j$ and an absolute charge $N_i$ for each region. The charge of any region is calculated by integrating the electron density $n\left(\vec{r}\right)$ multiplied whit a sum of \textsc{Gaussian} curves  $w(\vec{r})$ centered at the atom positions $R_j$ for all cores in the $i$-th region (see \cref{image_region_gaussians}):
@@ -51,10 +50,11 @@ with the energy functional of the undisturbed system $E_0\left[n\left(\vec{r}\ri
 0 &= \int\dd\vec{r}\ w_i\left(\vec{r}\right)\ n\left(\vec{r}\right) - N_i
 \end{align}
 for all $i$ regions. The standard deviation $\sigma$ of the \textsc{Gaussian} curves is left as free parameter. The choice of an appropriate value for $\sigma$ will be discussed later (see \cref{section_constraint_density_functonal_theory}).\\
-For the calculations in this thesis the Python DFT package \emph{GPAW} (see \cite{GPAW1, GPAW2}) in combination with the atomic simulation environment \emph{ASE} (see \cite{ASE}) is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and its gradient. Further the calculations are performed on a real space grid in the manner of a finite difference method.
+For the calculations in this thesis the DFT package \emph{GPAW} \cite{GPAW1, GPAW2} in combination with the atomic simulation environment \emph{ASE} \cite{ASE} is used. Especially the \emph{PBE} (named after \textsc{Perdew Burke} and \mbox{\textsc{Ernzerhof}}) XC functional is used, which is a functional of the electron density $n\left(\vec{r}\right)$  and its gradient. Further the calculations are performed on a real space grid in the manner of a finite difference method.
 \subsection{Lattice}
+Since a periodic system is investigated, which can be described with a one-dimensional lattice, basic principles of lattices are explained in this section.
 If not otherwise mentioned, the information of the following four sections is based on \cite{ashcroft}.\\
-In a solid the atoms are typically placed periodically. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, which behave like very viscous fluids and will not be discussed here (see \cite{gerthsen}).\\
+In a solid the atoms are typically placed periodically. This property is called \emph{crystal structure}, which can be locally restricted due to occurring crystal defects. Exceptions are the amorphous solids, which behave like very viscous fluids and will not be discussed here \cite{gerthsen}.\\
 In the simplest case the atom positions can be described by a \emph{\textsc{Bravais} lattice}. This is a perfect periodic lattice, where the arrangement and orientation of all atoms look exactly the same from all atom positions (see \cref{image_2D_Bravais}). Therefore the positions $\vec{R}$ of the atoms can be described by:
 \begin{figure}
 	\centering
@@ -115,7 +115,7 @@ where $N_i$ denotes the number of unit cells in the direction $\vec{a}_i$ of the
 	\vec{k} &= \sum_{i = 1}^{N_D} \frac{m_i}{N_i} \vec{b}_i & m_i \in \mathbb{Z} 
 \end{align}
 It can be shown that if two states only vary in the way that $\vec{k}_1 - \vec{k}_2 \in \vec{K}$, they correspond to the same physical state. The conclusion is that one has to take only the states within the first \textsc{Brillouine} zone into account for a complete description. Hence, the number of states in the first \textsc{Brillouine} zone equals the number of sites $N = \prod_{i = 1}^{N_D}N_i$ of the bulk. In the one dimensional case this means that the number of states within the first \textsc{Brillouine} zone is the number of primitive cells in the chain.\\
-Since there are multiple solutions to \textsc{Schrödinger's} equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, which corresponds with a high density of states in the reciprocal space. As limit a continuum of states can be assumed in the reciprocal space, which leads to a continuum of eigenenergies in some interval (\emph{band}), since the \textsc{Schrödinger} equation changes continuously with $\vec{k}$. Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
+Since there are multiple solutions to \textsc{Schrödinger's} equation for a given $\vec{k}$, they will be labeled by some additional index $n$. In solid state physics the number of atoms contained in a system is usually very big, which corresponds with a high density of states in the reciprocal space. As limit of an infinite chain, a continuum of states can be assumed in the reciprocal space. This leads to a continuum of eigenenergies in some interval (\emph{band}). Therefore $n$ is referred to as \emph{band index}. Two bands of special interest are the \emph{HOMO}-band (referring to the 'highest occupied molecular orbital') and the \emph{LUMO}-band (referring to the 'lowest unoccupied molecular orbital').
 
 \subsection{Tight-Binding Method}
 In the previous section the eigenstates have been calculated by using the translational symmetries of a \textsc{Bravais} lattice, which results in completely delocalized states. A different approach is the following:\\
@@ -147,7 +147,10 @@ with the number operator $n_i = c^\dagger_i c_i$, which simply returns the numbe
 	&&&&\ddots
 	\end{pmatrix*}
 \end{align}
-In the simple case of a perfect periodic chain all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. 
+In the simple case of a perfect periodic chain all hopping parameters become the same $t_{i, i\pm1} = t\quad\forall  i$. A simple transformation into reciprocal space yields the eigenvalues (see appendix \cref{chapter_appendix}):
+\begin{align}
+E_k &= E_n \pm 2t_0\cos(ka)
+\end{align}
 
 \subsection{Peierls Distortion and SSH-Hamiltonian}
 \label{chapter_Peierls_SSH}
