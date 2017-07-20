@@ -441,21 +441,12 @@ with the eigenenergies $E_k = \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}$ and the ei
 \end{pmatrix*}
 \end{align}
 For $V=0$ this matches the previous result.\\
-\begin{figure}
+\begin{figure}[!p]
 	\centering
 	\includegraphics[width = 12cm]{Images/Hydrogen/charging/band_structure_q_1}
 	\caption{HOMO- and LUMO-band of the hydrogen chain for different charge displacements.}
 	\label{image_hydrogen_charged_bands}
 \end{figure}
-Next, the band structure for the hydrogen chain with different charge displacements is calculated (see \cref{image_hydrogen_charged_bands}). As expected from the symmetry, the form of the band structures do not depend on the direction (sign) of the charge displacement. It can also be seen, that the influence of charging is bigger for $k$-points closer to the edge of the \textsc{Brillouin} zone and that the HOMO-bands are systematically shifted to lower energies. Both aligns the predictions of the second approach perfectly.
-Since there's no distortion in the unit cell, the expected HOMO-band form becomes:
-\begin{align}
-E_k &= -\sqrt{V^2 + \left(2t_0\cos(ka)\right)^2}
-\end{align}
-Hence, the energy at the edge of the \textsc{Brillouin} zone is expected to show the following form in respect to the energy $V$ (cosine vanishes):
-\begin{align}
-E_\text{edge}(V) &= -\left|V\right|
-\end{align}
 \begin{figure}[!p]
 \centering
 \begin{minipage}{0.49\textwidth}
@@ -471,6 +462,15 @@ E_\text{edge}(V) &= -\left|V\right|
 \label{image_edge_energy_qs_1}
 \end{minipage}
 \end{figure}
+Next, the band structure for the hydrogen chain with different charge displacements is calculated (see \cref{image_hydrogen_charged_bands}). As expected from the symmetry, the form of the band structures do not depend on the direction (sign) of the charge displacement. It can also be seen, that the influence of charging is bigger for $k$-points closer to the edge of the \textsc{Brillouin} zone and that the HOMO-bands are systematically shifted to lower energies. Both aligns the predictions of the second approach perfectly.
+Since there's no distortion in the unit cell, the expected HOMO-band form becomes:
+\begin{align}
+E_k &= -\sqrt{V^2 + \left(2t_0\cos(ka)\right)^2}
+\end{align}
+Hence, the energy at the edge of the \textsc{Brillouin} zone is expected to show the following form in respect to the energy $V$ (cosine vanishes):
+\begin{align}
+E_\text{edge}(V) &= -\left|V\right|
+\end{align}
 Here, the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, wherefore a proportionality between them is assumed. Thus, the cDFT potentials should fulfill the condition $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). Thus, in the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$.
 The proportionality constant between $U$ and $V$ is obtained by fitting
 \begin{align}
@@ -503,47 +503,42 @@ in $t_0$ to the calculated band structures for different charge displacements (s
 \end{align}
 with $\xi^2 = \frac{4t_0^2-4\delta^2}{V^2+4t_0^2}$. The integral in \cref{equation_elliptical_integral} is known as the elliptical integral of the second kind and can be calculated numerically. With this expression it may be possible to obtain the hopping parameter $t_0$ through a fit to the average HOMO-band energy. To check this calculation for self-consistency a fit to some modelled data (data of the previous fit) is done. In \cref{image_hydrogen_homo_energy_charging} the data and fits can be seen, which already shows some mismatch between the calculated and modeled data from the earlier fit. It can be seen, that the modelled data is too big for a small external potential and too small for a big external potential. This tendency can also be seen by a close look at \cref{image_hydrogen_3D_slices}.\\
 Nevertheless the data is fitted nicely and for the modelled data a value of $t_0 = \unit[4.6]{eV}$ is obtained, which is in perfect accordance to the previous result. From the real data a value of $t_0 = \unit[9.1]{eV}$ is obtained.\\
-\begin{figure}[]
+Thus, it can be concluded that at least for the hydrogen chain additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour-hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new parameters, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
+Since the general form of the band structure in respect to the displaced charge is still qualitatively well described and hydrogen often behaves a little tricky, this method is also tested for \emph{trans}-polyacetylene.
+\begin{figure}[!p]
 	\centering
 	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge}
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits.}
 	\label{image_hydrogen_homo_energy_charging}
 \end{figure}
-\begin{figure}[]
+\begin{figure}[!p]
 	\centering
 	\includegraphics[width = 0.7\textwidth]{Images/Hydrogen/charging/Homo_energy_charge_sigma_32}
 	\caption{Average HOMO-band energies in respect to the external potential $U$ with fits for $\sigma = \unit[0.32]{\AA}$.}
 	\label{image_hydrogen_homo_energy_charging_sigma_32}
 \end{figure}
-Thus it can be concluded that at least for the hydrogen chain additional terms are needed to describe this phenomena correctly. For example, one may think of adding a \textsc{Hubbard} term to describe the electron-electron repulsion at the core positions or a term for next-nearest-neighbour-hopping \cite{PhysRevLett.103.067004,PhysRevB.82.155141}. Both would make the derivation of an analytical expression for the band energies more difficult and add new parameters, which should be determined in some other way.\\ In \cref{image_hydrogen_homo_energy_charging_sigma_32} the analogous data and fits to \cref{image_hydrogen_homo_energy_charging} for a $\sigma$ of $\unit[0.32]{\AA}$ can be seen. Here the fit to the data yields the hopping parameter $t_0 = \unit[6.1]{eV}$, which shows that the additional needed terms may have a $\sigma$-dependency or a less heuristic way of choosing the value for $\sigma$ may be found.\\
-Since the general form of the band structure in respect to the displaced charge is still qualitatively well described and hydrogen often behaves a little tricky, this method is also tested for \emph{trans}-polyacetylene.
+\newpage
 \subsection{Polyacetylene}
-To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (similar to \cref{image_region_gaussians}).\\
-First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$, for which charge transport becomes the easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
-Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all the other bands.\\
 \begin{figure}[]
 	\centering
 	\includegraphics[width = 10cm]{Images/polyacetylene/charging/sigmas}
 	\caption{Ground state energy of polyacetylene in respect to the displaced charge for different $\sigma$ of the \textsc{Gaussian} curves.}
 	\label{image_sigmas_polyacetylene}
 \end{figure}
+To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (similar to \cref{image_region_gaussians}).\\
+First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$, for which charge transport becomes the easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
+Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all the other bands.\\
+Also the antisymmetric behaviour of the HOMO- and LUMO-band in the outer regions, where no band interactions appear, can be seen, which matches the predictions of the calculated hopping eigenenergies:
+\begin{align}
+	E_k &= \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}
+\end{align}
 \begin{figure}[!p]
 	\centering
 	\includegraphics[width = 11cm]{Images/polyacetylene/charging/band_structure_q_1}
 	\caption{Band structure of polyacetylene for different charge displacements. Here the five highest occupied bands and the LUMO-band are shown.}
 	\label{image_polyacetylene_band_structure_charging}
 \end{figure}
-Also the antisymmetric behaviour of the HOMO- and LUMO-band in the outer regions, where no band interactions appear, can be seen, which matches the predictions of the calculated hopping eigenenergies:
-\begin{align}
-	E_k &= \pm \sqrt{V^2+\epsilon_k^2+\Delta_k^2}
-\end{align}
-In the next step the cDFT potentials $U_i$ are checked to show the expected antisymmetric behaviour $U_1 = -U_2$ for the different charge displacements. Here it is even more important than for the hydrogen chain to start from a neutral state and to use antisymmetric initial potentials (see \cref{image_polyacetylene_potentials_asymmetry}). In further calculations $U = \frac{1}{2}(U_1 - U_2)$ is used again as corresponding cDFT quantity to the energy variation $V$ at the even/odd positions from the model.\\
-To calculate the proportionality factor between $U$ and $V$ the same method as for hydrogen is used, namely fitting the HOMO-band energies at the edge of the \textsc{Brillouin} zone to the predicted form:
-\begin{align}
-	E_\text{edge} &= -\sqrt{\left(cU\right)^2 + 4 \delta^2}
-\end{align}
-Due to the small, but not vanishing, distortion the additional term under the root is obtained. Thus a similar form of a negative absolute, but with a little rounding at the tip is expected. For the fit $\delta$ is fixed to a quarter of the earlier calculated band gap (\cref{table_summary_polyacetylene}), which yields a proportionality constant of $c = \unit[7.70]{e}$ (see \cref{image_border_energy_polyacetylene}).\\
-\begin{figure}
+\begin{figure}[!p]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 	\centering
@@ -560,6 +555,12 @@ Due to the small, but not vanishing, distortion the additional term under the ro
 	\caption{cDFT potentials $U_i$ in respect to the displaced charge for polyacetylene. The calculations are made for different orders of charging and different initial cDFT potentials.}
 	\label{image_polyacetylene_potentials_asymmetry}
 \end{figure}
+In the next step the cDFT potentials $U_i$ are checked to show the expected antisymmetric behaviour $U_1 = -U_2$ for the different charge displacements. Here it is even more important than for the hydrogen chain to start from a neutral state and to use antisymmetric initial potentials (see \cref{image_polyacetylene_potentials_asymmetry}). In further calculations $U = \frac{1}{2}(U_1 - U_2)$ is used again as corresponding cDFT quantity to the energy variation $V$ at the even/odd positions from the model.\\
+To calculate the proportionality factor between $U$ and $V$ the same method as for hydrogen is used, namely fitting the HOMO-band energies at the edge of the \textsc{Brillouin} zone to the predicted form:
+\begin{align}
+	E_\text{edge} &= -\sqrt{\left(cU\right)^2 + 4 \delta^2}
+\end{align}
+Due to the small, but not vanishing, distortion the additional term under the root is obtained. Thus a similar form of a negative absolute, but with a little rounding at the tip is expected. For the fit $\delta$ is fixed to a quarter of the earlier calculated band gap (\cref{table_summary_polyacetylene}), which yields a proportionality constant of $c = \unit[7.70]{e}$ (see \cref{image_border_energy_polyacetylene}).\\
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.4\textwidth]{Images/polyacetylene/charging/border_energy_q_1}
@@ -573,7 +574,7 @@ For the further calculations the form of the HOMO-band without interactions has 
 from which a value of $t_0 = \unit[2.6]{eV}$ is obtained, which matches the earlier calculated value perfectly. Furthermore it can be seen that the data is fitted very nicely. Also some slices of the 3D-plot in \cref{image_slices_polyacetylene} show the very good accordance of fit and data.\\
 The average of the HOMO-band for the data and fit (modelled data) can be seen in \cref{image_HOMO_average_polyacetylene}, which match well, too. Also the data is fitted nicely by the expected form (see \cref{equation_elliptical_integral}). From the fit of the modelled data a perfect, self-consistent value of $t_0 = \unit[2.6]{eV}$ is obtained. The fit to the real data yields an also very good value of $t_0 = \unit[2.7]{eV}$.\\
 Thus, a proof of principle is given that the hopping parameter $t_0$ for molecules, which are applicable for a description with the SSH-model, can be obtained by using cDFT charge displacement.\\
-\newpage If the same procedure is done for \textsc{Gaussian} curves with $\sigma = \unit[0.24]{\AA}$, the average HOMO-band energies of the modelled and real data match much worse (see \cref{image_HOMO_average_polyacetylene_smaller_sigma}) and also a much worse hopping parameter of $t_0 = \unit[4.2]{\AA}$ is obtained. This shows that the heuristic way of choosing a value for $\sigma$ is at least for polyacetylene appropriate.\\
+If the same procedure is done for \textsc{Gaussian} curves with $\sigma = \unit[0.24]{\AA}$, the average HOMO-band energies of the modelled and real data match much worse (see \cref{image_HOMO_average_polyacetylene_smaller_sigma}) and also a much worse hopping parameter of $t_0 = \unit[4.2]{\AA}$ is obtained. This shows that the heuristic way of choosing a value for $\sigma$ is at least for polyacetylene appropriate.\\
 Since the first and second band and the third and forth band in \cref{image_polyacetylene_band_structure_charging} show some antisymmetric behaviour for charging and the calculation of the HOMO-band with no band interactions still needs some direct evaluation of the band structure a fit to the average energy of all five occupied bands, in the hope that influences of the lower bands cancel out, seems worth a try. In \cref{image_all_average_polyacetylene} this and the earlier calculated modelled data are shown. This yields a hopping parameter of $t_0 = \unit[1.7]{eV}$, which is a not too bad estimate and still leaves room for improvement.
 \begin{figure}
 	\centering
