@@ -221,7 +221,7 @@ A short summary of the results is given in \cref{table_summary_polyacetylene}.\\
 \section{Constraint Density Functional Theory}
 \label{section_constraint_density_functonal_theory}
 In this section the influences of charging different regions by using cDFT is studied and two alternative methods for calculating the hopping parameter $t_0$ are tested. First, this is done for a system as simple as possible, namely a chain of equidistant hydrogen atoms. But before doing this, some technical issues with cDFT are discussed.
-\subsection{Technical Issues}
+\subsection{Technical Details}
 \label{section_technical_issues}
 \begin{figure}
 	\centering
@@ -456,20 +456,20 @@ Hence, the energy at the edge of the \textsc{Brillouin} zone is expected to show
 \begin{align}
 E_\text{edge}(V) &= -\left|V\right|
 \end{align}
-\begin{figure}
-	\centering
-	\begin{minipage}{0.49\textwidth}
-			\centering
-				\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
-				\caption{cDFT potentials in respect to the displaced charge.\\}
-				\label{image_potentials_qs_1}	
-	\end{minipage}\hspace*{.5cm}
-	\begin{minipage}{0.49\textwidth}
-	\centering
-	\includegraphics[width = \textwidth]{Images/Hydrogen/charging/border_energy_q_1}
-	\caption{Band energy for $k = 0.5$ in respect to the external potential with fit.}
-	\label{image_edge_energy_qs_1}
-	\end{minipage}
+\begin{figure}[!p]
+\centering
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width = \textwidth]{Images/Hydrogen/charging/potential_q_1}
+\caption{cDFT potentials in respect to the displaced charge.\\}
+\label{image_potentials_qs_1}	
+\end{minipage}\hspace*{.5cm}
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width = \textwidth]{Images/Hydrogen/charging/border_energy_q_1}
+\caption{Band energy for $k = 0.5$ in respect to the external potential with fit.}
+\label{image_edge_energy_qs_1}
+\end{minipage}
 \end{figure}
 Here, the heights of the potentials $U_i$ from cDFT correspond with the energy $V$, wherefore a proportionality between them is assumed. Thus, the cDFT potentials should fulfill the condition $U_1 = - U_2$, which is approximately the case (see \cref{image_potentials_qs_1}). Thus, in the following $U = \frac{1}{2}(U_1 - U_2)$ is used as corresponding quantity to $V$.
 The proportionality constant between $U$ and $V$ is obtained by fitting
@@ -521,13 +521,13 @@ Since the general form of the band structure in respect to the displaced charge 
 To use cDFT with polyacetylene different regions for charging have to be defined. Here two regions, each containing a CH-group, are chosen to make sure that the charge is transferred between those CH-groups and not between the carbon and hydrogen atoms (similar to \cref{image_region_gaussians}).\\
 First the optimal value for $\sigma$ is calculated as before, namely by searching a value for $\sigma$, for which charge transport becomes the easiest (see \cref{image_sigmas_polyacetylene}). Here the value $\sigma = \unit[0.32]{\AA}$ is obtained and used for further calculations if not otherwise mentioned.\\
 Next the band structure for different charge displacements is calculated (see \cref{image_polyacetylene_band_structure_charging}), which shows again the expected independence of the direction (sign) of the charge displacement. Also the expected band gap broadening and the systematic shift of the HOMO-band to lower energies can be seen for increasing charge displacements. Furthermore analogous effects in the same order of magnitude can be seen for all the other bands.\\
-\begin{figure}
+\begin{figure}[]
 	\centering
 	\includegraphics[width = 10cm]{Images/polyacetylene/charging/sigmas}
 	\caption{Ground state energy of polyacetylene in respect to the displaced charge for different $\sigma$ of the \textsc{Gaussian} curves.}
 	\label{image_sigmas_polyacetylene}
 \end{figure}
-\begin{figure}
+\begin{figure}[!p]
 	\centering
 	\includegraphics[width = 11cm]{Images/polyacetylene/charging/band_structure_q_1}
 	\caption{Band structure of polyacetylene for different charge displacements. Here the five highest occupied bands and the LUMO-band are shown.}
